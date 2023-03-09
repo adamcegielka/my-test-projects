@@ -1,5 +1,27 @@
-"ID","Title","Created By","Created On","Estimate","Forecast","Priority","References","Section","Section Depth","Section Description","Suite","Suite ID","Type","Updated By","Updated On"
-"C2","Registering a new user to the Guru99 Bank app","Adam Ceg","3/9/2023 12:29 PM","","","Medium","","Registration","0","Here you will find tests of new user registration","Master","S1","Acceptance","Adam Ceg","3/9/2023 1:59 PM"
-"C3","Logging in as an existing user","Adam Ceg","3/9/2023 2:12 PM","","","Medium","","Login","0","Here will appear tests related to logging","Master","S1","Acceptance","Adam Ceg","3/9/2023 2:24 PM"
-"C4","Login as an existing user, but modify the UserID","Adam Ceg","3/9/2023 3:00 PM","","","High","","Login","0","Here will appear tests related to logging","Master","S1","Acceptance","Adam Ceg","3/9/2023 3:17 PM"
-"C5","Login as an existing user, but we modify the Password","Adam Ceg","3/9/2023 3:00 PM","","","High","","Login","0","Here will appear tests related to logging","Master","S1","Acceptance","Adam Ceg","3/9/2023 3:33 PM"
+"ID","Title","Created By","Created On","Estimate","Forecast","Priority","References","Section","Section Depth","Section Description","Steps","Suite","Suite ID","Type","Updated By","Updated On"
+"C2","Registering a new user to the Guru99 Bank app","Adam Ceg","3/9/2023 12:29 PM","","","Medium","","Registration","0","Here you will find tests of new user registration","1. Go to: https://demo.guru99.com/v4/
+Expected Result:
+Guru99 Bank page is displayed with the option to create a new user2. Go to the """"Steps To Generate Access"""" section and click """"1. Visit - here""""
+Expected Result:
+Displays a page to enter your Email ID to receive your login and password3. We enter the temporary email generated on the site: https://temp-mail.org/pl/ and click the """"SUBMIT"""" button
+Expected Result:
+Access details to demo site page with login details is displayed
+User ID : mngr484054
+Password : *******4. Go back to https://demo.guru99.com/v4/ and enter the login """"mngr484054"""" and password you received, click the """"LOGIN"""" button
+Expected Result:
+Login passed successfully, user is logged in as """"Manger Id : mngr484054""""","Master","S1","Acceptance","Adam Ceg","3/9/2023 1:59 PM"
+"C3","Logging in as an existing user","Adam Ceg","3/9/2023 2:12 PM","","","Medium","","Login","0","Here will appear tests related to logging","1. Go to: https://demo.guru99.com/v4/
+Expected Result:
+Guru99 Bank page appears with """"UserID"""" and """"Password"""" login fields2. We enter in the field: UserID """"mngr484054"""" and in the Password """"received password"""", and click the """"LOGIN"""" button
+Expected Result:
+We have been correctly logged into the user account - Manger Id : mngr484054","Master","S1","Acceptance","Adam Ceg","3/9/2023 2:24 PM"
+"C4","Login as an existing user, but modify the UserID","Adam Ceg","3/9/2023 3:00 PM","","","High","","Login","0","Here will appear tests related to logging","1. Go to: https://demo.guru99.com/v4/
+Expected Result:
+Guru99 Bank page appears with """"UserID"""" and """"Password"""" login fields2. We enter in the field: UserID changed login """"mnGr484054"""" and in the Password field """"received password"""" and click the """"LOGIN"""" button.
+Expected Result:
+Logging should be impossible. Message pops up : """"User or Password is not valid"""".","Master","S1","Acceptance","Adam Ceg","3/9/2023 3:17 PM"
+"C5","Login as an existing user, but we modify the Password","Adam Ceg","3/9/2023 3:00 PM","","","High","","Login","0","Here will appear tests related to logging","1. Go to: https://demo.guru99.com/v4/
+Expected Result:
+Guru99 Bank page appears with """"UserID"""" and """"Password"""" login fields2. We enter in the field: UserID the correct login """"mngr484054"""" and in the Password field """"the received password with the sixth uppercase letter 'A' changed to lowercase letter 'a'"""" and click the """"LOGIN"""" button.
+Expected Result:
+Logging should be impossible. Message pops up : """"User or Password is not valid"""".","Master","S1","Acceptance","Adam Ceg","3/9/2023 3:33 PM"
