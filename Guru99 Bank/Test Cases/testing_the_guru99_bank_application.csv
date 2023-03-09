@@ -1,0 +1,3 @@
+"ID","Title","Created By","Created On","Estimate","Forecast","Priority","References","Section","Section Depth","Section Description","Suite","Suite ID","Type","Updated By","Updated On"
+"C2","Registering a new user to the Guru99 Bank app","Adam Ceg","3/9/2023 12:29 PM","","","Medium","","Registration","0","Here you will find tests of new user registration","Master","S1","Acceptance","Adam Ceg","3/9/2023 1:59 PM"
+"C3","Logging in as an existing user","Adam Ceg","3/9/2023 2:12 PM","","","Medium","","Login","0","Here will appear tests related to logging","Master","S1","Acceptance","Adam Ceg","3/9/2023 2:24 PM"
