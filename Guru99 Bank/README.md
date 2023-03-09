@@ -7,8 +7,8 @@ The Guru99 Bank project aims to provide net banking facility to its customers.
 > Each test case was saved in a separate PDF file.  <br>
 > The list of all test cases is generated into a single file "testing_the_guru99_bank_application.csv"
 
-### Bug Reporting
-> All the errors I found were reported and described in the JIRA tool and exported to a PDF file
+### Bug Reports
+> All the errors I found were reported and described in the [JIRA](https://www.atlassian.com/pl/software/jira/) tool and exported to a PDF file
 
 ### Reports
 > Test case reports are produced in the [TestRail](https://www.gurock.com/testrail/) tool.
@@ -17,5 +17,3 @@ The Guru99 Bank project aims to provide net banking facility to its customers.
 > Software Requirements Specification <br>
 > 1.3 <br>
 > 25/10/2013
-
-[JIRA](https://www.atlassian.com/pl/software/jira/)
