@@ -1,18 +1,33 @@
-"ID","Title","Created By","Created On","Priority","Section","Section Description","Type","Updated By","Updated On"
-"C2","Registering a new user to the Guru99 Bank app","Adam Ceg","3/9/2023 12:29 PM","Medium","Registration","Here you will find tests of new user registration","Acceptance","Adam Ceg","3/9/2023 1:59 PM"
-"C3","Logging in as an existing user","Adam Ceg","3/9/2023 2:12 PM","Medium","Login","Here will appear tests related to logging","Acceptance","Adam Ceg","3/9/2023 2:24 PM"
-"C4","Login as an existing user, but modify the UserID","Adam Ceg","3/9/2023 3:00 PM","High","Login","Here will appear tests related to logging","Acceptance","Adam Ceg","3/9/2023 3:17 PM"
-"C5","Login as an existing user, but we modify the Password","Adam Ceg","3/9/2023 3:00 PM","High","Login","Here will appear tests related to logging","Acceptance","Adam Ceg","3/9/2023 3:33 PM"
-"C6","Create a new consumer with generated data","Adam Ceg","3/10/2023 8:18 AM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Acceptance","Adam Ceg","3/10/2023 10:45 AM"
-"C7","Create a new consumer with existing user data","Adam Ceg","3/10/2023 9:02 AM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Acceptance","Adam Ceg","3/10/2023 10:48 AM"
-"C8","Create a new consumer with the generated data, but with date of a person not yet born","Adam Ceg","3/10/2023 10:28 AM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Acceptance","Adam Ceg","3/10/2023 11:03 AM"
-"C9","Creating a new consumer with incomplete data","Adam Ceg","3/10/2023 11:21 AM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Acceptance","Adam Ceg","3/10/2023 11:28 AM"
-"C10","Edit the Customer Name of an existing user","Adam Ceg","3/10/2023 11:36 AM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:00 PM"
-"C11","Edit the Gender of an existing user","Adam Ceg","3/10/2023 12:05 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:18 PM"
-"C12","Edit the Date of Birth of an existing user","Adam Ceg","3/10/2023 12:13 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:18 PM"
-"C13","Edit the Address of an existing user","Adam Ceg","3/10/2023 12:23 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:28 PM"
-"C14","Edit the City of an existing user","Adam Ceg","3/10/2023 12:31 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:34 PM"
-"C15","Edit the State of an existing user","Adam Ceg","3/10/2023 12:38 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:41 PM"
-"C16","Edit the PIN of an existing user","Adam Ceg","3/10/2023 12:46 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:47 PM"
-"C17","Edit the Mobile Number of an existing user","Adam Ceg","3/10/2023 12:50 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:52 PM"
-"C18","Edit the E-mail of an existing user","Adam Ceg","3/10/2023 12:55 PM","High","New Customer","The purpose of the tests will be to add new cliques and edit them","Accessibility","Adam Ceg","3/10/2023 12:57 PM"
+"ID","Title","Created By","Created On","Preconditions","Priority","Section","Type","Updated By","Updated On"
+"C2","Registering a new user to the Guru99 Bank app","Adam Ceg","3/9/2023 12:29 PM","During the test, we check the ability to log into the Guru99 Bank application through the site: https://demo.guru99.com/v4/","Medium","Registration","Acceptance","Adam Ceg","3/9/2023 1:59 PM"
+"C3","Logging in as an existing user","Adam Ceg","3/9/2023 2:12 PM","During the test, we check the user with an email that appears in the database","Medium","Login","Acceptance","Adam Ceg","3/9/2023 2:24 PM"
+"C4","Login as an existing user, but modify the UserID","Adam Ceg","3/9/2023 3:00 PM","During the test, we check the ability to log in to an existing user with a changed login name
+Change in User ID : mngr484054 the letter """"g"""" to """"G"""" =&gt; login for login : mnGr484054
+
+","High","Login","Acceptance","Adam Ceg","3/9/2023 3:17 PM"
+"C5","Login as an existing user, but we modify the Password","Adam Ceg","3/9/2023 3:00 PM","During the test, we check the ability to log in to an existing user with a modified password
+in Password we change the sixth letter from uppercase """"A"""" to lowercase """"a""""","High","Login","Acceptance","Adam Ceg","3/9/2023 3:33 PM"
+"C6","Create a new consumer with generated data","Adam Ceg","3/10/2023 8:18 AM","The purpose of the test is to create a new consumer using the data generated by ==>
+Generato data - https://danetestowe.pl/, 
+Email generator - https://temp-mail.org/pl/
+
+
+
+","High","New Customer","Acceptance","Adam Ceg","3/10/2023 10:45 AM"
+"C7","Create a new consumer with existing user data","Adam Ceg","3/10/2023 9:02 AM","The purpose of the test is to create a new consumer using the same data of an already existing user
+
+","High","New Customer","Acceptance","Adam Ceg","3/10/2023 10:48 AM"
+"C8","Create a new consumer with the generated data, but with date of a person not yet born","Adam Ceg","3/10/2023 10:28 AM","The purpose of the test is to create a new consumer using the data generated by ==&gt;.
+Generato data - https://danetestowe.pl/,
+Email generator - https://temp-mail.org/pl/,
+and date of a person not yet born","High","New Customer","Acceptance","Adam Ceg","3/10/2023 11:03 AM"
+"C9","Creating a new consumer with incomplete data","Adam Ceg","3/10/2023 11:21 AM","The purpose of the test is to create a new consumer using incomplete data and the date of a person who is no longer alive","High","New Customer","Acceptance","Adam Ceg","3/10/2023 11:28 AM"
+"C10","Edit the Customer Name of an existing user","Adam Ceg","3/10/2023 11:36 AM","The purpose of the test is to verify the ability to edit the Customer Name of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:00 PM"
+"C11","Edit the Gender of an existing user","Adam Ceg","3/10/2023 12:05 PM","The purpose of the test is to verify the ability to edit the Gender of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:18 PM"
+"C12","Edit the Date of Birth of an existing user","Adam Ceg","3/10/2023 12:13 PM","The purpose of the test is to change the date of birth of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:18 PM"
+"C13","Edit the Address of an existing user","Adam Ceg","3/10/2023 12:23 PM","The purpose of the test is to change the address of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:28 PM"
+"C14","Edit the City of an existing user","Adam Ceg","3/10/2023 12:31 PM","The purpose of the test is to change the city of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:34 PM"
+"C15","Edit the State of an existing user","Adam Ceg","3/10/2023 12:38 PM","The purpose of the test is to change the State of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:41 PM"
+"C16","Edit the PIN of an existing user","Adam Ceg","3/10/2023 12:46 PM","The purpose of the test is to change the PIN of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:47 PM"
+"C17","Edit the Mobile Number of an existing user","Adam Ceg","3/10/2023 12:50 PM","The purpose of the test is to change the Mobile Number of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:52 PM"
+"C18","Edit the E-mail of an existing user","Adam Ceg","3/10/2023 12:55 PM","The purpose of the test is to change the E-mail of an existing user","High","New Customer","Accessibility","Adam Ceg","3/10/2023 12:57 PM"
