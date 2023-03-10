@@ -7,4 +7,5 @@ In this repository I'm posting my projects that I did on my own as part of gaini
 > - [TestRail](https://www.gurock.com/testrail/)<br>
 > - [JIRA](https://www.atlassian.com/pl/software/jira/)<br>
 > - [TEMPMAIL](https://temp-mail.org/pl/)<br> 
+> - [DaneTestowe](https://danetestowe.pl/)<br> 
 > - [Greenshot](https://getgreenshot.org/)
