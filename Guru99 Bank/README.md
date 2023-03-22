@@ -17,3 +17,10 @@ The Guru99 Bank project aims to provide net banking facility to its customers.
 > Software Requirements Specification <br>
 > 1.3 <br>
 > 25/10/2013
+
+### Tools
+> - [TestRail](https://www.gurock.com/testrail/)<br>
+> - [JIRA](https://www.atlassian.com/pl/software/jira/)<br>
+> - [TEMPMAIL](https://temp-mail.org/pl/)<br> 
+> - [DaneTestowe](https://danetestowe.pl/)<br> 
+> - [Greenshot](https://getgreenshot.org/)
