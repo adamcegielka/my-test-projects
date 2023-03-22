@@ -1,0 +1,88 @@
+line 1 column 1 - Warning: missing <!DOCTYPE> declaration
+line 16 column 1 - Warning: <script> lacks "type" attribute
+line 17 column 1 - Warning: <script> lacks "type" attribute
+line 18 column 1 - Warning: <script> lacks "type" attribute
+line 22 column 1 - Warning: <link> lacks "type" attribute
+line 24 column 5 - Warning: <link> lacks "type" attribute
+line 25 column 5 - Warning: <link> lacks "type" attribute
+line 26 column 5 - Warning: <link> lacks "type" attribute
+line 27 column 5 - Warning: <link> lacks "type" attribute
+line 29 column 1 - Warning: <style> lacks "type" attribute
+line 56 column 5 - Warning: <head> isn't allowed in <body> elements
+line 57 column 1 - Warning: meta isn't allowed in <body> elements
+line 60 column -3 - Warning: </head> isn't allowed in <body> elements
+line 62 column 1 - Warning: unknown attribute "async"
+line 62 column 1 - Warning: <script> lacks "type" attribute
+line 63 column 1 - Warning: <script> lacks "type" attribute
+line 76 column 110 - Warning: unknown attribute "role"
+line 82 column 21 - Warning: <div> Anchor "site-name" already defined
+line 94 column 33 - Warning: <td> attribute "width" has invalid value "20%"
+line 94 column 131 - Warning: <img> lacks "alt" attribute
+line 97 column 33 - Warning: <td> attribute "width" has invalid value "20%"
+line 97 column 155 - Warning: <img> lacks "alt" attribute
+line 100 column 33 - Warning: <td> attribute "width" has invalid value "20%"
+line 100 column 151 - Warning: <img> lacks "alt" attribute
+line 103 column 33 - Warning: <td> attribute "width" has invalid value "20%"
+line 103 column 128 - Warning: <img> lacks "alt" attribute
+line 118 column 13 - Error: <nav> is not recognized!
+line 118 column 13 - Warning: discarding unexpected <nav>
+line 127 column 33 - Warning: unknown attribute "data-toggle"
+line 128 column 56 - Warning: trimming empty <b>
+line 131 column 79 - Warning: Warning: unescaped & which should be written as &amp;
+line 135 column 80 - Warning: Warning: unescaped & which should be written as &amp;
+line 154 column 26 - Warning: trimming empty <li>
+line 164 column 34 - Warning: unknown attribute "data-toggle"
+line 164 column 118 - Warning: trimming empty <b>
+line 168 column 52 - Warning: trimming empty <li>
+line 176 column 33 - Warning: unknown attribute "data-toggle"
+line 177 column 66 - Warning: trimming empty <b>
+line 194 column 9 - Warning: discarding unexpected </nav>
+line 202 column 20 - Warning: <img> lacks "alt" attribute
+line 203 column 2 - Warning: <img> lacks "alt" attribute
+line 204 column 2 - Warning: <img> lacks "alt" attribute
+line 224 column 9 - Warning: <ul> isn't allowed in <tr> elements
+line 225 column 9 - Warning: missing <li>
+line 225 column 9 - Warning: inserting implicit <table>
+line 225 column 9 - Warning: missing <tr>
+line 231 column 35 - Warning: discarding unexpected </font>
+line 242 column -3 - Error: discarding unexpected </form>
+line 242 column 8 - Warning: missing <li>
+line 253 column 1 - Warning: unknown attribute "async"
+line 253 column 1 - Warning: <script> lacks "type" attribute
+line 254 column 2 - Warning: <script> lacks "type" attribute
+line 261 column 2 - Warning: unknown attribute "async"
+line 263 column 2 - Warning: <script> lacks "type" attribute
+line 292 column 1 - Warning: <script> lacks "type" attribute
+line 297 column 2 - Warning: <script> lacks "type" attribute
+line 298 column 6 - Warning: <script> lacks "type" attribute
+line 299 column 6 - Warning: <script> lacks "type" attribute
+line 300 column 6 - Warning: <script> lacks "type" attribute
+line 301 column 6 - Warning: <script> lacks "type" attribute
+line 303 column 8 - Warning: missing </ul>
+line 303 column 8 - Warning: trimming empty <tr>
+line 303 column 8 - Warning: missing </table>
+line 303 column 8 - Warning: missing </form>
+InputStream: Document content looks like HTML 4.01 Transitional
+62 warnings, 2 errors were found!
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+You may need to move one or both of the <form> and </form>
+tags. HTML elements should be properly nested and form elements
+are no exception. For instance you should not place the <form>
+in one table cell and the </form> in another. If the <form> is
+placed before a table, the </form> cannot be placed inside the
+table! Note that one form can't be nested inside another!
+The table summary attribute should be used to describe
+the table structure. It is very helpful for people using
+non-visual browsers. The scope and headers attributes for
+table cells are useful for specifying which headers apply
+to each table cell, enabling non-visual browsers to provide
+a meaningful context for each cell.
+The alt attribute should be used to give a short description
+of an image; longer descriptions should be given with the
+longdesc attribute which takes a URL linked to the description.
+These measures are needed for people using non-graphical browsers.
+For further advice on how to make your pages accessible
+see "http://www.w3.org/WAI/GL". You may also want to try
+"http://www.cast.org/bobby/" which is a free Web-based
+service for checking URLs for accessibility.
