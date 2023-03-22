@@ -17,9 +17,9 @@ The Guru99 Bank project aims to provide net banking facility to its customers.
 > Performance tests were done in  [JMeter](https://jmeter.apache.org/)
 
 ### guru99_banking_project_requirements.pdf
-> Software Requirements Specification <br>
-> 1.3 <br>
-> 25/10/2013
+> - Software Requirements Specification <br>
+> - 1.3 <br>
+> - 25/10/2013
 
 ### Tools
 > - [TestRail](https://www.gurock.com/testrail/)<br>
@@ -30,5 +30,5 @@ The Guru99 Bank project aims to provide net banking facility to its customers.
 > - [Greenshot](https://getgreenshot.org/)
 
 ### Environment
-> Chrome Version 111.0.5563.65 (Official Version) (64-bit)
-> Windows 10 Home
+> - Chrome Version 111 (64-bit)<br>
+> - Windows 10 Home
