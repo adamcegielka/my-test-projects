@@ -10,7 +10,6 @@ As part of the project, I tested features such as:
 - Edit Account
 - Delete Account
 
-
 ### Test Cases
 > The test cases were written in [TestRail](https://www.gurock.com/testrail/) based on the specifications and application.  <br>
 > Each test case was saved in a separate PDF file.
@@ -25,7 +24,7 @@ As part of the project, I tested features such as:
 
 ### JMeter
 > Performance tests were done in  [JMeter](https://jmeter.apache.org/)
-> This is my first trial test
+> This is my first trial test.
 
 ### guru99_banking_project_requirements.pdf
 > - Software Requirements Specification <br>
