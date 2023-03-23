@@ -1,5 +1,14 @@
 ## Guru99 Banking Project
-The Guru99 Bank project aims to provide net banking facility to its customers.
+The Guru99 Bank app aims to provide its customers with a banking service.<br> 
+As part of the project, I tested features such as:
+- Login
+- Registration
+- New Customer
+- Edit Customer
+- Delete Customer
+- New Account
+- Edit Account
+- Delete Account
 
 
 ### Test Cases
