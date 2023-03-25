@@ -6,6 +6,4 @@
 - checking homework
 - the opportunity to try your hand at software testing
 - support from mentors and other participants in a closed chat room
-
-<br>
-[Maraton QA](https://g.goit.global/mwnlso)
+- [Maraton QA](https://g.goit.global/mwnlso)
