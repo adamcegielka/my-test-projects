@@ -1,6 +1,6 @@
 ## GoIT - QA Marathon
 4 days of effective training<br>
-Start 2023-03-23 / Finish 2023-03-23
+Start 2023-03-27 / Finish 2023-03-30
 
 ### GoIT - QA Marathon
 - practical activities each day
