@@ -4,7 +4,8 @@ Start 2023-03-23 / Finish 2023-03-23
 
 ### GoIT - QA Marathon
 - practical activities each day
-- checking homework
+- video lessons with lecturers
+- homework and practice
 - the opportunity to try your hand at software testing
-- support from mentors and other participants in a closed chat room
-- [Maraton QA](https://g.goit.global/mwnlso)
+- final webinar
+- [Maraton QA](https://qa.m.goit.global/pl/?utm_source=leeloo&utm_medium=ref&utm_campaign=FPL6)
