@@ -2,12 +2,12 @@
 
 ### Summary of activities performed
 
-#### - The environments and equipment on which the tests took place:
+- The environments and equipment on which the tests took place:
 
 1. Chrome Version 111.0.5563.111 (64-bit)
 2. Windows 10 Home
 
-#### - Application areas and types of tests performed:
+- Application areas and types of tests performed:
 
 1. Registration and Login. Test time 0,5h. Functional tests, boundary value tests, validation tests.
 2. New Customer. Test time 2h. Functional tests, boundary value tests, validation tests.
@@ -20,7 +20,7 @@
 
 ### Summary of all defects
 
-#### To do
+- To do
 1. [GB99-04](https://github.com/adamcegielka/My_Test_Projects/blob/main/Guru99%20Bank/Bug%20Reports/GB99-04%20Positive%20login%20with%20changed%20UserID.pdf) Positive login with changed UserID
 2. [GB99-05](https://github.com/adamcegielka/My_Test_Projects/blob/main/Guru99%20Bank/Bug%20Reports/GB99-05%20Positive%20login%20with%20changed%20Password.pdf) Positive login with changed Password
 3. [GB99-06](https://github.com/adamcegielka/My_Test_Projects/blob/main/Guru99%20Bank/Bug%20Reports/GB99-06%20User%20not%20yet%20born%20has%20been%20added%20successfully.pdf) User not yet born has been added successfully
