@@ -7,4 +7,3 @@ In this repository I'm posting my projects that I did on my own as part of gaini
 
 ### Guru99 Bank
 > The first project is to test the Guru99 Bank application<br>
-> Start 2023-03-09 / Finish 2023-03-23
