@@ -2,12 +2,12 @@
 
 ### Summary of activities performed
 
-#### The environments and equipment on which the tests took place:
+#### - The environments and equipment on which the tests took place:
 
 1. Chrome Version 111.0.5563.111 (64-bit)
 2. Windows 10 Home
 
-#### Application areas and types of tests performed:
+#### - Application areas and types of tests performed:
 
 1. Registration and Login. Test time 0,5h. Functional tests, boundary value tests, validation tests.
 2. New Customer. Test time 2h. Functional tests, boundary value tests, validation tests.
