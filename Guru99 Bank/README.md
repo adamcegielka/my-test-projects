@@ -1,4 +1,5 @@
 ## Guru99 Banking Project
+[Final report on the conducted tests of the Guru99 Bank application](https://github.com/adamcegielka/My_Test_Projects/blob/main/Guru99%20Bank/Test_Report.md)
 The Guru99 Bank app aims to provide its customers with a banking service.<br> 
 As part of the project, I tested features such as:
 - Login
@@ -40,5 +41,5 @@ As part of the project, I tested features such as:
 > - [Greenshot](https://getgreenshot.org/)
 
 ### Environment
-> - Chrome Version 111 (64-bit)<br>
+> - Chrome Version 111.0.5563.111 (64-bit)<br>
 > - Windows 10 Home
