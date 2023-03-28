@@ -42,5 +42,5 @@
 - I managed to complete all the planned tests
 - During testing, there were no difficulties or problems with the test environment
 - The time of entire project was carried out for 8 days, an average of 2 hours per day 
-- [M1 - Guru99 Bank Project](https://github.com/adamcegielka/My_Test_Projects/blob/main/Guru99%20Bank/Reports/M1%20-%20Guru99%20Bank%20Project%20%231.pdf) Final report of the tests performed
+- [M1 - Guru99 Bank Project](https://github.com/adamcegielka/My_Test_Projects/blob/main/Guru99%20Bank/Reports/M1%20-%20Guru99%20Bank%20Project%20%231.pdf) Final report in TestRail of tests performed
 - The project lacked testing with DevTools, which will be used for future projects
