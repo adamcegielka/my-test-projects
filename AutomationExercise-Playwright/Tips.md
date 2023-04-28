@@ -30,6 +30,6 @@
 ## Chrome DevTools
 
 :small_orange_diamond: open DevTools <kbd>F12</kbd> or right click: `Inspect`  
- - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>J</kbd>  
- - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>K</kbd> **Firefox**  
+<kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>J</kbd>  
+<kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>K</kbd> **Firefox**  
 :small_orange_diamond: testing CSS selectors in Console: `$$('selector')`
