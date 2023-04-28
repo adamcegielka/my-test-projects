@@ -16,7 +16,7 @@ The test project involves running automated tests using a ready-made test [Scena
 
 ## Tools used for testing
 
-I will use [TestRail](https://www.testrail.com/) to write the test cases and [VSCode](https://code.visualstudio.com/) to create the automated tests and [Playwright](https://playwright.dev/) to run them with language [TypeScript](https://www.typescriptlang.org/). I will also use other tools such as [Jira](https://www.atlassian.com/software/jira) to report bugs, [PicPick](https://picpick.app/) to take scans and [DevTools]().
+I use [VSCode](https://code.visualstudio.com/) to create the automated tests and [Playwright](https://playwright.dev/) to run them with language [TypeScript](https://www.typescriptlang.org/).
 
 ## Test results
 I will describe the results of the tests once all the tests have been completed
