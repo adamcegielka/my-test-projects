@@ -25,11 +25,7 @@ test.describe('Test Case 1: Register User', () => {
     await expect(page.getByText('New User Signup!')).toBeVisible();
     // 6. Enter name and email address
     await page.getByPlaceholder('Name').fill(userId); 
-    await page
-      .locator('form')
-      .filter({ hasText: 'Signup' })
-      .getByPlaceholder('Email Address')
-      .fill(userEmail); 
+    await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(userEmail); 
     // 7. Click 'Signup' button
     await page.getByRole('button', { name: 'Signup' }).click(); 
     // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
@@ -57,18 +53,15 @@ test.describe('Test Case 1: Register User', () => {
     // 13. Click 'Create Account button'
     await page.getByRole('button', { name: 'Create Account' }).click();
     // 14. Verify that 'ACCOUNT CREATED!' is visible
-    await expect(page.getByText('ACCOUNT CREATED!')).toBeVisible();
-
-    /*  TESTS DO NOT PROCEED BECAUSE OF ADVERTISING
+    await expect(page.getByText('ACCOUNT CREATED!')).toBeVisible();    
     // 15. Click 'Continue' button
     await page.getByRole('link', { name: 'Continue' }).click();
     // 16. Verify that 'Logged in as username' is visible
-    await expect(page.getByText('Logged in as Smok')).toBeVisible();
+    await expect(page.getByText('Logged in as Smok Wawelski')).toBeVisible();
     // 17. Click 'Delete Account' button
     await page.getByRole('link', { name: ' Delete Account' }).click(); 
     // 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
     await expect(page.getByText('ACCOUNT DELETED!')).toBeVisible();
-    await page.getByRole('link', { name: 'Continue' }).click();
-    */
+    await page.getByRole('link', { name: 'Continue' }).click();    
   });
 });
