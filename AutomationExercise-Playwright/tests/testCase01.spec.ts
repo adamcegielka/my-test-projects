@@ -6,10 +6,14 @@ test.describe('Test Case 1: Register User', () => {
     const userId = 'Smok Wawelski';
     const userEmail = 'wawelski@test.com';
     const userPassword = 'dragon102';
+    const birthDay = '6';
+    const birthMonth = '4';
+    const birthYear = '1998';
     const firstName = 'Smok';
     const lastName = 'Wawelski';
     const companyName = 'Krzak';
     const address1 = 'Podwawelska 66'; 
+    const country = 'United States';
     const state = 'Arizona';
     const city = 'Amado';
     const zipcode = '85645';
@@ -33,9 +37,9 @@ test.describe('Test Case 1: Register User', () => {
     // 9. Fill details: Title, Name, Email, Password, Date of birth
     await page.getByLabel('Mr.').check();
     await page.getByLabel('Password *').fill(userPassword);
-    await page.locator('#days').selectOption('6');
-    await page.locator('#months').selectOption('4');
-    await page.locator('#years').selectOption('1989');
+    await page.locator('#days').selectOption(birthDay);
+    await page.locator('#months').selectOption(birthMonth);
+    await page.locator('#years').selectOption(birthYear);
     // 10. Select checkbox 'Sign up for our newsletter!'
     await page.getByLabel('Sign up for our newsletter!').check();
     // 11. Select checkbox 'Receive special offers from our partners!'
@@ -45,7 +49,7 @@ test.describe('Test Case 1: Register User', () => {
     await page.getByLabel('Last name *').fill(lastName);
     await page.getByLabel('Company', { exact: true }).fill(companyName);
     await page.getByLabel('Address * (Street address, P.O. Box, Company name, etc.)').fill(address1);
-    await page.getByRole('combobox', { name: 'Country *' }).selectOption('United States');
+    await page.getByRole('combobox', { name: 'Country *' }).selectOption(country);
     await page.getByLabel('State *').fill(state);
     await page.getByLabel('City *').fill(city);
     await page.locator('#zipcode').fill(zipcode);
