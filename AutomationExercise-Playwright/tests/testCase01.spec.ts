@@ -34,7 +34,6 @@ test.describe('Test Case 1: Register User', () => {
     await page.getByRole('button', { name: 'Signup' }).click(); 
     // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
     await expect(page.getByText('ENTER ACCOUNT INFORMATION')).toBeVisible(); 
-
     // 9. Fill details: Title, Name, Email, Password, Date of birth
     await page.getByLabel('Mr.').check();
     await page.getByLabel('Password *').fill(userPassword);
@@ -63,13 +62,10 @@ test.describe('Test Case 1: Register User', () => {
     /*  TESTS DO NOT PROCEED BECAUSE OF ADVERTISING
     // 15. Click 'Continue' button
     await page.getByRole('link', { name: 'Continue' }).click();
-
     // 16. Verify that 'Logged in as username' is visible
     await expect(page.getByText('Logged in as Smok')).toBeVisible();
-
     // 17. Click 'Delete Account' button
     await page.getByRole('link', { name: ' Delete Account' }).click(); 
-
     // 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
     await expect(page.getByText('ACCOUNT DELETED!')).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click();
