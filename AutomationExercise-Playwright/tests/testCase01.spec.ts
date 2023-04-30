@@ -1,6 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, chromium } from '@playwright/test';
 
 test.describe('Test Case 1: Register User', () => {
+
   test('AutomationExercise scenario tests', async ({ page }) => {
     const url = 'https://automationexercise.com/';
     const userId = 'Smok Wawelski';
@@ -19,6 +20,8 @@ test.describe('Test Case 1: Register User', () => {
     const zipcode = '85645';
     const mobileNumber = '8112223333';
 
+    // 1. Launch browser    
+    await chromium.launch();
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto(url); 
     // 3. Verify that home page is visible successfully
