@@ -3,7 +3,7 @@ import { test, expect, chromium } from '@playwright/test';
 test.describe('Test Case 5: Register User with existing email', () => {
 
   // Register User with existing email
-  test.only('logout User', async ({ page }) => {
+  test('logout User', async ({ page }) => {
     const url = 'https://automationexercise.com/';
     const userId = 'Olek Mucha';
     const userEmail = 'smith@tester.com';
