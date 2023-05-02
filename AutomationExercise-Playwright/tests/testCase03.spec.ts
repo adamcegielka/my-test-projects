@@ -3,7 +3,7 @@ import { test, expect, chromium } from '@playwright/test';
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
 
   // Test Case 3: Login User with incorrect email and password
-  test.only('login User with incorrect email and password', async ({ page }) => {
+  test('login User with incorrect email and password', async ({ page }) => {
     const url = 'https://automationexercise.com/';
     const userEmail = 'nowakincorrect@tester.com';
     const userPassword = 'nowyincorrect234';
