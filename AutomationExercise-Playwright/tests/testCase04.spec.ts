@@ -5,21 +5,21 @@ test.describe('Test Case 4: Logout User', () => {
   // Creation of a new user before the test
   test('creation of a new user before the test', async ({ page }) => {
     const url = 'https://automationexercise.com/';
-    const userId = 'Jan Nowak';
-    const userEmail = 'nowaki@tester.com';
-    const userPassword = 'nowy234';
-    const birthDay = '11';
-    const birthMonth = '5';
-    const birthYear = '1996';
-    const firstName = 'Jan';
-    const lastName = 'Nowak';
-    const companyName = 'Nowinki';
-    const address1 = 'Nowa 4'; 
+    const userId = 'John Smith';
+    const userEmail = 'smith@tester.com';
+    const userPassword = 'smith234';
+    const birthDay = '19';
+    const birthMonth = '8';
+    const birthYear = '1991';
+    const firstName = 'John';
+    const lastName = 'Smith';
+    const companyName = 'Matrix';
+    const address1 = 'Neo 99'; 
     const country = 'United States';
     const state = 'Dover';
     const city = 'Delaware';
     const zipcode = '19906';
-    const mobileNumber = '8223334444';
+    const mobileNumber = '8003330000';
     
     await page.goto(url);   
     await page.getByRole('link', { name: ' Signup / Login' }).click(); 
@@ -50,8 +50,9 @@ test.describe('Test Case 4: Logout User', () => {
   // Test Case 4: Logout User
   test('logout User', async ({ page }) => {
     const url = 'https://automationexercise.com/';
-    const userEmail = 'nowaki@tester.com';
-    const userPassword = 'nowy234';
+    const urlLogin = 'https://automationexercise.com/login';
+    const userEmail = 'smith@tester.com';
+    const userPassword = 'smith234';
 
     // 1. Launch browser    
     await chromium.launch();
@@ -69,12 +70,11 @@ test.describe('Test Case 4: Logout User', () => {
     // 7. Click 'login' button
     await page.getByRole('button', { name: 'Login' }).click();
     // 8. Verify that 'Logged in as username' is visible
-    await expect(page.getByText('Logged in as Jan Nowak')).toBeVisible();
-    // 9. Click 'Delete Account' button
-    await page.getByRole('link', { name: ' Delete Account' }).click();
-    // 10. Verify that 'ACCOUNT DELETED!' is visible
-    await expect(page.getByText('ACCOUNT DELETED!')).toBeVisible();
-    await page.getByRole('link', { name: 'Continue' }).click(); 
+    await expect(page.getByText('Logged in as John Smith')).toBeVisible();
+    // 9. Click 'Logout' button    
+    await page.getByRole('link', { name: ' Logout' }).click();
+    // 10. Verify that user is navigated to login page
+    await expect(page).toHaveURL(urlLogin);
   });
   
 });
