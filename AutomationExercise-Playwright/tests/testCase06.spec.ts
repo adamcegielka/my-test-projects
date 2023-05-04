@@ -3,7 +3,7 @@ import { test, expect, chromium, } from '@playwright/test';
 test.describe('Test Case 6: Contact Us Form', () => {
 
   // Register User with existing email
-  test.only('contact Us Form', async ({ page }) => {
+  test('contact Us Form', async ({ page }) => {
     const url = 'https://automationexercise.com/';
     const userId = 'John Smith';
     const userEmail = 'smith@tester.com';
@@ -33,13 +33,16 @@ test.describe('Test Case 6: Contact Us Form', () => {
     // 9. Click OK button
     page.on('dialog', dialog => dialog.accept());
     await page.getByRole('button').click();
+    /*
+    Error: strict mode violation: getByRole('button') resolved to 2 elements:
+    1) <input type="submit" name="submit" value="Submit" data-…/> aka getByRole('button', { name: 'Submit' })
+    2) <button type="submit" id="subscribe" class="btn btn-defa…>…</button> aka getByRole('button', { name: '' })
+    */
 
     // 10. Verify success message 'Success! Your details have been submitted successfully.' is visible
     await expect(page.getByText('Success! Your details have been submitted successfully.')).toBeVisible();
-
     // 11. Click 'Home' button and verify that landed to home page successfully
     await page.getByRole('link', { name: ' Home' }).click();
     await expect(page).toHaveURL(url);
-  });
-  
+  });  
 });
