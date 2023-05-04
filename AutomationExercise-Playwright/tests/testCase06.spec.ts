@@ -32,14 +32,10 @@ test.describe('Test Case 6: Contact Us Form', () => {
 
     // 9. Click OK button
     page.on('dialog', dialog => dialog.accept());
-    await page.getByRole('button', { name: /submit/i }).click();
+    await page.getByRole('button').click();
 
     // 10. Verify success message 'Success! Your details have been submitted successfully.' is visible
     await expect(page.getByText('Success! Your details have been submitted successfully.')).toBeVisible();
-
-    // await expect(page.locator('#status')).toHaveText(
-    //     'Success! Your details have been submitted successfully.'
-    //   );
 
     // 11. Click 'Home' button and verify that landed to home page successfully
     await page.getByRole('link', { name: ' Home' }).click();
