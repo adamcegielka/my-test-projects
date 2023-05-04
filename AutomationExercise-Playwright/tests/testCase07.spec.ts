@@ -3,7 +3,7 @@ import { test, expect, chromium, } from '@playwright/test';
 test.describe('Test Case 7: Verify Test Cases Page', () => {
 
   // Verify Test Cases Page
-  test.only('verify Test Cases Page', async ({ page }) => {
+  test('verify Test Cases Page', async ({ page }) => {
     const url = 'https://automationexercise.com/';
     const urlCase = 'https://automationexercise.com/test_cases';
 
