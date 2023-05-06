@@ -1,12 +1,13 @@
 import { test, expect, chromium } from '@playwright/test';
+import { testCase03Data } from '../test-data/testCase03.data';
 
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
 
   // Test Case 3: Login User with incorrect email and password
   test('login User with incorrect email and password', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const userEmail = 'nowakincorrect@tester.com';
-    const userPassword = 'nowyincorrect234';
+    const url = testCase03Data.url;
+    const userEmail = testCase03Data.userEmail;
+    const userPassword = testCase03Data.userPassword;
 
     // 1. Launch browser    
     await chromium.launch();
@@ -25,6 +26,5 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
     await page.getByRole('button', { name: 'Login' }).click();
     // 8. Verify error 'Your email or password is incorrect!' is visible
     await expect(page.getByText('Your email or password is incorrect!')).toBeVisible(); 
-  });
-  
+  });  
 });
