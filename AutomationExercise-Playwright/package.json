@@ -8,7 +8,8 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "report": "npx playwright show-report",
-    "open:ui": "npx playwright test --ui"},
+    "open:ui": "npx playwright test --ui"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
