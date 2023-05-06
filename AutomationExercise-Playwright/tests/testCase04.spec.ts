@@ -1,25 +1,26 @@
 import { test, expect, chromium } from '@playwright/test';
+import { testCase04Data } from '../test-data/testCase04.data';
 
 test.describe('Test Case 4: Logout User', () => {
 
   // Creation of a new user before the test
   test('creation of a new user before the test', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const userId = 'John Smith';
-    const userEmail = 'smith@tester.com';
-    const userPassword = 'smith234';
-    const birthDay = '19';
-    const birthMonth = '8';
-    const birthYear = '1991';
-    const firstName = 'John';
-    const lastName = 'Smith';
-    const companyName = 'Matrix';
-    const address1 = 'Neo 99'; 
-    const country = 'United States';
-    const state = 'Dover';
-    const city = 'Delaware';
-    const zipcode = '19906';
-    const mobileNumber = '8003330000';
+    const url = testCase04Data.url;
+    const userId = testCase04Data.userId;
+    const userEmail = testCase04Data.userEmail;
+    const userPassword = testCase04Data.userPassword;
+    const birthDay = testCase04Data.birthDay;
+    const birthMonth = testCase04Data.birthMonth;
+    const birthYear = testCase04Data.birthYear;
+    const firstName = testCase04Data.firstName;
+    const lastName = testCase04Data.lastName;
+    const companyName = testCase04Data.companyName;
+    const address1 = testCase04Data.address1; 
+    const country = testCase04Data.country;
+    const state = testCase04Data.state;
+    const city = testCase04Data.city;
+    const zipcode = testCase04Data.zipcode;
+    const mobileNumber = testCase04Data.mobileNumber;
     
     await page.goto(url);   
     await page.getByRole('link', { name: ' Signup / Login' }).click(); 
@@ -49,10 +50,10 @@ test.describe('Test Case 4: Logout User', () => {
 
   // Test Case 4: Logout User
   test('logout User', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const urlLogin = 'https://automationexercise.com/login';
-    const userEmail = 'smith@tester.com';
-    const userPassword = 'smith234';
+    const url = testCase04Data.url;
+    const urlLogin = testCase04Data.urlLogin;
+    const userEmail = testCase04Data.userEmail;
+    const userPassword = testCase04Data.userPassword;
 
     // 1. Launch browser    
     await chromium.launch();
@@ -76,5 +77,19 @@ test.describe('Test Case 4: Logout User', () => {
     // 10. Verify that user is navigated to login page
     await expect(page).toHaveURL(urlLogin);
   });
-  
+
+  // Deleting John Smith users
+  test('deleting John Smith users', async ({ page }) => {
+    const url = testCase04Data.url;
+    const userEmail = testCase04Data.userEmail;
+    const userPassword = testCase04Data.userPassword;
+    
+    await page.goto(url);
+    await page.getByRole('link', { name: ' Signup / Login' }).click();
+    await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').fill(userEmail);
+    await page.getByPlaceholder('Password').fill(userPassword);
+    await page.getByRole('button', { name: 'Login' }).click();
+    await page.getByRole('link', { name: ' Delete Account' }).click();
+    await page.getByRole('link', { name: 'Continue' }).click(); 
+  });  
 });
