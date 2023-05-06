@@ -1,26 +1,27 @@
 import { test, expect, chromium } from '@playwright/test';
+import { testCase02Data } from '../test-data/testCase02.data';
 
 test.describe('Test Case 2: login User with correct email and password', () => {
 
+  // Creation of a new user before the test
   test('creation of a new user before the test', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const userId = 'Jan Nowak';
-    const userEmail = 'nowaki@tester.com';
-    const userPassword = 'nowy234';
-    const birthDay = '11';
-    const birthMonth = '5';
-    const birthYear = '1996';
-    const firstName = 'Jan';
-    const lastName = 'Nowak';
-    const companyName = 'Nowinki';
-    const address1 = 'Nowa 4'; 
-    const country = 'United States';
-    const state = 'Dover';
-    const city = 'Delaware';
-    const zipcode = '19906';
-    const mobileNumber = '8223334444';
-
-    // Creation of a new user before the test
+    const url = testCase02Data.url;
+    const userId = testCase02Data.userId;
+    const userEmail = testCase02Data.userEmail;
+    const userPassword = testCase02Data.userPassword;
+    const birthDay = testCase02Data.birthDay;
+    const birthMonth = testCase02Data.birthMonth;
+    const birthYear = testCase02Data.birthYear;
+    const firstName = testCase02Data.firstName;
+    const lastName = testCase02Data.lastName;
+    const companyName = testCase02Data.companyName;
+    const address1 = testCase02Data.address1; 
+    const country = testCase02Data.country;
+    const state = testCase02Data.state;
+    const city = testCase02Data.city;
+    const zipcode = testCase02Data.zipcode;
+    const mobileNumber = testCase02Data.mobileNumber;
+    
     await page.goto(url);   
     await page.getByRole('link', { name: ' Signup / Login' }).click(); 
     await page.getByPlaceholder('Name').fill(userId); 
@@ -49,9 +50,9 @@ test.describe('Test Case 2: login User with correct email and password', () => {
 
   // Test Case 2: login User with correct email and password'
   test('login User with correct email and password', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const userEmail = 'nowaki@tester.com';
-    const userPassword = 'nowy234';
+    const url = testCase02Data.url;
+    const userEmail = testCase02Data.userEmail;
+    const userPassword = testCase02Data.userPassword;
 
     // 1. Launch browser    
     await chromium.launch();
@@ -75,6 +76,5 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     // 10. Verify that 'ACCOUNT DELETED!' is visible
     await expect(page.getByText('ACCOUNT DELETED!')).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click(); 
-  });
-  
+  });  
 });
