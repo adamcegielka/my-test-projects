@@ -1,24 +1,25 @@
 import { test, expect, chromium } from '@playwright/test';
+import { testCase01Data } from '../test-data/testCase01.data';
 
 test.describe('Test Case 1: Register User', () => {
 
   test('AutomationExercise scenario tests', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const userId = 'Smok Wawelski';
-    const userEmail = 'wawelski@test.com';
-    const userPassword = 'dragon102';
-    const birthDay = '6';
-    const birthMonth = '4';
-    const birthYear = '1998';
-    const firstName = 'Smok';
-    const lastName = 'Wawelski';
-    const companyName = 'Krzak';
-    const address1 = 'Podwawelska 66'; 
-    const country = 'United States';
-    const state = 'Arizona';
-    const city = 'Amado';
-    const zipcode = '85645';
-    const mobileNumber = '8112223333';
+    const url = testCase01Data.url;
+    const userId = testCase01Data.userId;
+    const userEmail = testCase01Data.userEmail;
+    const userPassword = testCase01Data.userPassword;
+    const birthDay = testCase01Data.birthDay;
+    const birthMonth = testCase01Data.birthMonth;
+    const birthYear = testCase01Data.birthYear;
+    const firstName = testCase01Data.firstName;
+    const lastName = testCase01Data.lastName;
+    const companyName = testCase01Data.companyName;
+    const address1 = testCase01Data.address1; 
+    const country = testCase01Data.country;
+    const state = testCase01Data.state;
+    const city = testCase01Data.city;
+    const zipcode = testCase01Data.zipcode;
+    const mobileNumber = testCase01Data.mobileNumber;
 
     // 1. Launch browser    
     await chromium.launch();
