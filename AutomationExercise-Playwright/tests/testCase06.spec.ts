@@ -1,14 +1,15 @@
 import { test, expect, chromium, } from '@playwright/test';
+import { testCase06Data } from '../test-data/testCase06.data';
 
 test.describe('Test Case 6: Contact Us Form', () => {
 
-  // Register User with existing email
+  // Contact Us Form
   test('contact Us Form', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const userId = 'John Smith';
-    const userEmail = 'smith@tester.com';
-    const subject = 'What is Lorem Ipsum?';
-    const message = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+    const url = testCase06Data.url;
+    const userId = testCase06Data.userId;
+    const userEmail = testCase06Data.userEmail;
+    const subject = testCase06Data.subject;
+    const message = testCase06Data.message;
 
     // 1. Launch browser    
     await chromium.launch();
@@ -29,14 +30,11 @@ test.describe('Test Case 6: Contact Us Form', () => {
     await page.locator('input[name="upload_file"]').setInputFiles('myfile.txt');
     // 8. Click 'Submit' button
     await page.getByRole('button', { name: 'Submit' }).click();
-
     // 9. Click OK button
     page.on('dialog', dialog => dialog.accept());
     await page.getByRole('button', { name: 'Submit' }).click();
-
     // 10. Verify success message 'Success! Your details have been submitted successfully.' is visible
     await expect(page.locator('.status.alert.alert-success').getByText('Success! Your details have been submitted successfully.')).toBeVisible({ timeout: 5000 });
-
     // 11. Click 'Home' button and verify that landed to home page successfully
     await page.getByRole('link', { name: ' Home' }).click();
     await expect(page).toHaveURL(url);
