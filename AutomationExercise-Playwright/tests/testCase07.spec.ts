@@ -4,7 +4,7 @@ import { testCase07Data } from '../test-data/testCase07.data';
 test.describe('Test Case 7: Verify Test Cases Page', () => {
 
   // Verify Test Cases Page
-  test('verify test cases page', async ({ page }) => {
+  test.fixme('verify test cases page', async ({ page }) => {
     const url = testCase07Data.url;
     const urlCase = testCase07Data.urlCase;
 
@@ -18,7 +18,6 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await page.getByRole('button', { name: 'Test Cases' }).click();
 
     // Error: https://automationexercise.com/#google_vignette:
-
     await page.frameLocator('#aswift_5').locator('[aria-label="Close ad"]').click();
     
     // 5. Verify user is navigated to test cases page successfully
