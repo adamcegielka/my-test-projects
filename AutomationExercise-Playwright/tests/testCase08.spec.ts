@@ -3,7 +3,7 @@ import { testCase08Data } from '../test-data/testCase08.data';
 
 test.describe('Test Case 7: Verify Test Cases Page', () => {
   // Verify Test Cases Page
-  test.fixme('verify test cases page', async ({ page }) => {
+  test('verify test cases page', async ({ page }) => {
     const url = testCase08Data.url;
     const urlProductDetails = testCase08Data.urlProductDetails;
 
@@ -19,8 +19,9 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     // 4. Click on 'Products' button
     await page.getByRole('link', { name: ' Products' }).click();
 
-    // Exit from Google ads
-    // await page.frameLocator('iframe[id="ad_position_box"]').frameLocator('iframe[id="dismiss-button"]').getByRole('button', { name: 'Close ad' }).click();
+    // EXIT FROM GOOGLE ADS
+    await page.goto('https://automationexercise.com/');
+    await page.getByRole('link', { name: ' Products' }).click();
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully
