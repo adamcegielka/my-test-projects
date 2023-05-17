@@ -18,11 +18,9 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await page.getByRole('button', { name: 'Test Cases' }).click();
 
     // Error: https://automationexercise.com/#google_vignette:
-    await page
-      .frameLocator('iframe[name="aswift_5"]')
-      .frameLocator('iframe[name="ad_iframe"]')
-      .getByRole('button', { name: 'Close ad' })
-      .click();
+    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
+    await page.goto('https://automationexercise.com/');
+    await page.getByRole('button', { name: 'Test Cases' }).click(); 
     
     // 5. Verify user is navigated to test cases page successfully
     await expect(page).toHaveURL(urlCase);
