@@ -4,7 +4,7 @@ import { testCase07Data } from '../test-data/testCase07.data';
 test.describe('Test Case 7: Verify Test Cases Page', () => {
 
   // Verify Test Cases Page
-  test.only('verify test cases page', async ({ page }) => {
+  test('verify test cases page', async ({ page }) => {
     const url = testCase07Data.url;
     const urlCase = testCase07Data.urlCase;
 
