@@ -6,6 +6,9 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
   test('verify test cases page', async ({ page }) => {
     const url = testCase08Data.url;
     const urlProductDetails = testCase08Data.urlProductDetails;
+    const messageProducts = testCase08Data.messageProducts;
+    const messageProductList = testCase08Data.messageProductList;
+    const messageProductDetails = testCase08Data.messageProductDetails;
 
     // 1. Launch browser
     await chromium.launch();
@@ -20,22 +23,22 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await page.getByRole('link', { name: ' Products' }).click();
 
     // EXIT FROM GOOGLE ADS
+    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
     await page.goto('https://automationexercise.com/');
     await page.getByRole('link', { name: ' Products' }).click();
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully
-    await expect(page.getByText('ALL PRODUCTS')).toBeVisible();
+    await expect(page.getByText(messageProducts)).toBeVisible();
 
     // 6. The products list is visible
-    await expect(page.getByText('All Products  Added! Your product has been added to cart. View Cart Continue Sh')).toBeVisible();
+    await expect(page.getByText(messageProductList)).toBeVisible();
 
     // 7. Click on 'View Product' of first product
     await page.locator('.choose > .nav > li > a').first().click();
 
     // 8. User is landed to product detail page
     await expect(page).toHaveURL(urlProductDetails);
-    await expect(page.getByText('Blue Top Category: Women > Tops Rs. 500 Quantity: Add to cart Availability: In S')).toBeVisible();
+    await expect(page.getByText(messageProductDetails)).toBeVisible();
 
     // 9. Verify that detail detail is visible: product name, category, price, availability, condition, brand
     await expect(page.getByRole('heading', { name: 'Blue Top' })).toBeVisible();
