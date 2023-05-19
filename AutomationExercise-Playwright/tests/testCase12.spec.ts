@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase12Data } from '../test-data/testCase12.data';
 
 test.describe('Test Case 12: Add Products in Cart', () => {
-  // Search Product
+  
   test('add products in cart', async ({ page }) => {
     const url = testCase12Data.url;
     const productFirst = testCase12Data.productFirst;
@@ -40,7 +40,6 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     // 7. Hover over second product and click 'Add to cart'
     const menTshirt = await page.waitForSelector('[data-product-id="2"]');
     await menTshirt.click();
-
    
     // 8. Click 'View Cart' button
     await page.getByRole('link', { name: 'View Cart' }).click();
