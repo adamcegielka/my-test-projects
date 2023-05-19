@@ -3,7 +3,7 @@ import { testCase12Data } from '../test-data/testCase12.data';
 
 test.describe('Test Case 12: Add Products in Cart', () => {
   // Search Product
-  test.fixme('add products in cart', async ({ page }) => {
+  test('add products in cart', async ({ page }) => {
     const url = testCase12Data.url;
     const productFirst = testCase12Data.productFirst;
     const productSecond = testCase12Data.productSecond;
@@ -28,19 +28,18 @@ test.describe('Test Case 12: Add Products in Cart', () => {
 
     // EXIT FROM GOOGLE ADS
     await page.goto(url);
-    await page.getByRole('link', { name: ' Products' }).click();    
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-
-    // FIXME
+    await page.getByRole('link', { name: ' Products' }).click();
+    
     // 5. Hover over first product and click 'Add to cart'
-    await page.locator('.features_items > div:nth-child(3) > .product-overlay > .overlay-content > .btn').first().click();      
+    const blueTop = await page.waitForSelector('[data-product-id="1"]');
+    await blueTop.click(); 
         
     // 6. Click 'Continue Shopping' button
     await page.getByRole('button', { name: 'Continue Shopping' }).click();
-
-    // FIXME
+    
     // 7. Hover over second product and click 'Add to cart'
-    await page.locator('div:nth-child(4) > .product-image-wrapper > .single-products > .product-overlay > .overlay-content > .btn').click();
+    const menTshirt = await page.waitForSelector('[data-product-id="2"]');
+    await menTshirt.click();
 
    
     // 8. Click 'View Cart' button
