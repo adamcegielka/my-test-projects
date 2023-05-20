@@ -1,0 +1,22 @@
+export const testCase14Data = {
+    url: 'https://automationexercise.com/',
+    userId: 'Adrian',
+    emai: 'adrian.jackson@mail.com',
+    firstName: 'Adrian',
+    lastName: 'Jackson',
+    birthDay: '9',
+    birthMonth: '5',
+    birthYear: '1985',
+    companyName: 'Porta Limited',
+    address1: '50 Herzi Street APT 93',
+    zipCode: '84739',
+    city: 'Washington',
+    state: 'Washington',
+    country: 'United States',
+    mobileNumber: '801222333',
+    cardVendor: 'Visa',
+    cardNumber: '4070723055941987',
+    cardCvv: '981',
+    cardExpirationateMonth: '11',
+    cardExpirationateYear: '25'
+}
