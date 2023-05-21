@@ -39,7 +39,10 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto(url);    
+
+    // 3. Verify that home page is visible successfully
+    await expect(page).toHaveURL(url);
 
     // 4. Add products to cart
     const blueTop = await page.waitForSelector('[data-product-id="3"]');
