@@ -3,7 +3,7 @@ import { testCase14Data } from '../test-data/testCase14.data';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
-  test('register while checkou', async ({ page }) => {
+  test('register while checkout', async ({ page }) => {
     const url = testCase14Data.url;
     const urlCart = testCase14Data.urlCart;
     const userId = testCase14Data.userId;
