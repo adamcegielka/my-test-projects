@@ -3,8 +3,11 @@ import { testCase13Data } from '../test-data/testCase13.data';
 
 test.describe('Test Case 13: Verify Product quantity in Cart', () => {
 
-  test.only('verify product quantity in cart', async ({ page }) => {
+  test('verify product quantity in cart', async ({ page }) => {
     const url = testCase13Data.url;
+    const verifyDetail = testCase13Data.verifyDetail;
+    const verifyProductDisplayed = testCase13Data.verifyProductDisplayed;
+    const quantityProduct = testCase13Data.quantityProduct;
 
     // 1. Launch browser
     await chromium.launch();
@@ -23,10 +26,10 @@ test.describe('Test Case 13: Verify Product quantity in Cart', () => {
     await page.locator('div:nth-child(6) > .product-image-wrapper > .choose > .nav > li > a').click();
 
     // 5. Verify product detail is opened
-    await expect(page.getByText('Stylish Dress Category: Women > Dress Rs. 1500 Quantity: Add to cart Availabilit')).toBeVisible();
+    await expect(page.getByText(verifyDetail)).toBeVisible();
 
     // 6. Increase quantity to 4
-    await page.locator('#quantity').fill('4');
+    await page.locator('#quantity').fill(quantityProduct);
 
     // 7. Click 'Add to cart' button
     await page.getByRole('button', { name: ' Add to cart' }).click();
@@ -35,7 +38,7 @@ test.describe('Test Case 13: Verify Product quantity in Cart', () => {
     await page.getByRole('link', { name: 'View Cart' }).click();
 
     // 9. Verify that product is displayed in cart page with exact quantity
-    await expect(page.getByRole('row', { name: 'Product Image Stylish Dress Women > Dress Rs. 1500 4 Rs. 6000 ' })).toBeVisible();
-    await expect(page.getByRole('button', { name: '4' })).toBeVisible();
+    await expect(page.getByRole('row', { name: verifyProductDisplayed })).toBeVisible();
+    await expect(page.getByRole('button', { name: quantityProduct })).toBeVisible();
   });
 });
