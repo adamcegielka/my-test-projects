@@ -1,35 +1,39 @@
 import { test, expect, chromium } from '@playwright/test';
+import { testCase14Data } from '../test-data/testCase14.data';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
   test('register while checkou', async ({ page }) => {
-    const url = 'https://automationexercise.com/';
-    const urlCart = 'https://automationexercise.com/view_cart';
-    const userId = 'AdrianoJ';
-    const email = 'adrian.jackson@mail.com';
-    const userPassword = '1a2b3c4d';
-    const firstName = 'Adrian';
-    const lastName = 'Jackson';
-    const birthDay = '9';
-    const birthMonth = '5';
-    const birthYear = '1985';
-    const companyName = 'Porta Limited';
-    const address1 = '50 Herzi Street APT 93';
-    const zipCode = '84739';
-    const city = 'Washington';
-    const state = 'Washington';
-    const country = 'United States';
-    const mobileNumber = '801222333';
-    const cardVendor = 'Visa';
-    const cardNumber = '4070723055941987';
-    const cardCvv = '981';
-    const cardExpirationateMonth = '11';
-    const cardExpirationateYear = '25';
+    const url = testCase14Data.url;
+    const urlCart = testCase14Data.urlCart;
+    const userId = testCase14Data.userId;
+    const email = testCase14Data.email;
+    const userPassword = testCase14Data.userPassword;
+    const firstName = testCase14Data.firstName;
+    const lastName = testCase14Data.lastName;
+    const birthDay = testCase14Data.birthDay;
+    const birthMonth = testCase14Data.birthMonth;
+    const birthYear = testCase14Data.birthYear;
+    const companyName = testCase14Data.companyName;
+    const address1 = testCase14Data.address1;
+    const zipCode = testCase14Data.zipCode;
+    const city = testCase14Data.city;
+    const state = testCase14Data.state;
+    const country = testCase14Data.country;
+    const mobileNumber = testCase14Data.mobileNumber;
+    const cardVendor = testCase14Data.cardVendor;
+    const cardNumber = testCase14Data.cardNumber;
+    const cardCvv = testCase14Data.cardCvv;
+    const cardExpirationateMonth = testCase14Data.cardExpirationateMonth;
+    const cardExpirationateYear = testCase14Data.cardExpirationateYear;
 
-    const verifyAddress = 'Your delivery address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 9';
-    const verifyOrder = 'Product Image Sleeveless Dress Women > Dress Rs. 1000 1 Rs. 1000';
-    const messageText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
-    const messageOrderConfirmed = 'Congratulations! Your order has been confirmed!';
+    const verifyAddress = testCase14Data.verifyAddress;
+    const verifyOrder = testCase14Data.verifyOrder;
+    const messageText = testCase14Data.messageText;
+    const messageOrderConfirmed = testCase14Data.messageOrderConfirmed;
+    const verifyShoppingCart = testCase14Data.verifyShoppingCart;
+    const verifyAccountCreated = testCase14Data.verifyAccountCreated;
+    const verifyAccountDeleted = testCase14Data.verifyAccountDeleted;
 
     // 1. Launch browser
     await chromium.launch();
@@ -47,7 +51,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
     // 6. Verify that cart page is displayed
     await expect(page).toHaveURL(urlCart);
-    await expect(page.getByText('Shopping Cart')).toBeVisible();
+    await expect(page.getByText(verifyShoppingCart)).toBeVisible();
 
     // 7. Click Proceed To Checkout
     await page.getByText('Proceed To Checkout').click();
@@ -77,7 +81,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.getByRole('button', { name: 'Create Account' }).click();
 
     // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
-    await expect(page.getByText('ACCOUNT CREATED!')).toBeVisible();
+    await expect(page.getByText(verifyAccountCreated)).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click();
 
     // 11. Verify ' Logged in as username' at top
@@ -114,7 +118,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.getByRole('link', { name: ' Delete Account' }).click();
 
     // 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
-    await expect(page.getByText('ACCOUNT DELETED!')).toBeVisible();
+    await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click();
   });
 });
