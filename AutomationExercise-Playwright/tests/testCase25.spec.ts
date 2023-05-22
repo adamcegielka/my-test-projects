@@ -3,7 +3,7 @@ import { testCase25Data } from '../test-data/testCase25.data';
 
 test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', () => {
   
-  test.only('verify scroll up using "Arrow" button and scroll down functionality', async ({ page }) => {
+  test('verify scroll up using "Arrow" button and scroll down functionality', async ({ page }) => {
     const url = testCase25Data.url;
     const verifySubscription = testCase25Data.verifySubscription;
     const verifyVisibleScreen = testCase25Data.verifyVisibleScreen;
