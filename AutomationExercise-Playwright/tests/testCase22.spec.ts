@@ -16,10 +16,14 @@ test.describe('Test Case 22: Add to cart from Recommended items', () => {
 
     // 3. Scroll to bottom of page
     await page.evaluate(() => {
-        const recommendedItemsElement = document.querySelector('.recommended_items');
-        if (recommendedItemsElement)
-          recommendedItemsElement.scrollIntoView();
+        window.scrollTo(0, document.body.scrollHeight);
       });
+    // scrolling to class .recommended_items  
+    // await page.evaluate(() => {
+    //     const recommendedItemsElement = document.querySelector('.recommended_items');
+    //     if (recommendedItemsElement)
+    //       recommendedItemsElement.scrollIntoView();
+    //   });
 
     // 4. Verify 'RECOMMENDED ITEMS' are visible
     await expect(await page.getByRole('heading', { name: verifyRecommendedItems })).toBeVisible();
