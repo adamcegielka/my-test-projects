@@ -1,6 +1,6 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase16Data } from '../test-data/testCase16.data';
-import { registerUser } from './testCase16Registration.spec';
+import { registerUser } from './testRegistration.spec';
 
 test.describe('Test Case 16: Place Order: Login before Checkout', () => {
 
