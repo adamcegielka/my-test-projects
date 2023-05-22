@@ -1,7 +1,6 @@
 export const testCase21Data = {
     url: 'https://automationexercise.com/',
     email: 'adrian.jackson@mail.com',
-    userPassword: '1a2b3c4d',    
     nameSurname: 'Adrian Jackson',
     review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     verifyProducts: 'All Products',
