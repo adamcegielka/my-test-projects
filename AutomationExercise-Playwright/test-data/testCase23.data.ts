@@ -21,6 +21,6 @@ export const testCase23Data = {
     verifyShoppingCart: 'Shopping Cart',
     verifyAccountCreated: 'ACCOUNT CREATED!',
     verifyAccountDeleted: 'ACCOUNT DELETED!',
-    VerifyDeliveryAddress: 'Your delivery address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Wa',
-    VerifyBillingyAddress: 'Your billing address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Was'
+    verifyDeliveryAddress: 'Your delivery address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Wa',
+    verifyBillingyAddress: 'Your billing address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Was'
 }
