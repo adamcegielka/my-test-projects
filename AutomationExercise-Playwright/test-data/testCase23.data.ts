@@ -1,6 +1,26 @@
 export const testCase23Data = {
     url: 'https://automationexercise.com/',
+    urlCart: 'https://automationexercise.com/view_cart',
+    userId: 'AdrianoJ',
     email: 'adrian.jackson@mail.com',
-    verifyTextSubscription: 'SUBSCRIPTION',
-    verifySuccessMessage: 'You have been successfully subscribed!'
+    userPassword: '1a2b3c4d',
+    firstName: 'Adrian',
+    lastName: 'Jackson',
+    birthDay: '9',
+    birthMonth: '5',
+    birthYear: '1985',
+    companyName: 'Porta Limited',
+    address1: '50 Herzi Street APT 93',
+    zipCode: '84739',
+    city: 'Washington',
+    state: 'Washington',
+    country: 'United States',
+    mobileNumber: '801222333',
+    verifyNameSurname: 'Mr. Adrian Jackson',
+    verifyCountryCityZip: 'Washington Washington 84739',
+    verifyShoppingCart: 'Shopping Cart',
+    verifyAccountCreated: 'ACCOUNT CREATED!',
+    verifyAccountDeleted: 'ACCOUNT DELETED!',
+    VerifyDeliveryAddress: 'Your delivery address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Wa',
+    VerifyBillingyAddress: 'Your billing address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Was'
 }
