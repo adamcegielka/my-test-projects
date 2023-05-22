@@ -16,6 +16,11 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     const url = testCase20Data.url;
     const email = testCase20Data.email;
     const userPassword = testCase20Data.userPassword;
+    const verifyProducts = testCase20Data.verifyProducts;
+    const verifyProductsAll = testCase20Data.verifyProductsAll;
+    const verifyProductsSearched = testCase20Data.verifyProductsSearched;
+    const verifyProductsSearchedAll = testCase20Data.verifyProductsSearchedAll;
+    const verifyProductsInCart = testCase20Data.verifyProductsInCart;
 
     // 1. Launch browser
     await chromium.launch();
@@ -31,23 +36,22 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.getByRole('link', { name: ' Products' }).click();
 
     // 4. Verify user is navigated to ALL PRODUCTS page successfully
-    await expect(page.getByRole('heading', { name: 'All Products' })).toBeVisible();
-    await expect(page.getByText('All Products  Added! Your product has been added to cart. View Cart Continue Sh')).toBeVisible();
+    await expect(page.getByRole('heading', { name: verifyProducts })).toBeVisible();
+    await expect(page.getByText(verifyProductsAll)).toBeVisible();
 
     // 5. Enter product name in search input and click search button
     await page.getByPlaceholder('Search Product').fill('Blue Top');
     await page.getByRole('button', { name: '' }).click();
 
     // 6. Verify 'SEARCHED PRODUCTS' is visible
-    await expect(page.getByRole('heading', { name: 'Searched Products' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: verifyProductsSearched })).toBeVisible();
 
     // 7. Verify all the products related to search are visible
-    await expect(page.getByText('Searched Products  Added! Your product has been added to cart. View Cart Contin')).toBeVisible();
+    await expect(page.getByText(verifyProductsSearchedAll)).toBeVisible();
 
     // 8. Add those products to cart
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
     await blueTop.click();
-    // await page.getByText('Add to cart').nth(1).click();
 
     // 9. Click 'Cart' button and verify that products are visible in cart
     await page.getByRole('link', { name: 'View Cart' }).click();
@@ -62,7 +66,7 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.getByRole('link', { name: ' Cart' }).click();
 
     // 12. Verify that those products are visible in cart after login as well
-    await expect(page.getByRole('row', { name: 'Product Image Blue Top Women > Tops Rs. 500 1 Rs. 500 ' })).toBeVisible();
+    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
 
     // Logout
     await page.getByRole('link', { name: ' Logout' }).click();
