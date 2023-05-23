@@ -22,6 +22,7 @@ test.describe('Test Case 1: Register User', () => {
     const zipCode = testRegistrationData.zipCode;
     const mobileNumber = testRegistrationData.mobileNumber;
 
+    const verifyHomePage = testCase01Data.verifyHomePage;
     const verifyNewUser = testCase01Data.verifyNewUser;
     const verifEenterAccountInformation = testCase01Data.verifEenterAccountInformation;
     const verifAccountCreated = testCase01Data.verifAccountCreated;
@@ -35,7 +36,7 @@ test.describe('Test Case 1: Register User', () => {
 
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL('/');
-    await expect(page).toHaveTitle('Automation Exercise');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click on 'Signup / Login' button
     await page.getByRole('link', { name: 'Signup / Login' }).click();
