@@ -1,7 +1,6 @@
 import { testRegistration } from '../test-data/testRegistration.data';
 
 export async function registerUser({ page }) {
-  const url = testRegistration.url;  
   const userId = testRegistration.userId;
   const email = testRegistration.email;
   const userPassword = testRegistration.userPassword;
@@ -18,8 +17,8 @@ export async function registerUser({ page }) {
   const country = testRegistration.country;
   const mobileNumber = testRegistration.mobileNumber;
 
-  await page.goto(url);
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Signup / Login' }).click();
 
   await page.getByPlaceholder('Name').fill(userId);
   await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(email);
@@ -41,5 +40,5 @@ export async function registerUser({ page }) {
   await page.getByLabel('Mobile Number *').fill(mobileNumber);
   await page.getByRole('button', { name: 'Create Account' }).click();  
   await page.getByRole('link', { name: 'Continue' }).click();
-  await page.getByRole('link', { name: ' Logout' }).click();
+  await page.getByRole('link', { name: 'Logout' }).click();
 };
