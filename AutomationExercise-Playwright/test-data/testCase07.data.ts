@@ -1,4 +1,5 @@
 export const testCase07Data = {
-    url: 'https://automationexercise.com/',
-    urlCase: 'https://automationexercise.com/test_cases'
+    verifyHomePage: 'Automation Exercise',
+    verifyTestCasesPage: 'https://automationexercise.com/test_cases',
+    verifyTestCasesPageTitle: 'Automation Practice Website for UI Testing - Test Cases'
 }

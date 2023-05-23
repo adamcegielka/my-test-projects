@@ -2,27 +2,36 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase07Data } from '../test-data/testCase07.data';
 
 test.describe('Test Case 7: Verify Test Cases Page', () => {
-
-  // Verify Test Cases Page
+  
   test('verify test cases page', async ({ page }) => {
-    const url = testCase07Data.url;
-    const urlCase = testCase07Data.urlCase;
+    const verifyHomePage = testCase07Data.verifyHomePage;
+    const verifyTestCasesPage = testCase07Data.verifyTestCasesPage;
+    const verifyTestCasesPageTitle = testCase07Data.verifyTestCasesPageTitle;
 
     // 1. Launch browser
-    await chromium.launch();    
+    await chromium.launch();
+
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
+
     // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL(url);
+    await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
+
     // 4. Click on 'Test Cases' button
     await page.getByRole('button', { name: 'Test Cases' }).click();
+    // await page.locator('div:carousel slide > .carousel-inner > .item > .test_cases_list').first().click();
 
-    // Error: https://automationexercise.com/#google_vignette:
+    // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('https://automationexercise.com/');
+    await page.goto('/');
     await page.getByRole('button', { name: 'Test Cases' }).click(); 
     
     // 5. Verify user is navigated to test cases page successfully
-    await expect(page).toHaveURL(urlCase);
+    await expect(page).toHaveURL(verifyTestCasesPage);
+    await expect(page).toHaveTitle(verifyTestCasesPageTitle);
+
+    // CLOSE BROWSER
+    await page.close();
   });
 });
