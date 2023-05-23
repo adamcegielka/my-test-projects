@@ -1,5 +1,4 @@
 export const testCase01Data = {
-    url: 'https://automationexercise.com/',
     userId: 'Smok Wawelski',
     userEmail: 'wawelski@test.com',
     userPassword: 'dragon102',
@@ -14,5 +13,11 @@ export const testCase01Data = {
     state: 'Arizona',
     city: 'Amado',
     zipcode: '85645',
-    mobileNumber: '8112223333'
+    mobileNumber: '8112223333',
+    checkboxNewsletter: 'Sign up for our newsletter!',
+    checkboxOffers: 'Receive special offers from our partners!',
+    verifyNewUser: 'New User Signup!',
+    verifEenterAccountInformation: 'ENTER ACCOUNT INFORMATION',
+    verifAccountCreated: 'ACCOUNT CREATED!',
+    verifAccountDeleted: 'ACCOUNT DELETED!'
 }
