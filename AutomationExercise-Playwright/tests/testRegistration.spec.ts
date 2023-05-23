@@ -1,3 +1,4 @@
+import { RegistrationPage } from '../pages/registration.page';
 import { testRegistrationData } from '../test-data/testRegistration.data';
 
 export async function registerUser({ page }) {
@@ -20,25 +21,29 @@ export async function registerUser({ page }) {
   await page.goto('/');
   await page.getByRole('link', { name: 'Signup / Login' }).click();
 
-  await page.getByPlaceholder('Name').fill(userId);
-  await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(userEmail);
-  await page.getByRole('button', { name: 'Signup' }).click();
+  // POM - Page Object Model
+  const registrationPage = new RegistrationPage(page)
 
-  await page.getByLabel('Mr.').check();
-  await page.getByLabel('Password *').fill(userPassword);
-  await page.locator('#days').selectOption(birthDay);
-  await page.locator('#months').selectOption(birthMonth);
-  await page.locator('#years').selectOption(birthYear);
-  await page.getByLabel('First name *').fill(firstName);
-  await page.getByLabel('Last name *').fill(lastName);
-  await page.getByLabel('Company', { exact: true }).fill(companyName);
-  await page.getByLabel('Address * (Street address, P.O. Box, Company name, etc.)').fill(address1);
-  await page.getByRole('combobox', { name: 'Country *' }).selectOption(country);
-  await page.getByLabel('State *').fill(state);
-  await page.getByLabel('City *').fill(city);
-  await page.locator('#zipcode').fill(zipCode);
-  await page.getByLabel('Mobile Number *').fill(mobileNumber);
-  await page.getByRole('button', { name: 'Create Account' }).click();  
+  await registrationPage.userId.fill(userId);
+  await registrationPage.userEmail.fill(userEmail);
+  await registrationPage.signupButton.click();
+  await registrationPage.courtesyPhrase.check();
+  await registrationPage.userPassword.fill(userPassword);
+  await registrationPage.birthDay.selectOption(birthDay);
+  await registrationPage.birthMonth.selectOption(birthMonth);
+  await registrationPage.birthYear.selectOption(birthYear);
+  await registrationPage.checkboxNewsletter.check();
+  await registrationPage.checkboxOffers.check();
+  await registrationPage.firstName.fill(firstName);
+  await registrationPage.lastName.fill(lastName);
+  await registrationPage.companyName.fill(companyName);
+  await registrationPage.address1.fill(address1);
+  await registrationPage.country.selectOption(country);
+  await registrationPage.state.fill(state);
+  await registrationPage.city.fill(city);
+  await registrationPage.zipCode.fill(zipCode);
+  await registrationPage.mobileNumber.fill(mobileNumber);
+  await registrationPage.createAccountButton.click();  
   await page.getByRole('link', { name: 'Continue' }).click();
   await page.getByRole('link', { name: 'Logout' }).click();
 };
