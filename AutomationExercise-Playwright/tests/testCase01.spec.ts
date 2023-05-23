@@ -1,26 +1,26 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase01Data } from '../test-data/testCase01.data';
+import { testRegistrationData } from '../test-data/testRegistration.data';
+import { RegistrationPage } from '../pages/registration.page';
 
 test.describe('Test Case 1: Register User', () => {
 
-  test.only('register user', async ({ page }) => {
-    const userId = testCase01Data.userId;
-    const userEmail = testCase01Data.userEmail;
-    const userPassword = testCase01Data.userPassword;
-    const birthDay = testCase01Data.birthDay;
-    const birthMonth = testCase01Data.birthMonth;
-    const birthYear = testCase01Data.birthYear;
-    const firstName = testCase01Data.firstName;
-    const lastName = testCase01Data.lastName;
-    const companyName = testCase01Data.companyName;
-    const address1 = testCase01Data.address1; 
-    const country = testCase01Data.country;
-    const state = testCase01Data.state;
-    const city = testCase01Data.city;
-    const zipcode = testCase01Data.zipcode;
-    const mobileNumber = testCase01Data.mobileNumber;
-    const checkboxNewsletter = testCase01Data.checkboxNewsletter;
-    const checkboxOffers = testCase01Data.checkboxOffers;
+  test('register user', async ({ page }) => {
+    const userId = testRegistrationData.userId;
+    const userEmail = testRegistrationData.userEmail;
+    const userPassword = testRegistrationData.userPassword;
+    const birthDay = testRegistrationData.birthDay;
+    const birthMonth = testRegistrationData.birthMonth;
+    const birthYear = testRegistrationData.birthYear;
+    const firstName = testRegistrationData.firstName;
+    const lastName = testRegistrationData.lastName;
+    const companyName = testRegistrationData.companyName;
+    const address1 = testRegistrationData.address1; 
+    const country = testRegistrationData.country;
+    const state = testRegistrationData.state;
+    const city = testRegistrationData.city;
+    const zipCode = testRegistrationData.zipCode;
+    const mobileNumber = testRegistrationData.mobileNumber;
 
     const verifyNewUser = testCase01Data.verifyNewUser;
     const verifEenterAccountInformation = testCase01Data.verifEenterAccountInformation;
@@ -44,41 +44,44 @@ test.describe('Test Case 1: Register User', () => {
     await expect(page.getByText(verifyNewUser)).toBeVisible();
 
     // 6. Enter name and email address
-    await page.getByPlaceholder('Name').fill(userId);
-    await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(userEmail);
+    // POM - Page Object Model
+    const registrationPage = new RegistrationPage(page)
+
+    await registrationPage.userId.fill(userId);
+    await registrationPage.userEmail.fill(userEmail);
 
     // 7. Click 'Signup' button
-    await page.getByRole('button', { name: 'Signup' }).click();
+    await registrationPage.signupButton.click();
 
     // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
     await expect(page.getByText(verifEenterAccountInformation)).toBeVisible();
 
     // 9. Fill details: Title, Name, Email, Password, Date of birth
-    await page.getByLabel('Mr.').check();
-    await page.getByLabel('Password *').fill(userPassword);
-    await page.locator('#days').selectOption(birthDay);
-    await page.locator('#months').selectOption(birthMonth);
-    await page.locator('#years').selectOption(birthYear);
+    await registrationPage.courtesyPhrase.check();
+    await registrationPage.userPassword.fill(userPassword);
+    await registrationPage.birthDay.selectOption(birthDay);
+    await registrationPage.birthMonth.selectOption(birthMonth);
+    await registrationPage.birthYear.selectOption(birthYear);
 
     // 10. Select checkbox 'Sign up for our newsletter!'
-    await page.getByLabel(checkboxNewsletter).check();
+    await registrationPage.checkboxNewsletter.check();
 
     // 11. Select checkbox 'Receive special offers from our partners!'
-    await page.getByLabel(checkboxOffers).check();
+    await registrationPage.checkboxOffers.check();
 
     // 12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-    await page.getByLabel('First name *').fill(firstName);
-    await page.getByLabel('Last name *').fill(lastName);
-    await page.getByLabel('Company', { exact: true }).fill(companyName);
-    await page.getByLabel('Address * (Street address, P.O. Box, Company name, etc.)').fill(address1);
-    await page.getByRole('combobox', { name: 'Country *' }).selectOption(country);
-    await page.getByLabel('State *').fill(state);
-    await page.getByLabel('City *').fill(city);
-    await page.locator('#zipcode').fill(zipcode);
-    await page.getByLabel('Mobile Number *').fill(mobileNumber);
+    await registrationPage.firstName.fill(firstName);
+    await registrationPage.lastName.fill(lastName);
+    await registrationPage.companyName.fill(companyName);
+    await registrationPage.address1.fill(address1);
+    await registrationPage.country.selectOption(country);
+    await registrationPage.state.fill(state);
+    await registrationPage.city.fill(city);
+    await registrationPage.zipCode.fill(zipCode);
+    await registrationPage.mobileNumber.fill(mobileNumber);
 
     // 13. Click 'Create Account button'
-    await page.getByRole('button', { name: 'Create Account' }).click();
+    await registrationPage.createAccountButton.click();
 
     // 14. Verify that 'ACCOUNT CREATED!' is visible
     await expect(page.getByText(verifAccountCreated)).toBeVisible();
