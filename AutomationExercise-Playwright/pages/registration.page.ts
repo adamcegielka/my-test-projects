@@ -4,6 +4,7 @@ export class RegistrationPage {
   constructor(private page: Page) {}
 
   userId = this.page.getByPlaceholder('Name');
+  userIdNew = this.page.getByPlaceholder('Name');
   userEmail = this.page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address');
   signupButton = this.page.getByRole('button', { name: 'Signup' });
   courtesyPhrase = this.page.getByLabel('Mr.');
