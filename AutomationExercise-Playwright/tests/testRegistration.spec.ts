@@ -2,7 +2,7 @@ import { testRegistration } from '../test-data/testRegistration.data';
 
 export async function registerUser({ page }) {
   const userId = testRegistration.userId;
-  const email = testRegistration.email;
+  const userEmail = testRegistration.userEmail;
   const userPassword = testRegistration.userPassword;
   const firstName = testRegistration.firstName;
   const lastName = testRegistration.lastName;
@@ -21,7 +21,7 @@ export async function registerUser({ page }) {
   await page.getByRole('link', { name: 'Signup / Login' }).click();
 
   await page.getByPlaceholder('Name').fill(userId);
-  await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(email);
+  await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(userEmail);
   await page.getByRole('button', { name: 'Signup' }).click();
 
   await page.getByLabel('Mr.').check();
