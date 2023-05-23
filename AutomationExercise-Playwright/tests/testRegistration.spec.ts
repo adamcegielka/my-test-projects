@@ -1,21 +1,21 @@
-import { testRegistration } from '../test-data/testRegistration.data';
+import { testRegistrationData } from '../test-data/testRegistration.data';
 
 export async function registerUser({ page }) {
-  const userId = testRegistration.userId;
-  const userEmail = testRegistration.userEmail;
-  const userPassword = testRegistration.userPassword;
-  const firstName = testRegistration.firstName;
-  const lastName = testRegistration.lastName;
-  const birthDay = testRegistration.birthDay;
-  const birthMonth = testRegistration.birthMonth;
-  const birthYear = testRegistration.birthYear;
-  const companyName = testRegistration.companyName;
-  const address1 = testRegistration.address1;
-  const zipCode = testRegistration.zipCode;
-  const city = testRegistration.city;
-  const state = testRegistration.state;
-  const country = testRegistration.country;
-  const mobileNumber = testRegistration.mobileNumber;
+  const userId = testRegistrationData.userId;
+  const userEmail = testRegistrationData.userEmail;
+  const userPassword = testRegistrationData.userPassword;
+  const firstName = testRegistrationData.firstName;
+  const lastName = testRegistrationData.lastName;
+  const birthDay = testRegistrationData.birthDay;
+  const birthMonth = testRegistrationData.birthMonth;
+  const birthYear = testRegistrationData.birthYear;
+  const companyName = testRegistrationData.companyName;
+  const address1 = testRegistrationData.address1;
+  const zipCode = testRegistrationData.zipCode;
+  const city = testRegistrationData.city;
+  const state = testRegistrationData.state;
+  const country = testRegistrationData.country;
+  const mobileNumber = testRegistrationData.mobileNumber;
 
   await page.goto('/');
   await page.getByRole('link', { name: 'Signup / Login' }).click();

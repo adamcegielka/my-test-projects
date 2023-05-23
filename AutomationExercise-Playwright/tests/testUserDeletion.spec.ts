@@ -1,8 +1,8 @@
-import { testUserDeletion } from '../test-data/testUserDeletion.data';
+import { testUserDeletionData } from '../test-data/testUserDeletion.data';
 
 export async function userDeletion({ page }) {
-  const email = testUserDeletion.email;
-  const userPassword = testUserDeletion.userPassword;
+  const email = testUserDeletionData.email;
+  const userPassword = testUserDeletionData.userPassword;
 
   await page.goto('/');
   await page.getByRole('link', { name: 'Signup / Login' }).click();
