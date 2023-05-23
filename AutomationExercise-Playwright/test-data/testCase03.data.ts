@@ -1,5 +1,7 @@
 export const testCase03Data = {
-    url: 'https://automationexercise.com/',
-    userEmail: 'nowaki-incorrect@tester.com',
-    userPassword: 'nowy234-incorrect'
+    userEmailIncorrect: 'new-incorrect@mail.com',
+    userPasswordIncorrect: 'incorrect234',
+    verifyHomePage: 'Automation Exercise',
+    verifyLoginToAccount: 'Login to your account',
+    verifyErrorMessage: 'Your email or password is incorrect!'
 }
