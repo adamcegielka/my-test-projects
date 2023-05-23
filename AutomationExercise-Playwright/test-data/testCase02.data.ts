@@ -1,5 +1,5 @@
 export const testCase02Data = {
     verifyHomePage: 'Automation Exercise',
-    verifyLoginInAccount: 'New User Signup!',
-    verifAccountDeleted: 'ACCOUNT DELETED!'
+    verifyLoginToAccount: 'Login to your account',
+    verifyAccountDeleted: 'ACCOUNT DELETED!'
 }

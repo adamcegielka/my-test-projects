@@ -16,8 +16,8 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     const userPassword = testRegistrationData.userPassword;
 
     const verifyHomePage = testCase02Data.verifyHomePage;
-    const verifyLoginInAccount = testCase02Data.verifyLoginInAccount;
-    const verifAccountDeleted = testCase02Data.verifAccountDeleted;
+    const verifyLoginToAccount = testCase02Data.verifyLoginToAccount;
+    const verifyAccountDeleted = testCase02Data.verifyAccountDeleted;
 
     // 1. Launch browser    
     await chromium.launch();
@@ -33,7 +33,7 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     await page.getByRole('link', { name: 'Signup / Login' }).click();
 
     // 5. Verify 'Login to your account' is visible
-    await expect(page.getByText(verifyLoginInAccount)).toBeVisible();
+    await expect(page.getByText(verifyLoginToAccount)).toBeVisible();
 
     // 6. Enter correct email address and password
     // POM - Page Object Model
@@ -51,7 +51,7 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     await page.getByRole('link', { name: 'Delete Account' }).click();
 
     // 10. Verify that 'ACCOUNT DELETED!' is visible
-    await expect(page.getByText(verifAccountDeleted)).toBeVisible();
+    await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click();
 
     // CLOSE BROWSER
