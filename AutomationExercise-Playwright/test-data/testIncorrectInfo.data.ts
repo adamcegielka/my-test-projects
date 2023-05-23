@@ -1,4 +1,4 @@
 export const testIncorrectInfoData = {
-    IncorrectUserEmail: 'new-incorrect@mail.com',
-    IncorrectUserPassword: 'incorrect234'
+    incorrectUserEmail: 'new-incorrect@mail.com',
+    incorrectUserPassword: 'incorrect234'
 }
