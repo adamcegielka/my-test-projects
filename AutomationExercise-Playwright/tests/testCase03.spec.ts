@@ -1,13 +1,12 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase03Data } from '../test-data/testCase03.data';
-import { testIncorrectInfoData } from '../test-data/testIncorrectInfo.data';
 import { LoginIncorrectPage } from '../pages/loginIncorrect.page';
 
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
 
   test('login user with incorrect email and password', async ({ page }) => {
-    const incorrectUserEmail = testIncorrectInfoData.incorrectUserEmail;
-    const incorrectUserPassword = testIncorrectInfoData.incorrectUserPassword;
+    const incorrectUserEmail = testCase03Data.incorrectUserEmail;
+    const incorrectUserPassword = testCase03Data.incorrectUserPassword;
 
     const verifyHomePage = testCase03Data.verifyHomePage;
     const verifyLoginToAccount = testCase03Data.verifyLoginToAccount;
