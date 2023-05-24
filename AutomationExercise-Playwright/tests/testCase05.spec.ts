@@ -1,6 +1,5 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase05Data } from '../test-data/testCase05.data';
-import { testRegistrationData } from '../test-data/testRegistration.data';
 import { registerUser } from './testRegistration.spec';
 import { userDeletion } from './testUserDeletion.spec';
 import { RegistrationPage } from '../pages/registration.page';
@@ -15,8 +14,8 @@ test.describe('Test Case 5: Register User with existing email', () => {
 
   // Test Case 5: Register User with existing email
   test('register user with existing email', async ({ page }) => {
-    const userIdNew = testRegistrationData.userIdNew;
-    const userEmail = testRegistrationData.userEmail;
+    const userIdNew = testCase05Data.userIdNew;
+    const userEmail = testCase05Data.userEmail;
 
     const verifyHomePage = testCase05Data.verifyHomePage;
     const verifyNewUserSignup = testCase05Data.verifyNewUserSignup;
