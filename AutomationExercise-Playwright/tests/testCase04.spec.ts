@@ -1,6 +1,6 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase04Data } from '../test-data/testCase04.data';
-import { testRegistrationData } from '../test-data/testRegistration.data';
+// import { testRegistrationData } from '../test-data/testRegistration.data';
 import { registerUser } from './testRegistration.spec';
 import { userDeletion } from './testUserDeletion.spec';
 import { LoginPage } from '../pages/login.page';
@@ -15,9 +15,9 @@ test.describe('Test Case 4: Logout User', () => {
 
   // Test Case 4: Logout User
   test('logout user', async ({ page }) => {
-    const userId = testRegistrationData.userId;
-    const userEmail = testRegistrationData.userEmail;
-    const userPassword = testRegistrationData.userPassword;
+    const userId = testCase04Data.userId;
+    const userEmail = testCase04Data.userEmail;
+    const userPassword = testCase04Data.userPassword;
 
     const verifyHomePage = testCase04Data.verifyHomePage;
     const verifyLoginToAccount = testCase04Data.verifyLoginToAccount;
