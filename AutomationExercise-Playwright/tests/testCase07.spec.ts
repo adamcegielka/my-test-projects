@@ -1,7 +1,7 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase07Data } from '../test-data/testCase07.data';
 
-test.describe('Test Case 7: Verify Test Cases Page', () => {
+test.describe.only('Test Case 7: Verify Test Cases Page', () => {
   
   test('verify test cases page', async ({ page }) => {
     const verifyHomePage = testCase07Data.verifyHomePage;
@@ -19,13 +19,16 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click on 'Test Cases' button
-    await page.getByRole('button', { name: 'Test Cases' }).click();
-    // await page.locator('div:carousel slide > .carousel-inner > .item > .test_cases_list').first().click();
+    await page.click('.btn.btn-success');
+    // or:
+    // await page.click('text=Test Cases');
+    // await page.click('button[type="button"]');
+    // await page.getByRole('button', { name: 'Test Cases' }).click();
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
     await page.goto('/');
-    await page.getByRole('button', { name: 'Test Cases' }).click(); 
+    await page.click('.btn.btn-success'); 
     
     // 5. Verify user is navigated to test cases page successfully
     await expect(page).toHaveURL(verifyTestCasesPage);
