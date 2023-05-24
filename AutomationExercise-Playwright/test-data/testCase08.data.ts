@@ -1,5 +1,4 @@
 export const testCase08Data = {
-    url: 'https://automationexercise.com/',
     urlProductDetails: 'https://automationexercise.com/product_details/1',
     messageProducts: 'ALL PRODUCTS',
     messageProductList: 'All Products  Added! Your product has been added to cart. View Cart Continue Sh',

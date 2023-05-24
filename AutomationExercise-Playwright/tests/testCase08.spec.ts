@@ -4,7 +4,6 @@ import { testCase08Data } from '../test-data/testCase08.data';
 test.describe.only('Test Case 8: Verify All Products and product detail page', () => {
   
   test('verify all products and product detail page', async ({ page }) => {
-    const url = testCase08Data.url;
     const urlProductDetails = testCase08Data.urlProductDetails;
     const messageProducts = testCase08Data.messageProducts;
     const messageProductList = testCase08Data.messageProductList;
@@ -14,10 +13,10 @@ test.describe.only('Test Case 8: Verify All Products and product detail page', (
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
 
     // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL(url);
+    await expect(page).toHaveURL('/');
 
     // 4. Click on 'Products' button
     await page.getByRole('link', { name: 'Products' }).click();
