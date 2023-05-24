@@ -8,6 +8,7 @@ test.describe('Test Case 8: Verify All Products and product detail page', () => 
     const messageProducts = testCase08Data.messageProducts;
     const messageProductList = testCase08Data.messageProductList;
     const messageProductDetails = testCase08Data.messageProductDetails;
+    const verifyHomePage = testCase08Data.verifyHomePage;
 
     // 1. Launch browser
     await chromium.launch();
@@ -17,14 +18,17 @@ test.describe('Test Case 8: Verify All Products and product detail page', () => 
 
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click on 'Products' button
-    await page.getByRole('link', { name: 'Products' }).click();
+    // await page.getByRole('link', { name: 'Products' }).click();
+    // or:
+    await page.click('.material-icons.card_travel');
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('https://automationexercise.com/');
-    await page.getByRole('link', { name: 'Products' }).click();
+    await page.goto('/');
+    await page.click('.material-icons.card_travel');
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully
     await expect(page.getByText(messageProducts)).toBeVisible();
