@@ -1,13 +1,11 @@
 import { test, expect, chromium, } from '@playwright/test';
 import { testCase06Data } from '../test-data/testCase06.data';
-import { testRegistrationData } from '../test-data/testRegistration.data';
 
 test.describe('Test Case 6: Contact Us Form', () => {
   
   test('contact us form', async ({ page }) => {    
-    const userId = testRegistrationData.userId;
-    const userEmail = testRegistrationData.userEmail;
-
+    const userId = testCase06Data.userId;
+    const userEmail = testCase06Data.userEmail;
     const subject = testCase06Data.subject;
     const message = testCase06Data.message;
 
@@ -51,11 +49,10 @@ test.describe('Test Case 6: Contact Us Form', () => {
     await expect(page.locator('.status.alert.alert-success').getByText(verifySuccessMessage)).toBeVisible({ timeout: 5000 });
 
     // 11. Click 'Home' button and verify that landed to home page successfully
-    await page.locator('.fa.fa-angle-double-left').click();
+    await page.click('.fa.fa-angle-double-left');
     
     // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_2"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    
+    // await page.frameLocator('iframe[name="aswift_2"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();    
     await expect(page).toHaveURL('/');
     await expect(page).toHaveTitle(verifyHomePage);
 
