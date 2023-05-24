@@ -7,6 +7,7 @@ test.describe('Test Case 10: Verify Subscription in home page', () => {
     const subscription = testCase10Data.subscription;
     const emailSubscription = testCase10Data.emailSubscription;
     const messageSubscription = testCase10Data.messageSubscription;
+    const verifyHomePage = testCase10Data.verifyHomePage;
 
     // 1. Launch browser
     await chromium.launch();
@@ -16,6 +17,7 @@ test.describe('Test Case 10: Verify Subscription in home page', () => {
 
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Scroll down to footer
     await page.evaluate(() => {
