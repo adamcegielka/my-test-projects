@@ -1,7 +1,7 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase08Data } from '../test-data/testCase08.data';
 
-test.describe.only('Test Case 8: Verify All Products and product detail page', () => {
+test.describe('Test Case 8: Verify All Products and product detail page', () => {
   
   test('verify all products and product detail page', async ({ page }) => {
     const urlProductDetails = testCase08Data.urlProductDetails;
