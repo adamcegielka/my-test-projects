@@ -1,7 +1,7 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase07Data } from '../test-data/testCase07.data';
 
-test.describe.only('Test Case 7: Verify Test Cases Page', () => {
+test.describe('Test Case 7: Verify Test Cases Page', () => {
   
   test('verify test cases page', async ({ page }) => {
     const verifyHomePage = testCase07Data.verifyHomePage;
