@@ -11,7 +11,7 @@ export async function userDeletion({ page }) {
   await page.getByRole('button', { name: 'Login' }).click();
 
   await page.getByRole('link', { name: 'Delete Account' }).click();
-  await page.getByRole('link', { name: 'Continue' }).click();
+  await page.click('.btn.btn-primary');
 
   await page.close();
 };
