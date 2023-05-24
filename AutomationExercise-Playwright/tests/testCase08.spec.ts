@@ -1,9 +1,9 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase08Data } from '../test-data/testCase08.data';
 
-test.describe('Test Case 7: Verify Test Cases Page', () => {
-  // Verify Test Cases Page
-  test('verify test cases page', async ({ page }) => {
+test.describe.only('Test Case 8: Verify All Products and product detail page', () => {
+  
+  test('verify all products and product detail page', async ({ page }) => {
     const url = testCase08Data.url;
     const urlProductDetails = testCase08Data.urlProductDetails;
     const messageProducts = testCase08Data.messageProducts;
@@ -20,12 +20,12 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await expect(page).toHaveURL(url);
 
     // 4. Click on 'Products' button
-    await page.getByRole('link', { name: ' Products' }).click();
+    await page.getByRole('link', { name: 'Products' }).click();
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
     await page.goto('https://automationexercise.com/');
-    await page.getByRole('link', { name: ' Products' }).click();
+    await page.getByRole('link', { name: 'Products' }).click();
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully
     await expect(page.getByText(messageProducts)).toBeVisible();
