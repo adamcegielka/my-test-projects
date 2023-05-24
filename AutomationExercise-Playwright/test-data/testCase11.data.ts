@@ -1,5 +1,5 @@
 export const testCase11Data = {
-    url: 'https://automationexercise.com/',
+    verifyHomePage: 'Automation Exercise',
     subscription: 'Subscription',
     emailSubscription: 'example@email.com',
     messageSubscription: 'You have been successfully subscribed!'
