@@ -1,6 +1,5 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase04Data } from '../test-data/testCase04.data';
-// import { testRegistrationData } from '../test-data/testRegistration.data';
 import { registerUser } from './testRegistration.spec';
 import { userDeletion } from './testUserDeletion.spec';
 import { LoginPage } from '../pages/login.page';
