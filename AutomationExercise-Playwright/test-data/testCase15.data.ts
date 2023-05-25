@@ -1,5 +1,5 @@
 export const testCase15Data = {
-    url: 'https://automationexercise.com/',
+    verifyHomePage: 'Automation Exercise',
     urlCart: 'https://automationexercise.com/view_cart',
     userId: 'AdrianoJ',
     email: 'adrian.jackson@mail.com',
