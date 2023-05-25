@@ -1,5 +1,5 @@
 export const testCase18Data = {
-    url: 'https://automationexercise.com/',
+    verifyHomePage: 'Automation Exercise',
     verifyCategoryWomen: 'Women - Tops Products',
     verifyCategoryMen: 'Men - Jeans Products'
 }
