@@ -1,7 +1,5 @@
 export const testCase20Data = {
-    url: 'https://automationexercise.com/',
-    email: 'adrian.jackson@mail.com',
-    userPassword: '1a2b3c4d',
+    searchProduct: 'Blue Top',
     verifyProducts: 'All Products',
     verifyProductsAll: 'All Products  Added! Your product has been added to cart. View Cart Continue Sh',
     verifyProductsSearched: 'Searched Products',
