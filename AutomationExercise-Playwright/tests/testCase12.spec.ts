@@ -28,6 +28,7 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     await page.click('.material-icons.card_travel');
 
     // EXIT FROM GOOGLE ADS
+    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
     await page.goto('/');
     await page.click('.material-icons.card_travel');
     

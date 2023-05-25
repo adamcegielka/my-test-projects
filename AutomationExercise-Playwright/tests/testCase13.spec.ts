@@ -23,6 +23,7 @@ test.describe('Test Case 13: Verify Product quantity in Cart', () => {
     await page.locator('div:nth-child(6) > .product-image-wrapper > .choose').click();
 
     // EXIT FROM GOOGLE ADS
+    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
     await page.goto('/');
     await page.locator('div:nth-child(6) > .product-image-wrapper > .choose').click();
 

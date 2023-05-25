@@ -112,6 +112,7 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     await page.getByRole('link', { name: 'Place Order' }).click();
 
     // EXIT FROM GOOGLE ADS
+    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
     await page.goto(urlCart);
     await page.getByText('Proceed To Checkout').click();
     await page.getByRole('link', { name: 'Place Order' }).click();
