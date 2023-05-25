@@ -4,7 +4,7 @@ import { testCase17Data } from '../test-data/testCase17.data';
 test.describe('Test Case 17: Remove Products From Cart', () => {
 
   test('remove products from cart', async ({ page }) => {
-    const url = testCase17Data.url;
+    const verifyHomePage = testCase17Data.verifyHomePage;
     const urlCart = testCase17Data.urlCart;
     const verifyShoppingCart = testCase17Data.verifyShoppingCart;
     const verifyProductRemoved = testCase17Data.verifyProductRemoved;
@@ -13,10 +13,11 @@ test.describe('Test Case 17: Remove Products From Cart', () => {
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
 
     // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL(url);
+    await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Add products to cart    
     const winterTop = await page.waitForSelector('[data-product-id="5"]');
@@ -30,7 +31,7 @@ test.describe('Test Case 17: Remove Products From Cart', () => {
     await expect(page.getByText(verifyShoppingCart)).toBeVisible();
 
     // 7. Click 'X' button corresponding to particular product
-    await page.getByRole('cell', { name: '' }).locator('a').click();
+    await page.click('.cart_quantity_delete');
 
     // 8. Verify that product is removed from the cart
     await expect(page.getByText(verifyProductRemoved)).toBeVisible();
