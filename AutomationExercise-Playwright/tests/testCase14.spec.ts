@@ -1,32 +1,38 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase14Data } from '../test-data/testCase14.data';
+import { testRegistrationData } from '../test-data/testRegistration.data';
+import { testPaymentByCarsData } from '../test-data/testPaymentByCard.data';
+import { RegistrationPage } from '../pages/registration.page';
+import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
   test('register while checkout', async ({ page }) => {
-    const url = testCase14Data.url;
+    // testRegistrationData
+    const userId = testRegistrationData.userId;
+    const userEmail = testRegistrationData.userEmail;
+    const userPassword = testRegistrationData.userPassword;
+    const firstName = testRegistrationData.firstName;
+    const lastName = testRegistrationData.lastName;
+    const birthDay = testRegistrationData.birthDay;
+    const birthMonth = testRegistrationData.birthMonth;
+    const birthYear = testRegistrationData.birthYear;
+    const companyName = testRegistrationData.companyName;
+    const address1 = testRegistrationData.address1;
+    const zipCode = testRegistrationData.zipCode;
+    const city = testRegistrationData.city;
+    const state = testRegistrationData.state;
+    const country = testRegistrationData.country;
+    const mobileNumber = testRegistrationData.mobileNumber;
+    // testPaymentByCarsData
+    const cardVendor = testPaymentByCarsData.cardVendor;
+    const cardNumber = testPaymentByCarsData.cardNumber;
+    const cardCvv = testPaymentByCarsData.cardCvv;
+    const cardExpirationateMonth = testPaymentByCarsData.cardExpirationateMonth;
+    const cardExpirationateYear = testPaymentByCarsData.cardExpirationateYear;
+    // testCase14Data
     const urlCart = testCase14Data.urlCart;
-    const userId = testCase14Data.userId;
-    const email = testCase14Data.email;
-    const userPassword = testCase14Data.userPassword;
-    const firstName = testCase14Data.firstName;
-    const lastName = testCase14Data.lastName;
-    const birthDay = testCase14Data.birthDay;
-    const birthMonth = testCase14Data.birthMonth;
-    const birthYear = testCase14Data.birthYear;
-    const companyName = testCase14Data.companyName;
-    const address1 = testCase14Data.address1;
-    const zipCode = testCase14Data.zipCode;
-    const city = testCase14Data.city;
-    const state = testCase14Data.state;
-    const country = testCase14Data.country;
-    const mobileNumber = testCase14Data.mobileNumber;
-    const cardVendor = testCase14Data.cardVendor;
-    const cardNumber = testCase14Data.cardNumber;
-    const cardCvv = testCase14Data.cardCvv;
-    const cardExpirationateMonth = testCase14Data.cardExpirationateMonth;
-    const cardExpirationateYear = testCase14Data.cardExpirationateYear;
-
+    const verifyHomePage = testCase14Data.verifyHomePage;
     const verifyAddress = testCase14Data.verifyAddress;
     const verifyOrder = testCase14Data.verifyOrder;
     const messageText = testCase14Data.messageText;
@@ -39,10 +45,11 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);    
+    await page.goto('/');
 
     // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL(url);
+    await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Add products to cart
     const blueTop = await page.waitForSelector('[data-product-id="3"]');
@@ -50,7 +57,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.getByRole('button', { name: 'Continue Shopping' }).click();
 
     // 5. Click 'Cart' button
-    await page.getByRole('link', { name: ' Cart' }).click();
+    await page.getByRole('link', { name: 'Cart' }).click();
 
     // 6. Verify that cart page is displayed
     await expect(page).toHaveURL(urlCart);
@@ -63,25 +70,26 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.getByRole('link', { name: 'Register / Login' }).click();
 
     // 9. Fill all details in Signup and create account
-    await page.getByPlaceholder('Name').fill(userId);
-    await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(email);
-    await page.getByRole('button', { name: 'Signup' }).click();
-
-    await page.getByLabel('Mr.').check();
-    await page.getByLabel('Password *').fill(userPassword);
-    await page.locator('#days').selectOption(birthDay);
-    await page.locator('#months').selectOption(birthMonth);
-    await page.locator('#years').selectOption(birthYear);
-    await page.getByLabel('First name *').fill(firstName);
-    await page.getByLabel('Last name *').fill(lastName);
-    await page.getByLabel('Company', { exact: true }).fill(companyName);
-    await page.getByLabel('Address * (Street address, P.O. Box, Company name, etc.)').fill(address1);
-    await page.getByRole('combobox', { name: 'Country *' }).selectOption(country);
-    await page.getByLabel('State *').fill(state);
-    await page.getByLabel('City *').fill(city);
-    await page.locator('#zipcode').fill(zipCode);
-    await page.getByLabel('Mobile Number *').fill(mobileNumber);
-    await page.getByRole('button', { name: 'Create Account' }).click();
+    // POM - Page Object Model
+    const registrationPage = new RegistrationPage(page)
+    await registrationPage.userId.fill(userId);
+    await registrationPage.userEmail.fill(userEmail);
+    await registrationPage.signupButton.click();
+    await registrationPage.courtesyPhrase.check();
+    await registrationPage.userPassword.fill(userPassword);
+    await registrationPage.birthDay.selectOption(birthDay);
+    await registrationPage.birthMonth.selectOption(birthMonth);
+    await registrationPage.birthYear.selectOption(birthYear);
+    await registrationPage.firstName.fill(firstName);
+    await registrationPage.lastName.fill(lastName);
+    await registrationPage.companyName.fill(companyName);
+    await registrationPage.address1.fill(address1);
+    await registrationPage.country.selectOption(country);
+    await registrationPage.state.fill(state);
+    await registrationPage.city.fill(city);
+    await registrationPage.zipCode.fill(zipCode);
+    await registrationPage.mobileNumber.fill(mobileNumber);
+    await registrationPage.createAccountButton.click();
 
     // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
     await expect(page.getByText(verifyAccountCreated)).toBeVisible();
@@ -91,7 +99,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
 
     // 12.Click 'Cart' button
-    await page.getByRole('link', { name: ' Cart' }).click();
+    await page.getByRole('link', { name: 'Cart' }).click();
 
     // 13. Click 'Proceed To Checkout' button
     await page.getByText('Proceed To Checkout').click();
@@ -104,12 +112,19 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.locator('textarea[name="message"]').fill(messageText);
     await page.getByRole('link', { name: 'Place Order' }).click();
 
-    // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date    
-    await page.locator('input[name="name_on_card"]').fill(cardVendor);
-    await page.locator('input[name="card_number"]').fill(cardNumber);
-    await page.getByPlaceholder('ex. 311').fill(cardCvv);
-    await page.getByPlaceholder('MM').fill(cardExpirationateMonth);
-    await page.getByPlaceholder('YYYY').fill(cardExpirationateYear);
+    // EXIT FROM GOOGLE ADS
+    await page.goto(urlCart);
+    await page.getByText('Proceed To Checkout').click();
+    await page.getByRole('link', { name: 'Place Order' }).click();
+
+    // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
+    // POM - Page Object Model
+    const creditCardPage = new CreditCardPage(page);
+    await creditCardPage.cardVendor.fill(cardVendor);
+    await creditCardPage.cardNumber.fill(cardNumber);
+    await creditCardPage.cardCvv.fill(cardCvv);
+    await creditCardPage.cardExpirationateMonth.fill(cardExpirationateMonth);
+    await creditCardPage.cardExpirationateYear.fill(cardExpirationateYear);
 
     // 17. Click 'Pay and Confirm Order' button
      await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
@@ -118,7 +133,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await expect(page.getByText(messageOrderConfirmed)).toBeVisible();
 
     // 19. Click 'Delete Account' button
-    await page.getByRole('link', { name: ' Delete Account' }).click();
+    await page.getByRole('link', { name: 'Delete Account' }).click();
 
     // 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
     await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
