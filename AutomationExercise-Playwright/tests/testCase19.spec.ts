@@ -3,7 +3,6 @@ import { testCase19Data } from '../test-data/testCase19.data';
 
 test.describe('Test Case 19: View & Cart Brand Products', () => {
   test('view & cart brand products', async ({ page }) => {
-    const url = testCase19Data.url;
     const verifyBrandsPolo = testCase19Data.verifyBrandsPolo;
     const verifyBrandPoloProducts = testCase19Data.verifyBrandPoloProducts;
     const verifyBrandPoloProductsAll = testCase19Data.verifyBrandPoloProductsAll;
@@ -14,13 +13,15 @@ test.describe('Test Case 19: View & Cart Brand Products', () => {
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
 
     // 3. Click on 'Products' button
-    await page.getByRole('link', { name: ' Products' }).click();
+    await page.getByRole('link', { name: 'Products' }).click();
 
     // EXIT FROM GOOGLE ADS
-    await page.frameLocator('iframe[name="aswift_6"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
+    // await page.frameLocator('iframe[name="aswift_6"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
+    await page.goto('/');
+    await page.click('.material-icons.card_travel');
 
     // 4. Verify that Brands are visible on left side bar
     await expect(page.getByText(verifyBrandsPolo)).toBeVisible();
