@@ -20,7 +20,6 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto('/');
 
-
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL('/');
     await expect(page).toHaveTitle(verifyHomePage);
