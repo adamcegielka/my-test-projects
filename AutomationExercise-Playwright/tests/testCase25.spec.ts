@@ -4,7 +4,7 @@ import { testCase25Data } from '../test-data/testCase25.data';
 test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', () => {
   
   test('verify scroll up using "Arrow" button and scroll down functionality', async ({ page }) => {
-    const url = testCase25Data.url;
+    const verifyHomePage = testCase25Data.verifyHomePage;
     const verifySubscription = testCase25Data.verifySubscription;
     const verifyVisibleScreen = testCase25Data.verifyVisibleScreen;
 
@@ -12,10 +12,11 @@ test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Do
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
 
     // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL(url);
+    await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Scroll down to footer
     await page.evaluate(() => {
