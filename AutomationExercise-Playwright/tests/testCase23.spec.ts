@@ -1,26 +1,30 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase23Data } from '../test-data/testCase23.data';
+import { testRegistrationData } from '../test-data/testRegistration.data';
+import { RegistrationPage } from '../pages/registration.page';
 
 test.describe('Test Case 23: Verify address details in checkout page', () => {
   
   test('verify address details in checkout page', async ({ page }) => {
-    const url = testCase23Data.url;
+    // testRegistrationData
+    const userId = testRegistrationData.userId;
+    const userEmail = testRegistrationData.userEmail;
+    const userPassword = testRegistrationData.userPassword;
+    const firstName = testRegistrationData.firstName;
+    const lastName = testRegistrationData.lastName;
+    const birthDay = testRegistrationData.birthDay;
+    const birthMonth = testRegistrationData.birthMonth;
+    const birthYear = testRegistrationData.birthYear;
+    const companyName = testRegistrationData.companyName;
+    const address1 = testRegistrationData.address1;
+    const zipCode = testRegistrationData.zipCode;
+    const city = testRegistrationData.city;
+    const state = testRegistrationData.state;
+    const country = testRegistrationData.country;
+    const mobileNumber = testRegistrationData.mobileNumber;
+    // testCase23Data    
+    const verifyHomePage = testCase23Data.verifyHomePage;
     const urlCart = testCase23Data.urlCart;
-    const userId = testCase23Data.userId;
-    const email = testCase23Data.email;
-    const userPassword = testCase23Data.userPassword;
-    const firstName = testCase23Data.firstName;
-    const lastName = testCase23Data.lastName;
-    const birthDay = testCase23Data.birthDay;
-    const birthMonth = testCase23Data.birthMonth;
-    const birthYear = testCase23Data.birthYear;
-    const companyName = testCase23Data.companyName;
-    const address1 = testCase23Data.address1;
-    const zipCode = testCase23Data.zipCode;
-    const city = testCase23Data.city;
-    const state = testCase23Data.state;
-    const country = testCase23Data.country;
-    const mobileNumber = testCase23Data.mobileNumber;
     const verifyShoppingCart = testCase23Data.verifyShoppingCart;
     const verifyAccountCreated = testCase23Data.verifyAccountCreated;
     const verifyAccountDeleted = testCase23Data.verifyAccountDeleted;
@@ -33,33 +37,36 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
 
     // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL(url);
+    await expect(page).toHaveURL('/');
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click 'Signup / Login' button
-    await page.getByRole('link', { name: ' Signup / Login' }).click();
+    await page.getByRole('link', { name: 'Signup / Login' }).click();
 
     // 5. Fill all details in Signup and create account
-    await page.getByPlaceholder('Name').fill(userId);
-    await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(email);
-    await page.getByRole('button', { name: 'Signup' }).click();
-    await page.getByLabel('Mr.').check();
-    await page.getByLabel('Password *').fill(userPassword);
-    await page.locator('#days').selectOption(birthDay);
-    await page.locator('#months').selectOption(birthMonth);
-    await page.locator('#years').selectOption(birthYear);
-    await page.getByLabel('First name *').fill(firstName);
-    await page.getByLabel('Last name *').fill(lastName);
-    await page.getByLabel('Company', { exact: true }).fill(companyName);
-    await page.getByLabel('Address * (Street address, P.O. Box, Company name, etc.)').fill(address1);
-    await page.getByRole('combobox', { name: 'Country *' }).selectOption(country);
-    await page.getByLabel('State *').fill(state);
-    await page.getByLabel('City *').fill(city);
-    await page.locator('#zipcode').fill(zipCode);
-    await page.getByLabel('Mobile Number *').fill(mobileNumber);
-    await page.getByRole('button', { name: 'Create Account' }).click();
+    // POM - Page Object Model
+    const registrationPage = new RegistrationPage(page)
+    await registrationPage.userId.fill(userId);
+    await registrationPage.userEmail.fill(userEmail);
+    await registrationPage.signupButton.click();
+    await registrationPage.courtesyPhrase.check();
+    await registrationPage.userPassword.fill(userPassword);
+    await registrationPage.birthDay.selectOption(birthDay);
+    await registrationPage.birthMonth.selectOption(birthMonth);
+    await registrationPage.birthYear.selectOption(birthYear);
+    await registrationPage.firstName.fill(firstName);
+    await registrationPage.lastName.fill(lastName);
+    await registrationPage.companyName.fill(companyName);
+    await registrationPage.address1.fill(address1);
+    await registrationPage.country.selectOption(country);
+    await registrationPage.state.fill(state);
+    await registrationPage.city.fill(city);
+    await registrationPage.zipCode.fill(zipCode);
+    await registrationPage.mobileNumber.fill(mobileNumber);
+    await registrationPage.createAccountButton.click();
 
     // 6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
     await expect(page.getByText(verifyAccountCreated)).toBeVisible();
@@ -101,7 +108,7 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     await expect(page.locator('#address_invoice').getByText(mobileNumber)).toBeVisible();
 
     // 14. Click 'Delete Account' button
-    await page.getByRole('link', { name: ' Delete Account' }).click();
+    await page.getByRole('link', { name: 'Delete Account' }).click();
 
     // 15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
     await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
