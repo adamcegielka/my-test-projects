@@ -4,7 +4,6 @@ import { testCase22Data } from '../test-data/testCase22.data';
 test.describe('Test Case 22: Add to cart from Recommended items', () => {
   
   test('add to cart from recommended items', async ({ page }) => {
-    const url = testCase22Data.url;
     const verifyRecommendedItems = testCase22Data.verifyRecommendedItems;
     const verifyProductIsDisplayes = testCase22Data.verifyProductIsDisplayes;
 
@@ -12,7 +11,7 @@ test.describe('Test Case 22: Add to cart from Recommended items', () => {
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto(url);
+    await page.goto('/');
 
     // 3. Scroll to bottom of page
     await page.evaluate(() => {
@@ -29,7 +28,7 @@ test.describe('Test Case 22: Add to cart from Recommended items', () => {
     await expect(await page.getByRole('heading', { name: verifyRecommendedItems })).toBeVisible();
 
     // 5. Click on 'Add To Cart' on Recommended product
-    await page.locator('div:nth-child(2) > .product-image-wrapper > .single-products > .productinfo > .btn').first().click();
+    await page.locator('div:nth-child(2) > .product-image-wrapper > .single-products > .productinfo > .add-to-cart').first().click();
 
     // 6. Click on 'View Cart' button
     await page.getByRole('link', { name: 'View Cart' }).click();
