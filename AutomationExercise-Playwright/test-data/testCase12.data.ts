@@ -1,5 +1,6 @@
 export const testCase12Data = {
-    url: 'https://automationexercise.com/',    
+    url: 'https://automationexercise.com/', 
+    verifyHomePage: 'Automation Exercise',   
     productFirst: 'Product Image Blue Top Women > Tops Rs. 500 1 Rs. 500 ',
     productSecond: 'Product Image Men Tshirt Men > Tshirts Rs. 400 1 Rs. 400 ',
     productFirstVerifyPrice: 'Rs. 500',

@@ -13,6 +13,7 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     const productSecondVerifyPrice = testCase12Data.productSecondVerifyPrice;
     const productSecondQuantity = testCase12Data.productSecondQuantity;
     const productSecondVerifyTotalPrice = testCase12Data.productSecondVerifyTotalPrice;
+    const verifyHomePage = testCase12Data.verifyHomePage;
 
     // 1. Launch browser
     await chromium.launch();
@@ -20,15 +21,17 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto(url);
 
+
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL(url);
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click 'Products' button
-    await page.getByRole('link', { name: ' Products' }).click();
+    await page.click('.material-icons.card_travel');
 
     // EXIT FROM GOOGLE ADS
     await page.goto(url);
-    await page.getByRole('link', { name: ' Products' }).click();
+    await page.click('.material-icons.card_travel');
     
     // 5. Hover over first product and click 'Add to cart'
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
