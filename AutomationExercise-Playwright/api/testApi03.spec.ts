@@ -22,4 +22,11 @@ test.describe('API 3: Get All Brands List', () => {
     const responseBody = JSON.parse(await response.text());
     console.log(responseBody);
   });
+
+  test.only('another way - get all brands list', async ({ request }) => {
+    const response = await request.get(`${baseUrl}/brandsList`);
+
+    expect(response.status()).toBe(200);    
+    console.log(await response.json());
+  });
 });
