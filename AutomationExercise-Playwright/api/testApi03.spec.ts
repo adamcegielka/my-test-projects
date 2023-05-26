@@ -8,7 +8,7 @@ Response JSON: All brands list
 
 import { test, expect } from '@playwright/test';
 
-test.describe.only('API 3: Get All Brands List', () => {
+test.describe('API 3: Get All Brands List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('get all brands list', async ({ request }) => {
