@@ -2,15 +2,14 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase16Data } from '../test-data/testCase16.data';
 import { testRegistrationData } from '../test-data/testRegistration.data';
 import { testPaymentByCarsData } from '../test-data/testPaymentByCard.data';
-import { registerUser } from './testRegistration.spec';
+import { registerUser } from './testRegistration';
 import { LoginPage } from '../pages/login.page';
 import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 16: Place Order: Login before Checkout', () => {
-
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    await registerUser(page)
+    await registerUser(page);
   });
 
   // Test Case 16: Place Order: Login Before Checkout
@@ -20,7 +19,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     const userEmail = testRegistrationData.userEmail;
     const userPassword = testRegistrationData.userPassword;
     const companyName = testRegistrationData.companyName;
-    const address1 = testRegistrationData.address1;    
+    const address1 = testRegistrationData.address1;
     const country = testRegistrationData.country;
     const mobileNumber = testRegistrationData.mobileNumber;
     // testPaymentByCarsData
@@ -53,7 +52,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     // 4. Click 'Signup / Login' button
     await page.getByRole('link', { name: 'Signup / Login' }).click();
 
-    // 5. Fill email, password and click 'Login' button  
+    // 5. Fill email, password and click 'Login' button
     // POM - Page Object Model
     const loginPage = new LoginPage(page);
     await loginPage.userEmail.fill(userEmail);
@@ -79,13 +78,25 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
 
     // 11. Verify Address Details and Review Your Order
     // testRegistrationData
-    await expect(page.locator('#address_delivery').getByText(companyName)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(address1)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(country)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(mobileNumber)).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(companyName)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(address1)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(country)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(mobileNumber)
+    ).toBeVisible();
     // testCase16Data
-    await expect(page.locator('#address_delivery').getByText(verifyNameSurname)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(verifyCountryCityZip)).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(verifyNameSurname)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(verifyCountryCityZip)
+    ).toBeVisible();
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
 
     // 12. Enter description in comment text area and click 'Place Order'

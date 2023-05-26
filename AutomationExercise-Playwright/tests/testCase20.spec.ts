@@ -1,20 +1,19 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase20Data } from '../test-data/testCase20.data';
 import { testRegistrationData } from '../test-data/testRegistration.data';
-import { registerUser } from './testRegistration.spec';
-import { userDeletion } from './testUserDeletion.spec';
+import { registerUser } from './testRegistration';
+import { userDeletion } from './testUserDeletion';
 import { LoginPage } from '../pages/login.page';
 
 test.describe('Test Case 20: Search Products and Verify Cart After Login', () => {
-
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    await registerUser(page)
+    await registerUser(page);
   });
 
   // Deletion of a user after a test
   test.afterEach(async ({ page }) => {
-    await userDeletion(page)
+    await userDeletion(page);
   });
 
   // Test Case 20: Search Products and Verify Cart After Login
@@ -45,18 +44,22 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.click('.material-icons.card_travel');
 
     // 4. Verify user is navigated to ALL PRODUCTS page successfully
-    await expect(page.getByRole('heading', { name: verifyProducts })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyProducts })
+    ).toBeVisible();
     await expect(page.getByText(verifyProductsAll)).toBeVisible();
 
     // 5. Enter product name in search input and click search button
-      // await page.getByPlaceholder('Search Product').fill(searchProduct);
-      // await page.getByRole('button', { name: '' }).click();
-      // or:
+    // await page.getByPlaceholder('Search Product').fill(searchProduct);
+    // await page.getByRole('button', { name: '' }).click();
+    // or:
     await page.type('#search_product', searchProduct);
     await page.click('#submit_search');
 
     // 6. Verify 'SEARCHED PRODUCTS' is visible
-    await expect(page.getByRole('heading', { name: verifyProductsSearched })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyProductsSearched })
+    ).toBeVisible();
 
     // 7. Verify all the products related to search are visible
     await expect(page.getByText(verifyProductsSearchedAll)).toBeVisible();
@@ -80,7 +83,9 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.getByRole('link', { name: 'Cart' }).click();
 
     // 12. Verify that those products are visible in cart after login as well
-    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyProductsInCart })
+    ).toBeVisible();
 
     // Logout
     await page.getByRole('link', { name: 'Logout' }).click();

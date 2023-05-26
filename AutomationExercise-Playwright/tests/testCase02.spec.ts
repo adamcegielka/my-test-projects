@@ -1,13 +1,12 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase02Data } from '../test-data/testCase02.data';
-import { registerUser } from './testRegistration.spec';
+import { registerUser } from './testRegistration';
 import { LoginPage } from '../pages/login.page';
 
 test.describe('Test Case 2: login User with correct email and password', () => {
-
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    await registerUser(page)
+    await registerUser(page);
   });
 
   // Test Case 2: login User with correct email and password
@@ -20,7 +19,7 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     const verifyLoginToAccount = testCase02Data.verifyLoginToAccount;
     const verifyAccountDeleted = testCase02Data.verifyAccountDeleted;
 
-    // 1. Launch browser    
+    // 1. Launch browser
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
@@ -57,5 +56,5 @@ test.describe('Test Case 2: login User with correct email and password', () => {
 
     // CLOSE BROWSER
     await page.close();
-  });  
+  });
 });

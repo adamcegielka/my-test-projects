@@ -1,19 +1,18 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase04Data } from '../test-data/testCase04.data';
-import { registerUser } from './testRegistration.spec';
-import { userDeletion } from './testUserDeletion.spec';
+import { registerUser } from './testRegistration';
+import { userDeletion } from './testUserDeletion';
 import { LoginPage } from '../pages/login.page';
 
 test.describe('Test Case 4: Logout User', () => {
-
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    await registerUser(page)
+    await registerUser(page);
   });
 
   // Deletion of a user after a test
   test.afterEach(async ({ page }) => {
-    await userDeletion(page)
+    await userDeletion(page);
   });
 
   // Test Case 4: Logout User
@@ -26,11 +25,11 @@ test.describe('Test Case 4: Logout User', () => {
     const verifyLoginToAccount = testCase04Data.verifyLoginToAccount;
     const verifyUrlLogin = testCase04Data.verifyUrlLogin;
 
-    // 1. Launch browser    
+    // 1. Launch browser
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto('/'); 
+    await page.goto('/');
 
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL('/');
@@ -54,7 +53,7 @@ test.describe('Test Case 4: Logout User', () => {
     // 8. Verify that 'Logged in as username' is visible
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
 
-    // 9. Click 'Logout' button    
+    // 9. Click 'Logout' button
     await page.getByRole('link', { name: 'Logout' }).click();
 
     // 10. Verify that user is navigated to login page
