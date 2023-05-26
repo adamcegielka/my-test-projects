@@ -9,7 +9,9 @@ import { CreditCardPage } from '../pages/paymentByCard.page';
 test.describe('Test Case 16: Place Order: Login before Checkout', () => {
 
   // Creation a new user before the test
-  test.beforeEach(registerUser);
+  test.beforeEach(async ({ page }) => {
+    await registerUser(page)
+  });
 
   // Test Case 16: Place Order: Login Before Checkout
   test('login before checkout', async ({ page }) => {

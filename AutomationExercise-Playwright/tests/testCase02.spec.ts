@@ -6,7 +6,9 @@ import { LoginPage } from '../pages/login.page';
 test.describe('Test Case 2: login User with correct email and password', () => {
 
   // Creation a new user before the test
-  test.beforeEach(registerUser);
+  test.beforeEach(async ({ page }) => {
+    await registerUser(page)
+  });
 
   // Test Case 2: login User with correct email and password
   test('login user with correct email and password', async ({ page }) => {

@@ -7,10 +7,14 @@ import { LoginPage } from '../pages/login.page';
 test.describe('Test Case 4: Logout User', () => {
 
   // Creation a new user before the test
-  test.beforeEach(registerUser);
+  test.beforeEach(async ({ page }) => {
+    await registerUser(page)
+  });
 
   // Deletion of a user after a test
-  test.afterEach(userDeletion);
+  test.afterEach(async ({ page }) => {
+    await userDeletion(page)
+  });
 
   // Test Case 4: Logout User
   test('logout user', async ({ page }) => {

@@ -8,10 +8,14 @@ import { LoginPage } from '../pages/login.page';
 test.describe('Test Case 20: Search Products and Verify Cart After Login', () => {
 
   // Creation a new user before the test
-  test.beforeEach(registerUser);
+  test.beforeEach(async ({ page }) => {
+    await registerUser(page)
+  });
 
   // Deletion of a user after a test
-  test.afterEach(userDeletion);
+  test.afterEach(async ({ page }) => {
+    await userDeletion(page)
+  });
 
   // Test Case 20: Search Products and Verify Cart After Login
   test('search products and verify cart after login', async ({ page }) => {

@@ -7,10 +7,14 @@ import { RegistrationPage } from '../pages/registration.page';
 test.describe('Test Case 5: Register User with existing email', () => {
 
   // Creation a new user before the test
-  test.beforeEach(registerUser);
+  test.beforeEach(async ({ page }) => {
+    await registerUser(page)
+  });
 
   // Deletion of a user after a test
-  test.afterEach(userDeletion);
+  test.afterEach(async ({ page }) => {
+    await userDeletion(page)
+  });
 
   // Test Case 5: Register User with existing email
   test('register user with existing email', async ({ page }) => {

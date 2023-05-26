@@ -1,6 +1,6 @@
 import { testUserDeletionData } from '../test-data/testUserDeletion.data';
 
-export async function userDeletion({ page }) {
+export async function userDeletion(page) {
   const email = testUserDeletionData.email;
   const userPassword = testUserDeletionData.userPassword;
 

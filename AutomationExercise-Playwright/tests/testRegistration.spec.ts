@@ -1,7 +1,7 @@
 import { RegistrationPage } from '../pages/registration.page';
 import { testRegistrationData } from '../test-data/testRegistration.data';
 
-export async function registerUser({ page }) {
+export async function registerUser(page) {
   const userId = testRegistrationData.userId;
   const userEmail = testRegistrationData.userEmail;
   const userPassword = testRegistrationData.userPassword;
