@@ -23,7 +23,7 @@ test.describe('API 3: Get All Brands List', () => {
     console.log(responseBody);
   });
 
-  test.only('another way - get all brands list', async ({ request }) => {
+  test('another way - get all brands list', async ({ request }) => {
     const response = await request.get(`${baseUrl}/brandsList`);
 
     expect(response.status()).toBe(200);    
