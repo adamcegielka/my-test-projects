@@ -9,7 +9,7 @@
     "test:headed": "npx playwright test --headed",
     "report": "npx playwright show-report",
     "open:ui": "npx playwright test --ui",
-    "test:api": "playwright test --config=api.config.ts --project=Cromium"
+    "test:api": "playwright test --config=api.config.ts --project=Chromium"
   },
   "keywords": [],
   "author": "",
