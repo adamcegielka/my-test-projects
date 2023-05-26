@@ -122,6 +122,12 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await page.locator('textarea[name="message"]').fill(messageText);
     await page.getByRole('link', { name: 'Place Order' }).click();
 
+    // EXIT FROM GOOGLE ADS - sometimes
+    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
+    await page.goto(urlCart);
+    await page.getByText('Proceed To Checkout').click();
+    await page.getByRole('link', { name: 'Place Order' }).click();
+
     // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
     // POM - Page Object Model
     const creditCardPage = new CreditCardPage(page);
@@ -136,14 +142,21 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 
     // 18. Verify success message 'Your order has been placed successfully!'
     // TO FIX !!!
+         
+    // const verifyMessage = page.getByText(messageOrderSuccessfully);
+    // await verifyMessage.waitFor();
+    // or
     // await expect(page.getByText(messageOrderSuccessfully)).toBeVisible();
 
     // 19. Click 'Download Invoice' button and verify invoice is downloaded successfully.
     const downloadPromise = page.waitForEvent('download');
     await page.getByRole('link', { name: 'Download Invoice' }).click();
     const download = await downloadPromise;
-    // verify invoice is downloaded successfully
-    // TO DO !!!
+    if (download) {
+      console.log('File downloaded successfully.');
+    } else {
+      console.log('File download failed.');
+    }
 
     // 20. Click 'Continue' button
     await page.getByRole('link', { name: 'Continue' }).click();
