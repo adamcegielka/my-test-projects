@@ -28,18 +28,24 @@ test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll 
 
     // 6. Scroll up page to top
     await page.evaluate(() => {
-        const footerElement = document.querySelector('header');
-        if (footerElement)
-          footerElement.scrollIntoView();
+        const headerElement = document.querySelector('header');
+        if (headerElement)
+          headerElement.scrollIntoView();
       });
 
     // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
-    await page.waitForSelector('header', { timeout: 5000 });
     const isScrolledUp = await page.evaluate(() => {
         return window.pageYOffset === 0;
       });      
       expect(isScrolledUp).toBe(true);
 
-    await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeVisible();
+    await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeVisible();  // TO FIX !!!
   });
 });
+
+/*
+  await page.waitForFunction(() => {
+    window.scrollTo(0, 0);               // Scroll up page
+    return window.pageYOffset === 0;     // Check that the page has been scrolled up
+  }, { timeout: 5000 });
+*/
