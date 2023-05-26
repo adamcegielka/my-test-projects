@@ -8,7 +8,7 @@ Response Message: This request method is not supported.
 
 import { test, expect } from '@playwright/test';
 
-test.describe.only('API 2: POST To All Products List', () => {
+test.describe('API 2: POST To All Products List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('POST to all products list', async ({ request }) => {
