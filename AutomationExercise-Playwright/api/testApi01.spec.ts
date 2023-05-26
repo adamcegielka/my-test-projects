@@ -22,4 +22,11 @@ test.describe('API 1: Get All Products List', () => {
     const responseBody = JSON.parse(await response.text());
     console.log(responseBody);
   });
+
+  test('another way - get all products list', async ({ request }) => {
+    const response = await request.get(`${baseUrl}/productsList`);
+
+    expect(response.status()).toBe(200);    
+    console.log(await response.json());
+  });
 });
