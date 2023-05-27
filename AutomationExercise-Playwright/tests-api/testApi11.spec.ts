@@ -12,7 +12,7 @@ import { test, expect } from '@playwright/test';
 test.describe('API 11: POST To Create/Register User Account', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test.skip('POST to Create/Register user account', async ({ request }) => {
+  test.fixme('POST to Create/Register user account', async ({ request }) => {
     
     const response = await request.post(`${baseUrl}/createAccount`,{
         data: {
@@ -25,7 +25,7 @@ test.describe('API 11: POST To Create/Register User Account', () => {
           birth_year: '1990',
           firstname: 'John',
           lastname: 'Doe',
-          company: 'Example Company',
+          company: 'DoeCompany',
           address1: '123 Main Street',
           address2: 'Apt 4B',
           country: 'United States',
