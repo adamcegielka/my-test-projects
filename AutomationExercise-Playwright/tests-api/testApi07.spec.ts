@@ -9,7 +9,7 @@ Response Message: User exists!
 
 import { test, expect } from '@playwright/test';
 
-test.describe('API 6: POST To Search Product without search_product parameter', () => {
+test.describe('API 7: POST To Search Product without search_product parameter', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('POST to search product without search_product parameter', async ({ request }) => {
