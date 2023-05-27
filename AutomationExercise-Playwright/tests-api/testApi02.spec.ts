@@ -12,11 +12,9 @@ test.describe('API 2: POST To All Products List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('POST to all products list', async ({ request }) => {
-    // Request Method: POST
+    
     const response = await request.post(`${baseUrl}/productsList`);
 
-    // Response Code: 405
-    // Response Message: This request method is not supported.
     const responseBody = await response.json();
     expect(responseBody.message).toBe('This request method is not supported.');
     console.log(responseBody);
