@@ -8,7 +8,7 @@ Response JSON: All products list
 
 import { test, expect } from '@playwright/test';
 
-test.describe.only('API 1: Get All Products List', () => {
+test.describe('API 1: Get All Products List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('get all products list', async ({ request }) => {
