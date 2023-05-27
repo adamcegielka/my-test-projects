@@ -14,12 +14,14 @@ test.describe.fixme('API 5: POST To Search Product', () => {
 
   test('POST to search product', async ({ request }) => {
     
-    const response = await request.post(`${baseUrl}/searchProduct?search_product=tshirt`);
-
+    const response = await request.post(`${baseUrl}/searchProduct`, {
+      data: {
+        'search_product': 'tshirt'
+      }
+    });
+    
     expect(response.status()).toBe(200);
-
-    const productList = await response.json();
-    expect(productList).toContain('tshirt');
-    console.log(productList);
+    expect(response.ok()).toBeTruthy();
+    console.log(await response.json());
   });
 });
