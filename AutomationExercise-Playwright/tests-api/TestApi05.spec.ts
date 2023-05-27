@@ -22,7 +22,6 @@ test.describe.fixme('API 5: POST To Search Product', () => {
     
     // Request Parameter: search_product (For example: top, tshirt, jean)
 
-
     // Response Code: 200
     expect(response.status()).toBe(200);
 
