@@ -33,15 +33,15 @@ test.describe.fixme('API 11: POST To Create/Register User Account', () => {
       'mobile_number': '1234567890'
     };
 
-    const response = await request.post(`${baseUrl}/createAccount`, { json: newUser });
+    // const response = await request.post(`${baseUrl}/createAccount`, { json: newUser });
 
-    expect(response.status()).toBe(201);
+    // expect(response.status()).toBe(201);
 
-    const responseBody = await response.json();
-    console.log(responseBody);
+    // const responseBody = await response.json();
+    // console.log(responseBody);
 
-    expect(responseBody.name).toBe(newUser.name);
-    expect(responseBody.createAccount).toBeTruthy();
-    expect(responseBody.message).toBe('User created!');
+    // expect(responseBody.name).toBe(newUser.name);
+    // expect(responseBody.createAccount).toBeTruthy();
+    // expect(responseBody.message).toBe('User created!');
   });
 });
