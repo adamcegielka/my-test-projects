@@ -8,7 +8,7 @@ Response JSON: All brands list
 
 import { test, expect } from '@playwright/test';
 
-test.describe('API 3: Get All Brands List', () => {
+test.describe.only('API 3: Get All Brands List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('get all brands list', async ({ request }) => {
@@ -21,7 +21,10 @@ test.describe('API 3: Get All Brands List', () => {
     console.log(responseBody);
   });
 
-  test('another way - get all brands list', async ({ request }) => {
+
+  // ANOTHER WAY FOR TEST:
+
+  test.skip('another way - get all brands list', async ({ request }) => {
     const response = await request.get(`${baseUrl}/brandsList`);
 
     expect(response.status()).toBe(200);    
