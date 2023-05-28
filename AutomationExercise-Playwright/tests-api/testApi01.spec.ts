@@ -23,9 +23,10 @@ test.describe('API 1: Get All Products List', () => {
     console.log(responseBody);
   });
 
-  //another way for test
 
-  test('another way - get all products list', async ({ request }) => {
+  // ANOTHER WAY FOR TEST:
+
+  test.skip('another way - get all products list', async ({ request }) => {
     const response = await request.get(`${baseUrl}/productsList`);
 
     expect(response.status()).toBe(200);    
