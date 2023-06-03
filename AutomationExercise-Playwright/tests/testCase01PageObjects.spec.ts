@@ -6,7 +6,7 @@ import { Navbar } from '../page-objects/components/Navbar';
 import { RegistrationUser } from '../page-objects/RegistrationUser';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-test.describe.only('Test Case 1: Register User', () => {
+test.describe('Test Case 1: Register User', () => {
 
   test('register user', async ({ page }) => {
     let homePage: HomePage = new HomePage(page);
