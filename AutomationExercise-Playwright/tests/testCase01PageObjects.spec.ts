@@ -6,19 +6,19 @@ import { Navbar } from '../page-objects/components/Navbar';
 import { RegistrationUser } from '../page-objects/RegistrationUser';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-test.describe('Test Case 1: Register User', () => {
+test.describe.only('Test Case 1: Register User', () => {
 
   test('register user', async ({ page }) => {
     let homePage: HomePage = new HomePage(page);
     let navbar: Navbar = new Navbar(page);
     let registrationUser: RegistrationUser = new RegistrationUser(page);
-    let deletionUse: DeletionUser = new DeletionUser(page);
+    let deletionUser: DeletionUser = new DeletionUser(page);
 
     const userId = testRegistrationData.userId;
     const verifyNewUser = testCase01Data.verifyNewUser;
-    const verifEenterAccountInformation = testCase01Data.verifEenterAccountInformation;
-    const verifAccountCreated = testCase01Data.verifAccountCreated;
-    const verifAccountDeleted = testCase01Data.verifAccountDeleted;
+    const verifyEnterAccountInformation = testCase01Data.verifEenterAccountInformation;
+    const verifyAccountCreated = testCase01Data.verifAccountCreated;
+    const verifyAccountDeleted = testCase01Data.verifAccountDeleted;
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -27,14 +27,14 @@ test.describe('Test Case 1: Register User', () => {
     await navbar.clickOnNav('Signup / Login');
     await expect(page.getByText(verifyNewUser)).toBeVisible();
     await registrationUser.enterNameEmail();
-    await expect(page.getByText(verifEenterAccountInformation)).toBeVisible();
+    await expect(page.getByText(verifyEnterAccountInformation)).toBeVisible();
     await registrationUser.createAccount();
-    await expect(page.getByText(verifAccountCreated)).toBeVisible();
+    await expect(page.getByText(verifyAccountCreated)).toBeVisible();
     await registrationUser.clickButton();
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
-    await deletionUse.clickDeleteButton();
-    await expect(page.getByText(verifAccountDeleted)).toBeVisible();
-    await deletionUse.clickContinueButton();
+    await deletionUser.clickDeleteButton();
+    await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
+    await deletionUser.clickContinueButton();
     await page.close();
   });
 });
