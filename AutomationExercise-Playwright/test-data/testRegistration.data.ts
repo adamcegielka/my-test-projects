@@ -14,5 +14,7 @@ export const testRegistrationData = {
     city: 'Washington',
     state: 'Washington',
     country: 'United States',
-    mobileNumber: '801222333'
+    mobileNumber: '801222333',
+    userEmailIncorrect: 'new-incorrect@mail.com',
+    userPasswordIncorrect: 'incorrect234'
 }
