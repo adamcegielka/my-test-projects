@@ -18,4 +18,9 @@ export class DeletionUser {
   async clickContinueButton() {
     await this.continueButton.click();
   }
+
+  async deletionNewUser() {    
+    await this.deleteButton.click();
+    await this.continueButton.click();
+  }
 }
