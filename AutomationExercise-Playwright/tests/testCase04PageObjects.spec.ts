@@ -7,7 +7,7 @@ import { LoginPage } from '../page-objects/LoginPage';
 import { Navbar } from '../page-objects/components/Navbar';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-test.describe.only('Test Case 4: Logout User', () => {
+test.describe('Test Case 4: Logout User', () => {
   let homePage: HomePage;
   let loginPage: LoginPage;
   let navbar: Navbar;
