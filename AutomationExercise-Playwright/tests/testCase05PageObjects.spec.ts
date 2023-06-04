@@ -6,7 +6,7 @@ import { LoginPage } from '../page-objects/LoginPage';
 import { Navbar } from '../page-objects/components/Navbar';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-test.describe.only('Test Case 5: Register User with existing email', () => {
+test.describe('Test Case 5: Register User with existing email', () => {
   let homePage: HomePage;
   let loginPage: LoginPage;
   let navbar: Navbar;
@@ -40,9 +40,9 @@ test.describe.only('Test Case 5: Register User with existing email', () => {
 
   // Test Case 5: Register User with existing email
   test('register user with existing email', async ({ page }) => {
-    // homePage = new HomePage(page);
-    // navbar = new Navbar(page);
-    // registerUser = new RegistrationUser(page);
+    homePage = new HomePage(page);
+    navbar = new Navbar(page);
+    registerUser = new RegistrationUser(page);
 
     const verifyNewUserSignup = testCase05Data.verifyNewUserSignup;
     const verifyEmailAlreadyExist = testCase05Data.verifyEmailAlreadyExist;
