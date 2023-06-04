@@ -4,7 +4,7 @@ import { HomePage } from '../page-objects/HomePage';
 import { LoginPage } from '../page-objects/LoginPage';
 import { Navbar } from '../page-objects/components/Navbar';
 
-test.describe.only('Test Case 3: Login User with incorrect email and password', () => {
+test.describe('Test Case 3: Login User with incorrect email and password', () => {
 
   test('login user with incorrect email and password', async ({ page }) => {
     const homePage = new HomePage(page);
