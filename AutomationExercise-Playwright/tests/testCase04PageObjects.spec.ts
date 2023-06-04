@@ -42,6 +42,7 @@ test.describe('Test Case 4: Logout User', () => {
   test('logout user', async ({ page }) => {
     homePage = new HomePage(page);
     loginPage = new LoginPage(page);
+    navbar = new Navbar(page);
 
     const userId = testRegistrationData.userId;
     const verifyLoginToAccount = testCase04Data.verifyLoginToAccount;
