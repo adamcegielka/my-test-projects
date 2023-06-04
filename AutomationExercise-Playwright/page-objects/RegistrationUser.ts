@@ -95,4 +95,42 @@ export class RegistrationUser {
   async clickButton() {
     await this.continueButton.click();
   }
+
+  async registerNewUser() {    
+    const userId = testRegistrationData.userId;
+    const userEmail = testRegistrationData.userEmail;
+    const userPassword = testRegistrationData.userPassword;
+    const birthDay = testRegistrationData.birthDay;
+    const birthMonth = testRegistrationData.birthMonth;
+    const birthYear = testRegistrationData.birthYear;
+    const firstName = testRegistrationData.firstName;
+    const lastName = testRegistrationData.lastName;
+    const companyName = testRegistrationData.companyName;
+    const address1 = testRegistrationData.address1; 
+    const country = testRegistrationData.country;
+    const state = testRegistrationData.state;
+    const city = testRegistrationData.city;
+    const zipCode = testRegistrationData.zipCode;
+    const mobileNumber = testRegistrationData.mobileNumber;
+    await this.userID.fill(userId);
+    await this.userEmail.fill(userEmail);
+    await this.signupButton.click();
+    await this.userPassword.fill(userPassword);
+    await this.birtDay.selectOption(birthDay);
+    await this.birtMonth.selectOption(birthMonth);
+    await this.birtYear.selectOption(birthYear);
+    await this.checkboxNewsletter.check();
+    await this.checkboxOffers.check();
+    await this.firstName.fill(firstName);
+    await this.lastName.fill(lastName);
+    await this.companyName.fill(companyName);
+    await this.address1.fill(address1);
+    await this.country.selectOption(country);
+    await this.state.fill(state);
+    await this.city.fill(city);
+    await this.zipCode.fill(zipCode);
+    await this.mobileNumber.fill(mobileNumber);
+    await this.createAccountButton.click();
+    await this.continueButton.click();
+  }
 }
