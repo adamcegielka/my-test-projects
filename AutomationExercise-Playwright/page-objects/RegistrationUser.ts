@@ -4,6 +4,7 @@ import { testRegistrationData } from '../test-data/testRegistration.data';
 export class RegistrationUser {
   readonly page: Page;
   readonly userID: Locator;
+  readonly userIdNew: Locator;
   readonly userEmail: Locator;
   readonly signupButton: Locator;
   // details
@@ -29,6 +30,7 @@ export class RegistrationUser {
   constructor(page: Page) {
     this.page = page;
     this.userID = page.getByPlaceholder('Name');
+    this.userIdNew = page.getByPlaceholder('Name');
     this.userEmail = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address');
     this.signupButton = page.getByRole('button', { name: 'Signup' });
     // details
@@ -52,7 +54,21 @@ export class RegistrationUser {
     this.continueButton = page.getByRole('link', { name: 'Continue' });
   }
 
-  async  enterNameEmail() {
+  async enterUserIdNew() {
+    const userIdNew = testRegistrationData.userIdNew;
+    await this.userIdNew.fill(userIdNew);
+  }
+
+  async enterUserEmail() {
+    const userEmail = testRegistrationData.userEmail;
+    await this.userEmail.fill(userEmail);
+  }
+
+  async clickSignupButton() {
+    await this.signupButton.click();
+  }
+
+  async enterNameEmail() {
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
     await this.userID.fill(userId);
