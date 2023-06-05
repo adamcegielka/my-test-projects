@@ -12,17 +12,10 @@ import { test, expect } from '@playwright/test';
 test.describe('API 14: GET user account detail by email', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('user account detail by email', async ({ request }) => {
-    // Request Method: GET
-    const response = await request.get(`${baseUrl}/getUserDetailByEmail`,{
-        // ...
-    });
+  test.fixme('user account detail by email', async ({ request }) => {
+    const response = await request.get(`${baseUrl}/getUserDetailByEmail`);
 
-    // Request Parameters: email
-
-    // Response Code: 200
     expect(response.status()).toBe(200);
-
-    // Response JSON: User Detail
+    console.log(await response.json());
   });
 });

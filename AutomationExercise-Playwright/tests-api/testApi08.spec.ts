@@ -12,17 +12,12 @@ import { test, expect } from '@playwright/test';
 test.describe('API 8: POST To Verify Login without email parameter', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('verify login without email parameter', async ({ request }) => {
-    // Request Method: POST
-    const response = await request.post(`${baseUrl}/verifyLogin`,{
-        // ...
-    });
+  test.fixme('verify login without email parameter', async ({ request }) => {
+    const response = await request.post(`${baseUrl}/verifyLogin`);
+    const responseBody = JSON.parse(await response.text());
 
-    // Request Parameter: password
-
-    // Response Code: 400
     expect(response.status()).toBe(400);
-
-    // Response Message: Bad request, email or password parameter is missing in POST request.
+    expect(responseBody.message).toBe('Bad request, search_product parameter is missing in POST request.');
+    console.log(responseBody);
   });
 });

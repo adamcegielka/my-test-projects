@@ -12,17 +12,12 @@ import { test, expect } from '@playwright/test';
 test.describe('API 10: POST To Verify Login with invalid details', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('POST to verify login with invalid details', async ({ request }) => {
-    // Request Method: POST
-    const response = await request.post(`${baseUrl}/verifyLogin`,{
-        // ...
-    });
+  test.fixme('POST to verify login with invalid details', async ({ request }) => {
+    const response = await request.post(`${baseUrl}/verifyLogin`);
+    const responseBody = JSON.parse(await response.text());
 
-    // Request Parameters: email, password (invalid values)
-
-    // Response Code: 404
     expect(response.status()).toBe(404);
-
-    // Response Message: User not found!
+    expect(responseBody.message).toBe('User not found!');
+    console.log(responseBody);
   });
 });

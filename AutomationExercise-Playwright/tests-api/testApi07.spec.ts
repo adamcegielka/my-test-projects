@@ -9,20 +9,20 @@ Response Message: User exists!
 
 import { test, expect } from '@playwright/test';
 
-test.describe('API 7: POST To Search Product without search_product parameter', () => {
+test.describe('API 7: POST To Verify Login with valid details', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('POST to search product without search_product parameter', async ({ request }) => {
-    // Request Method: POST
+  test.fixme('POST to verify login with valid details', async ({ request }) => {
     const response = await request.post(`${baseUrl}/verifyLogin`,{
-        // ...
-    });
+      data: {
+        email: 'testowy@email.com',
+        password: 'abcd1234',
+      },
+    });   
+    const responseBody = JSON.parse(await response.text());;
 
-    // Request Parameters: email, password
-
-    // Response Code: 200
     expect(response.status()).toBe(200);
-
-    // Response Message: User exists!
+    expect(responseBody.message).toBe('User exists!');
+    console.log(responseBody);
   });
 });

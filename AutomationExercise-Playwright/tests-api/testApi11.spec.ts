@@ -9,10 +9,10 @@ Response Message: User created!
 
 import { test, expect } from '@playwright/test';
 
-test.describe.fixme('API 11: POST To Create/Register User Account', () => {
+test.describe('API 11: POST To Create/Register User Account', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('POST to Create/Register user account', async ({ request }) => {
+  test.fixme('POST to Create/Register user account', async ({ request }) => {
     const response = await request.post(`${baseUrl}/createAccount`, {
       data: {
         name: 'John Doe',
@@ -34,9 +34,10 @@ test.describe.fixme('API 11: POST To Create/Register User Account', () => {
         mobile_number: '1234567890',
       },
     });
+    const responseBody = JSON.parse(await response.text());
 
     expect(response.status()).toBe(201);
-    expect(await response.json()).toBe('User created!');
+    expect(responseBody.message).toBe('User created!');
     console.log(await response.json());
   });
 });

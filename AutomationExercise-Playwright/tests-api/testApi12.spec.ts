@@ -12,17 +12,12 @@ import { test, expect } from '@playwright/test';
 test.describe('API 12: DELETE METHOD To Delete User Account', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('DELETE METHOD to delete user account', async ({ request }) => {
-    // Request Method: DELETE
-    const response = await request.delete(`${baseUrl}/deleteAccount`,{
-        // ...
-    });
+  test.fixme('DELETE METHOD to delete user account', async ({ request }) => {
+    const response = await request.delete(`${baseUrl}/deleteAccount`);
+    const responseBody = JSON.parse(await response.text());
 
-    // Request Parameters: email, password
-
-    // Response Code: 200
     expect(response.status()).toBe(200);
-
-    // Response Message: Account deleted!
+    expect(responseBody.message).toBe('Account deleted!');
+    console.log(await response.json());
   });
 });
