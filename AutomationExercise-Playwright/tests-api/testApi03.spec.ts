@@ -12,12 +12,10 @@ test.describe('API 3: Get All Brands List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('get all brands list', async ({ request }) => {
-    
     const response = await request.get(`${baseUrl}/brandsList`);
+    const responseBody = JSON.parse(await response.text());    
 
-    expect(response.status()).toBe(200);
-    
-    const responseBody = JSON.parse(await response.text());
+    expect(response.status()).toBe(200);    
     console.log(responseBody);
   });
 
