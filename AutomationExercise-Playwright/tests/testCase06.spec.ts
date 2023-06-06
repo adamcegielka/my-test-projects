@@ -3,7 +3,7 @@ import { testCase06Data } from '../test-data/testCase06.data';
 
 test.describe('Test Case 6: Contact Us Form', () => {
   
-  test.only('contact us form', async ({ page }) => {    
+  test('contact us form', async ({ page }) => {    
     const userId = testCase06Data.userId;
     const userEmail = testCase06Data.userEmail;
     const subject = testCase06Data.subject;
