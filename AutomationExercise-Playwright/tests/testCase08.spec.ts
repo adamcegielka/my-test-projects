@@ -27,7 +27,7 @@ test.describe('Test Case 8: Verify All Products and product detail page', () => 
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('/');
+    await page.goBack();
     await page.click('.material-icons.card_travel');
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully
