@@ -5,7 +5,7 @@ import { Navbar } from '../page-objects/components/Navbar'
 
 test.describe('Test Case 8: Verify All Products and product detail page', () => {
   
-  test.only('verify all products and product detail page', async ({ page }) => {
+  test('verify all products and product detail page', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
 
