@@ -20,15 +20,11 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
 
     // 4. Click on 'Test Cases' button
     await page.click('.btn.btn-success');
-    // or:
-    // await page.click('text=Test Cases');
-    // await page.click('button[type="button"]');
-    // await page.getByRole('button', { name: 'Test Cases' }).click();
-
+    
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('/');
-    await page.click('.btn.btn-success'); 
+    await page.goBack();
+    await page.click('.btn.btn-success');
     
     // 5. Verify user is navigated to test cases page successfully
     await expect(page).toHaveURL(verifyTestCasesPage);
