@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import { testRegistrationData } from '../test-data/testRegistration.data';
 
 export class RegistrationUser {
@@ -26,6 +26,7 @@ export class RegistrationUser {
   readonly mobileNumber: Locator;
   readonly createAccountButton: Locator;
   readonly continueButton: Locator;
+  readonly verifyMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -52,6 +53,7 @@ export class RegistrationUser {
     this.mobileNumber = page.getByLabel('Mobile Number *');
     this.createAccountButton = page.getByRole('button', { name: 'Create Account' });
     this.continueButton = page.getByRole('link', { name: 'Continue' });
+    this.verifyMessage = page.locator('.title.text-center');
   }
 
   async enterUserIdNew() {
@@ -148,5 +150,9 @@ export class RegistrationUser {
     await this.mobileNumber.fill(mobileNumber);
     await this.createAccountButton.click();
     await this.continueButton.click();
+  }
+
+  async messageAccountCreated() {
+    await expect(this.verifyMessage).toContainText('Account Created!');
   }
 }
