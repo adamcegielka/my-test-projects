@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import { testPaymentByCarsData } from '../test-data/testPaymentByCard.data';
 
 export class CreditCardPage {
@@ -9,6 +9,7 @@ export class CreditCardPage {
   readonly cardExpirationateMonth: Locator;
   readonly cardExpirationateYear: Locator;
   readonly buttonPayOrder: Locator;
+  readonly verifyMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +19,7 @@ export class CreditCardPage {
     this.cardExpirationateMonth = page.getByPlaceholder('MM');
     this.cardExpirationateYear = page.getByPlaceholder('YYYY');
     this.buttonPayOrder = page.getByRole('button', { name: 'Pay and Confirm Order' });
+    this.verifyMessage = page.locator('.title.text-center');
   }
 
   async enterPaymentDetails() {
@@ -35,5 +37,9 @@ export class CreditCardPage {
 
   async confirmOrder() {
     await this.buttonPayOrder.click();
+  }
+
+  async messageOrderConfirmed() {
+    await expect(this.verifyMessage).toContainText('Order Placed!');
   }
 }
