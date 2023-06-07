@@ -36,7 +36,6 @@ test.describe('Test Case 2: login User with correct email and password', () => {
 
     const userId = testRegistrationData.userId;
     const verifyLoginToAccount = testCase02Data.verifyLoginToAccount;
-    const verifyAccountDeleted = testCase02Data.verifyAccountDeleted;
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -47,9 +46,8 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     await loginPage.login();
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
     await deletionUser.clickDeleteButton();
-    await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
+    await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
-    await page.close();
   });
 });
 
