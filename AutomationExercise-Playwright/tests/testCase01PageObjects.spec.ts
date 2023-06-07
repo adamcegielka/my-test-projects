@@ -9,16 +9,14 @@ import { DeletionUser } from '../page-objects/DeletionUser';
 test.describe('Test Case 1: Register User', () => {
 
   test('register user', async ({ page }) => {
-    let homePage: HomePage = new HomePage(page);
-    let navbar: Navbar = new Navbar(page);
-    let registrationUser: RegistrationUser = new RegistrationUser(page);
-    let deletionUser: DeletionUser = new DeletionUser(page);
+    const homePage = new HomePage(page);
+    const navbar = new Navbar(page);
+    const registrationUser = new RegistrationUser(page);
+    const deletionUser = new DeletionUser(page);
 
     const userId = testRegistrationData.userId;
     const verifyNewUser = testCase01Data.verifyNewUser;
     const verifyEnterAccountInformation = testCase01Data.verifEenterAccountInformation;
-    const verifyAccountCreated = testCase01Data.verifAccountCreated;
-    const verifyAccountDeleted = testCase01Data.verifAccountDeleted;
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -29,11 +27,11 @@ test.describe('Test Case 1: Register User', () => {
     await registrationUser.enterNameEmail();
     await expect(page.getByText(verifyEnterAccountInformation)).toBeVisible();
     await registrationUser.createAccount();
-    await expect(page.getByText(verifyAccountCreated)).toBeVisible();
+    await registrationUser.messageAccountCreated();
     await registrationUser.clickButton();
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
     await deletionUser.clickDeleteButton();
-    await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
+    await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
     await page.close();
   });
