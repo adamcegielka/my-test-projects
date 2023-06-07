@@ -39,7 +39,7 @@ export class CreditCardPage {
     await this.buttonPayOrder.click();
   }
 
-  async messageOrderConfirmed() {
+  async messageOrderPlaced() {
     await expect(this.verifyMessage).toContainText('Order Placed!');
   }
 }
