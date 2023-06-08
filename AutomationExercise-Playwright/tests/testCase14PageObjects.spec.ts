@@ -6,18 +6,19 @@ import { Navbar } from '../page-objects/components/Navbar';
 import { RegistrationUser } from '../page-objects/RegistrationUser';
 import { DeletionUser } from '../page-objects/DeletionUser';
 import { CreditCardPage } from '../page-objects/CreditCardPage';
+import { CartPage } from '../page-objects/CartPage';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
-  test('register while checkout', async ({ page }) => {
+  test.only('register while checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
     const deletionUser = new DeletionUser(page);
     const creditCardPage = new CreditCardPage(page);
+    const cartPage = new CartPage(page);
     
     const userId = testRegistrationData.userId;
-    const verifyAddress = testCase14Data.verifyAddress;
     const verifyOrder = testCase14Data.verifyOrder;
     const messageText = testCase14Data.messageText;
     const verifyShoppingCart = testCase14Data.verifyShoppingCart;
@@ -41,10 +42,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
     await navbar.clickOnNav('Cart')
     await page.getByText('Proceed To Checkout').click();
-
-    // 14. Verify Address Details and Review Your Order
-    // await expect(page.getByText(verifyAddress)).toBeVisible();
-
+    await cartPage.assertAddressDelivery();
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();    
     await page.locator('textarea[name="message"]').fill(messageText);
     await page.getByRole('link', { name: 'Place Order' }).click();
@@ -52,7 +50,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
-    await creditCardPage.messageOrderPlaced(); // fixme
+    await creditCardPage.messageOrderPlaced(); // Fixme - asseration for the text appearing for 2 seconds
     await deletionUser.clickDeleteButton();
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
