@@ -4,10 +4,16 @@ import { testRegistrationData } from '../test-data/testRegistration.data';
 export class CartPage {
   readonly page: Page;
   readonly addressDelivery: Locator;
+  readonly buttonProceedToCheckout: Locator;
+  readonly insertMessage: Locator;
+  readonly buttonPlaceOrder: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.addressDelivery = page.locator('#address_delivery');
+    this.buttonProceedToCheckout = page.locator('a.btn.btn-default.check_out');
+    this.insertMessage = page.locator('textarea[name="message"]');
+    this.buttonPlaceOrder = page.getByRole('link', { name: 'Place Order' });
   }
 
   async assertAddressDelivery() {
@@ -32,5 +38,17 @@ export class CartPage {
     await expect(this.addressDelivery).toContainText(zipCode);
     await expect(this.addressDelivery).toContainText(country);
     await expect(this.addressDelivery).toContainText(mobileNumber);
+  }
+
+  async clickbuttonProToCheckout() {
+    await this.buttonProceedToCheckout.click();
+  }
+
+  async addComment() {
+    await this.insertMessage.fill('Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+  }
+
+  async clickPlaceOrder() {
+    await this.buttonPlaceOrder.click();
   }
 }
