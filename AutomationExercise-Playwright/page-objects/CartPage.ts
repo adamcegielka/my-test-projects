@@ -1,21 +1,36 @@
 import { Locator, Page, expect } from '@playwright/test';
+import { testRegistrationData } from '../test-data/testRegistration.data';
 
 export class CartPage {
   readonly page: Page;
-  readonly address1: Locator;
-  readonly address2: Locator;
-  readonly address3: Locator;
-  readonly address4: Locator;
-  readonly address5: Locator;
-  readonly address6: Locator;
+  readonly addressDelivery: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.address1 = page.locator(''); 
-    this.address2 = page.locator(''); 
-    this.address3 = page.locator('');
-    this.address4 = page.locator('');
-    this.address5 = page.locator('');
-    this.address6 = page.locator('');
+    this.addressDelivery = page.locator('#address_delivery');
+  }
+
+  async assertAddressDelivery() {
+    const userTitle = testRegistrationData.userTitle;
+    const firstName = testRegistrationData.firstName;
+    const lastName = testRegistrationData.lastName;
+    const companyName = testRegistrationData.companyName;
+    const address1 = testRegistrationData.address1;
+    const city = testRegistrationData.city;
+    const state = testRegistrationData.state;
+    const zipCode = testRegistrationData.zipCode;
+    const country = testRegistrationData.country;
+    const mobileNumber = testRegistrationData.mobileNumber;
+
+    await expect(this.addressDelivery).toContainText(userTitle);
+    await expect(this.addressDelivery).toContainText(firstName);
+    await expect(this.addressDelivery).toContainText(lastName);
+    await expect(this.addressDelivery).toContainText(companyName);
+    await expect(this.addressDelivery).toContainText(address1);
+    await expect(this.addressDelivery).toContainText(city);
+    await expect(this.addressDelivery).toContainText(state);
+    await expect(this.addressDelivery).toContainText(zipCode);
+    await expect(this.addressDelivery).toContainText(country);
+    await expect(this.addressDelivery).toContainText(mobileNumber);
   }
 }
