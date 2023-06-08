@@ -1,4 +1,5 @@
 export const testRegistrationData = {
+    userTitle: 'Mr.',
     userId: 'AdrianoJ',
     userIdNew: 'MikeT',
     userEmail: 'adrian.jackson@mail.com',
