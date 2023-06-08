@@ -92,6 +92,7 @@ export class RegistrationUser {
     const city = testRegistrationData.city;
     const zipCode = testRegistrationData.zipCode;
     const mobileNumber = testRegistrationData.mobileNumber;
+    await this.courtesyPhrase.check();
     await this.userPassword.fill(userPassword);
     await this.birtDay.selectOption(birthDay);
     await this.birtMonth.selectOption(birthMonth);
@@ -133,6 +134,7 @@ export class RegistrationUser {
     await this.userID.fill(userId);
     await this.userEmail.fill(userEmail);
     await this.signupButton.click();
+    await this.courtesyPhrase.check();
     await this.userPassword.fill(userPassword);
     await this.birtDay.selectOption(birthDay);
     await this.birtMonth.selectOption(birthMonth);
