@@ -20,7 +20,6 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     
     const userId = testRegistrationData.userId;
     const verifyOrder = testCase14Data.verifyOrder;
-    const messageText = testCase14Data.messageText;
     const verifyShoppingCart = testCase14Data.verifyShoppingCart;
     
     await chromium.launch();
@@ -33,7 +32,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.getByRole('link', { name: 'Cart' }).click();
     await homePage.verifyUrlCart();
     await expect(page.getByText(verifyShoppingCart)).toBeVisible();
-    await page.getByText('Proceed To Checkout').click();
+    await cartPage.clickbuttonProToCheckout();
     await page.getByRole('link', { name: 'Register / Login' }).click();
     await registrationUset.enterNameEmail();
     await registrationUset.createAccount();
@@ -41,11 +40,11 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await registrationUset.clickButton();
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
     await navbar.clickOnNav('Cart')
-    await page.getByText('Proceed To Checkout').click();
+    await cartPage.clickbuttonProToCheckout();
     await cartPage.assertAddressDelivery();
-    await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();    
-    await page.locator('textarea[name="message"]').fill(messageText);
-    await page.getByRole('link', { name: 'Place Order' }).click();
+    await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
+    await cartPage.addComment();
+    await cartPage.clickPlaceOrder();
     await page.goBack();      // EXIT FROM GOOGLE ADS
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
