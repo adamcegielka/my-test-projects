@@ -10,7 +10,7 @@ import { CartPage } from '../page-objects/CartPage';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
-  test.only('register while checkout', async ({ page }) => {
+  test('register while checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
@@ -49,7 +49,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
-    // ---
+    // --- Fixme
     const successMessage = await page.locator('#success_message.alert-success');
     await expect(successMessage).toContainText('Your order has been placed successfully!');
     // ---
