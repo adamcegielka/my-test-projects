@@ -4,7 +4,7 @@ import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 17: Remove Products From Cart', () => {
 
-  test.only('remove products from cart', async ({ page }) => {
+  test('remove products from cart', async ({ page }) => {
     const homePage = new HomePage(page);
 
     const verifyShoppingCart = testCase17Data.verifyShoppingCart;
