@@ -29,8 +29,8 @@ test.describe('Test Case 12: Add Products in Cart', () => {
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('/');
-    await page.click('.material-icons.card_travel');
+    await page.goBack();
+    await page.goForward();
     
     // 5. Hover over first product and click 'Add to cart'
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
