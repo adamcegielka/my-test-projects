@@ -113,9 +113,8 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto(urlCart);
-    await page.getByText('Proceed To Checkout').click();
-    await page.getByRole('link', { name: 'Place Order' }).click();
+    await page.goBack();
+    await page.goForward();
 
     // 14. Enter payment details: Name on Card, Card Number, CVC, Expiration date   
     // POM - Page Object Model
