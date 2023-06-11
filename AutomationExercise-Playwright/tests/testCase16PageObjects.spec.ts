@@ -9,7 +9,7 @@ import { CartPage } from '../page-objects/CartPage';
 import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-test.describe('Test Case 16: Place Order: Login before Checkout', () => {
+test.describe.only('Test Case 16: Place Order: Login before Checkout', () => {
   let homePage: HomePage;
   let loginPage: LoginPage;
   let navbar: Navbar;
@@ -63,8 +63,11 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // --- Fixme
-    const successMessage = await page.locator('#success_message.alert-success');
-    await expect(successMessage).toContainText('Your order has been placed successfully!');
+    // const successMessage = await page.locator('#success_message.alert-success');
+    // await expect(successMessage).toContainText('Your order has been placed successfully!');
+    
+    const successMessage = await page.waitForSelector('#success_message.alert-success');
+    await expect(successMessage).toContain('Your order has been placed successfully!');
     // ---
     await deletionUser.clickDeleteButton();
     await deletionUser.messageAccountDeleted();
