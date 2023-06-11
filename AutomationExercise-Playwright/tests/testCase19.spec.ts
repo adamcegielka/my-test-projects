@@ -20,8 +20,8 @@ test.describe('Test Case 19: View & Cart Brand Products', () => {
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_6"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('/');
-    await page.click('.material-icons.card_travel');
+    await page.goBack();
+    await page.goForward();
 
     // 4. Verify that Brands are visible on left side bar
     await expect(page.getByText(verifyBrandsPolo)).toBeVisible();
