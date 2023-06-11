@@ -66,6 +66,7 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
 
     // 9. Click 'Cart' button and verify that products are visible in cart
     await page.getByRole('link', { name: 'View Cart' }).click();
+    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
 
     // 10. Click 'Signup / Login' button and submit login details
     // POM - Page Object Model
