@@ -4,10 +4,10 @@ export const testCase24Data = {
     messageOrderSuccessfully: 'Your order has been placed successfully!',
     messageText: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     verifyNameSurname: 'Mr. Adrian Jackson',
-    verifyCountryCityZip: 'Washington Washington 84739',
+    verifyCountryCityZip: 'Seattle Washington 84739',
     verifyShoppingCart: 'Shopping Cart',
     verifyAccountCreated: 'ACCOUNT CREATED!',
     verifyAccountDeleted: 'ACCOUNT DELETED!',
-    verifyDeliveryAddress: 'Your delivery address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Wa',
+    verifyDeliveryAddress: 'Your delivery address Mr. Adrian Jackson Porta Limited 50 Herzi Street APT 93 Seattle Washington 84739 United States 801222333',
     verifyReviewOrder: 'Product Image Winter Top Women > Tops Rs. 600 1 Rs. 600'
 }
