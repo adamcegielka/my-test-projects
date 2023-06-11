@@ -10,6 +10,7 @@ export class CreditCardPage {
   readonly cardExpirationateYear: Locator;
   readonly buttonPayOrder: Locator;
   readonly verifyMessage: Locator;
+  readonly buttonContinue: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -20,6 +21,7 @@ export class CreditCardPage {
     this.cardExpirationateYear = page.getByPlaceholder('YYYY');
     this.buttonPayOrder = page.getByRole('button', { name: 'Pay and Confirm Order' });
     this.verifyMessage = page.locator('.title.text-center');
+    this.buttonContinue = page.getByRole('link', { name: 'Continue' });
   }
 
   async enterPaymentDetails() {
@@ -39,7 +41,11 @@ export class CreditCardPage {
     await this.buttonPayOrder.click();
   }
 
+  async clickContinue() {
+    await this.buttonContinue.click();
+  }
+
   async messageOrderPlaced() {
     await expect(this.verifyMessage).toContainText('Order Placed!');
-  }
+  }  
 }
