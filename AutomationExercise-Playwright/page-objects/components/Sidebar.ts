@@ -23,27 +23,71 @@ export class Sidebar {
 
   constructor(page: Page) {
     this.page = page;
-    this.women = page.locator('');
-    this.womenDress = page.locator('');
-    this.womenTops = page.locator('');
-    this.womenSaree = page.locator('');
-    this.men = page.locator('');
-    this.menTshirts = page.locator('');
-    this.menJeans = page.locator('');
-    this.kids = page.locator('');
-    this.kidsDress = page.locator('');
-    this.kidsTopsShirts = page.locator('');
-    this.polo = page.locator('');
-    this.hm = page.locator('');
-    this.madame = page.locator('');
-    this.mastHarbour = page.locator('');
-    this.babyhug = page.locator('');
-    this.allenSollyJunior = page.locator('');
-    this.kookieKids = page.locator('');
-    this.biba = page.locator('');
+    this.women = page.getByRole('link', { name: ' Women' });
+    this.womenDress = page.getByRole('link', { name: 'Dress' });
+    this.womenTops = page.getByRole('link', { name: 'Tops' });
+    this.womenSaree = page.getByRole('link', { name: 'Saree' });
+    this.men = page.getByRole('link', { name: ' Men' });
+    this.menTshirts = page.getByRole('link', { name: 'Tshirts' });
+    this.menJeans = page.getByRole('link', { name: 'Jeans' });
+    this.kids = page.getByRole('link', { name: ' Kids' });
+    this.kidsDress = page.getByRole('link', { name: 'Dress' });
+    this.kidsTopsShirts = page.getByRole('link', { name: 'Tops & Shirts ' });
+    this.polo = page.getByRole('link', { name: '(6) Polo' });
+    this.hm = page.getByRole('link', { name: '(5) H&M' });
+    this.madame = page.getByRole('link', { name: '(5) Madame' });
+    this.mastHarbour = page.getByRole('link', { name: '(3) Mast & Harbour' });
+    this.babyhug = page.getByRole('link', { name: '(4) Babyhug' });
+    this.allenSollyJunior = page.getByRole('link', {
+      name: '(3) Allen Solly Junior',
+    });
+    this.kookieKids = page.getByRole('link', { name: '(3) Kookie Kids' });
+    this.biba = page.getByRole('link', { name: '(5) Biba' });
   }
 
-  async category(navCategory) {}
+  // CATEGORY
+
+  async categoryWomen() {
+    await this.women.click();
+  }
+
+  async categoryWomenDreess() {
+    await this.womenDress.click();
+  }
+
+  async categoryWomenTops() {
+    await this.womenTops.click();
+  }
+
+  async categoryWomenSatee() {
+    await this.womenSaree.click();
+  }
+
+  async categoryMen() {
+    await this.men.click();
+  }
+
+  async categoryMenTshirts() {
+    await this.menTshirts.click();
+  }
+
+  async categoryMenJeans() {
+    await this.menJeans.click();
+  }
+
+  async categoryKids() {
+    await this.kids.click();
+  }
+
+  async categoryKidsDress() {
+    await this.kidsDress.click();
+  }
+
+  async categoryKidsTopsShirts() {
+    await this.kidsTopsShirts.click();
+  }
+
+  // BRANDS
 
   async brands(navBrands) {
     switch (navBrands) {
