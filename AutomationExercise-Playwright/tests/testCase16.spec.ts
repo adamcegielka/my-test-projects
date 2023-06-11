@@ -77,26 +77,12 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     await page.getByText('Proceed To Checkout').click();
 
     // 11. Verify Address Details and Review Your Order
-    // testRegistrationData
-    await expect(
-      page.locator('#address_delivery').getByText(companyName)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(address1)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(country)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(mobileNumber)
-    ).toBeVisible();
-    // testCase16Data
-    await expect(
-      page.locator('#address_delivery').getByText(verifyNameSurname)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(verifyCountryCityZip)
-    ).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(companyName)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(address1)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(country)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(mobileNumber)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(verifyNameSurname)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(verifyCountryCityZip)).toBeVisible();
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
 
     // 12. Enter description in comment text area and click 'Place Order'
