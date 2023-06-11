@@ -7,7 +7,7 @@ import { WriteReviewPage } from '../page-objects/WriteReviewPage';
 test.describe('Test Case 21: Add review on product', () => {
 
   // Test Case 21: Add review on product
-  test.only('add review on product', async ({ page }) => {
+  test('add review on product', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const writeReviewPage = new WriteReviewPage(page);
