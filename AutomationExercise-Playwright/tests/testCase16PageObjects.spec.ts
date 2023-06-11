@@ -9,7 +9,7 @@ import { CartPage } from '../page-objects/CartPage';
 import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-test.describe.only('Test Case 16: Place Order: Login before Checkout', () => {
+test.describe('Test Case 16: Place Order: Login before Checkout', () => {
   let homePage: HomePage;
   let loginPage: LoginPage;
   let navbar: Navbar;
