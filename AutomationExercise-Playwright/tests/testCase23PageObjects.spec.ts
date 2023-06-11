@@ -14,7 +14,7 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
     const cartPage = new CartPage(page);
-    const delationUser = new DeletionUser(page);
+    const deletionUser = new DeletionUser(page);
     
     const userId = testRegistrationData.userId;       
     const urlCart = testCase23Data.urlCart;
@@ -38,9 +38,9 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     await cartPage.clickbuttonProToCheckout();
     await cartPage.assertAddressDelivery();
     await cartPage.assertAddressBillingy();
-    await delationUser.clickDeleteButton();
-    await delationUser.messageAccountDeleted();
-    await delationUser.clickContinueButton();
+    await deletionUser.clickDeleteButton();
+    await deletionUser.messageAccountDeleted();
+    await deletionUser.clickContinueButton();
   });
 });
 
