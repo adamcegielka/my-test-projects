@@ -40,7 +40,6 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     const verifyCountryCityZip = testCase24Data.verifyCountryCityZip;
     const verifyDeliveryAddress = testCase24Data.verifyDeliveryAddress;
     const messageText = testCase24Data.messageText;
-    const messageOrderSuccessfully = testCase24Data.messageOrderSuccessfully;
     const verifyReviewOrder = testCase24Data.verifyReviewOrder;
 
     // 1. Launch browser
@@ -96,9 +95,6 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await expect(page.getByText(verifyAccountCreated)).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click();
 
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_2"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-
     // 11. Verify ' Logged in as username' at top
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
 
@@ -124,9 +120,8 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 
     // EXIT FROM GOOGLE ADS - sometimes
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto(urlCart);
-    await page.getByText('Proceed To Checkout').click();
-    await page.getByRole('link', { name: 'Place Order' }).click();
+    await page.goBack();
+    await page.goForward();
 
     // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
     // POM - Page Object Model
@@ -141,12 +136,14 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
 
     // 18. Verify success message 'Your order has been placed successfully!'
-    // TO FIX !!!
-         
-    // const verifyMessage = page.getByText(messageOrderSuccessfully);
-    // await verifyMessage.waitFor();
-    // or
-    // await expect(page.getByText(messageOrderSuccessfully)).toBeVisible();
+    // --- Fixme
+    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
+
+    // const successMessage = await page.locator('#success_message.alert-success');
+    // await expect(successMessage).toContainText('Your order has been placed successfully!');
+    
+    // const successMessage = await page.waitForSelector('#success_message.alert-success');
+    // await expect(successMessage).toContain('Your order has been placed successfully!');
 
     // 19. Click 'Download Invoice' button and verify invoice is downloaded successfully.
     const downloadPromise = page.waitForEvent('download');
