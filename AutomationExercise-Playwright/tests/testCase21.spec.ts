@@ -23,8 +23,8 @@ test.describe('Test Case 21: Add review on product', () => {
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_6"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('/');
-    await page.click('.material-icons.card_travel');
+    await page.goBack();
+    await page.goForward();
 
     // 4. Verify user is navigated to ALL PRODUCTS page successfully
     await expect(page.getByRole('heading', { name: verifyProducts })).toBeVisible();
