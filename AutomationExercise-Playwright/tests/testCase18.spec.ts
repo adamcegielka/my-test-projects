@@ -29,9 +29,8 @@ test.describe('Test Case 18: View Category Products', () => {
 
     // EXIT FROM GOOGLE ADS
     // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goto('/');
-    await page.click('text=Women');
-    await page.click('text=Tops');
+    await page.goBack();
+    await page.goForward();
 
     // 6. Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
     await expect(page.getByRole('heading', { name: verifyCategoryWomen })).toBeVisible();
