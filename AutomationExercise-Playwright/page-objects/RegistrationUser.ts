@@ -35,7 +35,7 @@ export class RegistrationUser {
     this.userEmail = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address');
     this.signupButton = page.getByRole('button', { name: 'Signup' });
     // details
-    this.courtesyPhrase = page.getByLabel('Mr.');
+    this.courtesyPhrase = page.locator('#uniform-id_gender1');
     this.userPassword = page.getByLabel('Password *');
     this.birtDay = page.locator('#days');
     this.birtMonth = page.locator('#months');
