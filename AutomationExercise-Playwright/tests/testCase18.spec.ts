@@ -4,7 +4,7 @@ import { testCase18Data } from '../test-data/testCase18.data';
 test.describe('Test Case 18: View Category Products', () => {
 
   test('view category products', async ({ page }) => {
-    const verifyHomePage = testCase18Data.verifyHomePage;
+    const verifyCategories = testCase18Data.verifyCaregories;
     const verifyCategoryWomen = testCase18Data.verifyCategoryWomen;
     const verifyCategoryMen = testCase18Data.verifyCategoryMen;
 
@@ -14,9 +14,8 @@ test.describe('Test Case 18: View Category Products', () => {
     // 2. Navigate to url 'http://automationexercise.com'
     await page.goto('/');
 
-    // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL('/');
-    await expect(page).toHaveTitle(verifyHomePage);
+    // 3. Verify that categories are visible on left side bar
+    await expect(page.getByText(verifyCategories)).toBeVisible();
 
     // 4. Click on 'Women' category
       // await page.getByRole('link', { name: ' Women' }).click();
