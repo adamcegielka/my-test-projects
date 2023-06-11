@@ -7,6 +7,7 @@ export class CartPage {
   readonly buttonProceedToCheckout: Locator;
   readonly insertMessage: Locator;
   readonly buttonPlaceOrder: Locator;
+  readonly verifyCartPage: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -14,6 +15,7 @@ export class CartPage {
     this.buttonProceedToCheckout = page.locator('a.btn.btn-default.check_out');
     this.insertMessage = page.locator('textarea[name="message"]');
     this.buttonPlaceOrder = page.getByRole('link', { name: 'Place Order' });
+    this.verifyCartPage = page.locator('.active');
   }
 
   async assertAddressDelivery() {
@@ -74,5 +76,9 @@ export class CartPage {
 
   async clickPlaceOrder() {
     await this.buttonPlaceOrder.click();
+  }
+
+  async verifyCartPageIsDisplayed () {
+    await expect(this.verifyCartPage).toContainText('Shopping Cart');
   }
 }
