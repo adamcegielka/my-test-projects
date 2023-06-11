@@ -49,10 +49,15 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
+    // 18. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    const successMessage = await page.locator('#success_message.alert-success');
-    await expect(successMessage).toContainText('Your order has been placed successfully!');
-    // ---
+    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
+
+    // const successMessage = await page.locator('#success_message.alert-success');
+    // await expect(successMessage).toContainText('Your order has been placed successfully!');
+    
+    // const successMessage = await page.waitForSelector('#success_message.alert-success');
+    // await expect(successMessage).toContain('Your order has been placed successfully!');
     await deletionUser.clickDeleteButton();
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();

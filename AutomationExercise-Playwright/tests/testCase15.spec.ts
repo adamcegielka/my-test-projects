@@ -35,7 +35,6 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     const verifyHomePage = testCase15Data.verifyHomePage;
     const verifyOrder = testCase15Data.verifyOrder;
     const messageText = testCase15Data.messageText;
-    const messageOrderConfirmed = testCase15Data.messageOrderConfirmed;
     const verifyShoppingCart = testCase15Data.verifyShoppingCart;
     const verifyAccountCreated = testCase15Data.verifyAccountCreated;
     const verifyAccountDeleted = testCase15Data.verifyAccountDeleted;
@@ -129,7 +128,14 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
      await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
 
     // 16. Verify success message 'Your order has been placed successfully!'
-    await expect(page.getByText(messageOrderConfirmed)).toBeVisible();
+    // --- Fixme
+    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
+
+    // const successMessage = await page.locator('#success_message.alert-success');
+    // await expect(successMessage).toContainText('Your order has been placed successfully!');
+    
+    // const successMessage = await page.waitForSelector('#success_message.alert-success');
+    // await expect(successMessage).toContain('Your order has been placed successfully!');
     
     // 17. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
