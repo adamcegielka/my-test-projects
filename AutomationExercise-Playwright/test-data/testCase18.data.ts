@@ -1,5 +1,5 @@
 export const testCase18Data = {
-    verifyHomePage: 'Automation Exercise',
+    verifyCaregories: 'Category Women Dress Tops Saree Men Tshirts Jeans Kids Dress Tops & Shirts Brand',
     verifyCategoryWomen: 'Women - Tops Products',
     verifyCategoryMen: 'Men - Jeans Products'
 }
