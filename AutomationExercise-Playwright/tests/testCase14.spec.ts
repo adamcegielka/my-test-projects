@@ -126,10 +126,11 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await creditCardPage.cardExpirationateYear.fill(cardExpirationateYear);
 
     // 17. Click 'Pay and Confirm Order' button
-     await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
+    await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
 
     // 18. Verify success message 'Your order has been placed successfully!'
-    // --- Fixme
+    // --- FIXME
+
     // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
 
     // const successMessage = await page.locator('#success_message.alert-success');
@@ -137,6 +138,11 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     
     // const successMessage = await page.waitForSelector('#success_message.alert-success');
     // await expect(successMessage).toContain('Your order has been placed successfully!');
+
+    // const [_, successToast] = await Promise.all([
+    //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+    //   page.getByText('Your order has been placed successfully!')])       
+    //    expect(successToast).toBeVisible();
 
     // 19. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
