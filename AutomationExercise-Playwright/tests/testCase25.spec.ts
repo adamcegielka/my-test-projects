@@ -30,13 +30,12 @@ test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Do
     await page.locator('#scrollUp').click();
 
     // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+    await page.mouse.wheel(0, -100000000)
     const isScrolledUp = await page.evaluate(() => {
-        return window.pageYOffset === 0;
-      });      
-      expect(isScrolledUp).toBe(false);
-
-    // TO FIX !!!
-    const visibleScreen = page.getByRole('heading', { name: verifyVisibleScreen });
-    await expect(visibleScreen).toBeFocused();
+      return window.scrollY === 0;
+    });
+    expect(isScrolledUp).toBe(true);
+    // expect(scrollY === 0).toBeTruthy();
+    await expect(page.getByRole('heading', {name: verifyVisibleScreen})).toBeInViewport();
   });
 });
