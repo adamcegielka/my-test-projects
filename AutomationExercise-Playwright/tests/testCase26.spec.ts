@@ -19,9 +19,8 @@ test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll 
     await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Scroll down to footer
-    await page.evaluate(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-      });
+    const scrollFooter = page.locator('footer');
+    await scrollFooter.scrollIntoViewIfNeeded();
 
     // 5. Verify text 'SUBSCRIPTION'
     await expect(page.getByText(verifySubscription)).toBeVisible();
@@ -32,12 +31,15 @@ test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll 
         if (headerElement)
           headerElement.scrollIntoView();
       });
+    // const scrollUp = page.locator('header');
+    // await scrollUp.scrollIntoViewIfNeeded();
 
     // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+    await page.mouse.wheel(0, -100000000)
     const isScrolledUp = await page.evaluate(() => {
-        return window.pageYOffset === 0;
-      });      
-      expect(isScrolledUp).toBe(true);
+      return window.scrollY === 0;
+    });
+    expect(isScrolledUp).toBe(true);
 
     await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeVisible();  // TO FIX !!!
   });
