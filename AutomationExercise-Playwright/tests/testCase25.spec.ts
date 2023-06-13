@@ -2,8 +2,8 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase25Data } from '../test-data/testCase25.data';
 
 test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', () => {
-  
-  test.only('verify scroll up using "Arrow" button and scroll down functionality', async ({ page }) => {
+
+  test('verify scroll up using "Arrow" button and scroll down functionality', async ({ page }) => {
     const verifyHomePage = testCase25Data.verifyHomePage;
     const verifySubscription = testCase25Data.verifySubscription;
     const verifyVisibleScreen = testCase25Data.verifyVisibleScreen;
@@ -25,17 +25,13 @@ test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Do
     // 5. Verify text 'SUBSCRIPTION'
     await expect(page.getByText(verifySubscription)).toBeVisible();
 
-    // 6. Click on arrow at bottom right side to move upward 
-    await page.locator('.grippy-host').click();     // HIDING ADVERTISING
+    // 6. Click on arrow at bottom right side to move upward
+    await page.locator('.grippy-host').click(); // HIDING ADVERTISING
     await page.locator('#scrollUp').click();
 
-    // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
-    await page.mouse.wheel(0, -100000000)
-    const isScrolledUp = await page.evaluate(() => {
-      return window.scrollY === 0;
-    });
-    expect(isScrolledUp).toBe(true);
-    // expect(scrollY === 0).toBeTruthy();
-    await expect(page.getByRole('heading', {name: verifyVisibleScreen})).toBeInViewport();
+    // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen    
+    await expect(page.locator('.logo.pull-left')).toBeInViewport();
+
+    await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeInViewport();
   });
 });
