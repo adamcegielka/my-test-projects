@@ -60,5 +60,5 @@ expect(scrollY === 0).toBeTruthy();
 const scrollY = await page.evaluate(() => {
   return window.scrollY;
 });
-expect(scrollY).toEqual(0, 'page is not scrolled up');
+expect(scrollY).toEqual(0);
 */
