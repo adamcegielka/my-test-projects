@@ -1,7 +1,7 @@
 {
   "name": "automationexercise-playwright",
   "version": "1.0.0",
-  "description": "[![Playwright.dev](https://img.shields.io/badge/Documentation-Playwright-45ba4b.svg?logo=playwright)](https://playwright.dev/docs/intro)\r [![Playwright.dev](https://img.shields.io/badge/API%20reference-Playwright-D0422C.svg)](https://playwright.dev/docs/api/class-playwright)\r [![Node.js](https://img.shields.io/badge/download-Node.js-026e00.svg?logo=node.js)](https://nodejs.org/)\r [![Support badge](https://img.shields.io/badge/stackoverflow-Playwright-45ba4b.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/playwright) \r <br><br>",
+  "description": "The test project involves running automated tests using a ready-made test Scenario and API testing in Automation.",
   "main": "index.js",
   "scripts": {
     "test:record": "npx playwright codegen https://automationexercise.com/",
@@ -12,10 +12,10 @@
     "test:api": "playwright test --config=api.config.ts --project=Chromium"
   },
   "keywords": [],
-  "author": "",
+  "author": "Adam C.",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.34.3",
+    "@playwright/test": "^1.35.0",
     "@types/jest": "^29.5.1",
     "prettier": "2.8.8"
   }
