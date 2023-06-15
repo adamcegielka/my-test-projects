@@ -11,7 +11,7 @@ import { test, expect } from '@playwright/test';
 test.describe('API 3: Get All Brands List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test.only('get all brands list', async ({ request }) => {
+  test('get all brands list', async ({ request }) => {
     const response = await request.get(`${baseUrl}/brandsList`);    
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);   
