@@ -12,11 +12,10 @@ test.describe('API 4: PUT To All Brands List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
   test('PUT to all Brands list', async ({ request }) => {    
-    const response = await request.put(`${baseUrl}/brandsList`);    
-    const responseBody = await response.json();
+    const response = await request.put(`${baseUrl}/brandsList`); 
 
     // expect(response.status()).toBe(405);
-    expect(responseBody.message).toBe('This request method is not supported.');
-    console.log(responseBody);
+    expect(await response.text()).toContain("This request method is not supported.")
+    console.log(await response.json());
   });
 });
