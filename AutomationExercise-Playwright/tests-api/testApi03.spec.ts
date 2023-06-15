@@ -11,21 +11,10 @@ import { test, expect } from '@playwright/test';
 test.describe('API 3: Get All Brands List', () => {
   const baseUrl = 'https://automationexercise.com/api';
 
-  test('get all brands list', async ({ request }) => {
-    const response = await request.get(`${baseUrl}/brandsList`);
-    const responseBody = JSON.parse(await response.text());    
-
-    expect(response.status()).toBe(200);    
-    console.log(responseBody);
-  });
-
-
-  // ANOTHER WAY FOR TEST:
-
-  test.skip('another way - get all brands list', async ({ request }) => {
-    const response = await request.get(`${baseUrl}/brandsList`);
-
-    expect(response.status()).toBe(200);    
+  test.only('get all brands list', async ({ request }) => {
+    const response = await request.get(`${baseUrl}/brandsList`);    
+    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(200);   
     console.log(await response.json());
   });
 });
