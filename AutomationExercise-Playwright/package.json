@@ -12,7 +12,7 @@
     "test:api": "playwright test --config=api.config.ts --project=Chromium"
   },
   "keywords": [],
-  "author": "Adam C.",
+  "author": "Adam Cegiełka",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.35.0",
