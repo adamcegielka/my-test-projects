@@ -7,7 +7,7 @@ import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
-  test('register while checkout', async ({ page }) => {
+  test.only('register while checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -133,16 +133,35 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
     // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
 
-    // const successMessage = await page.locator('#success_message.alert-success');
+    // const successMessage = await page.locator('#success_message');
     // await expect(successMessage).toContainText('Your order has been placed successfully!');
     
-    // const successMessage = await page.waitForSelector('#success_message.alert-success');
+    // const successMessage = await page.waitForSelector('#success_message');
     // await expect(successMessage).toContain('Your order has been placed successfully!');
 
-    // const [_, successToast] = await Promise.all([
+    // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])       
-    //    expect(successToast).toBeVisible();
+    //   page.getByText('Your order has been placed successfully!')])         
+    // expect(successMessage).toBeVisible();
+   
+    // const successMessageText = await page.evaluate(() => {
+    //   const successMessage = document.querySelector('#success_message');
+    //   return successMessage?.textContent?.trim() ?? '';
+    // });
+    // expect(successMessageText).toBe('Your order has been placed successfully!');    
+
+    // await page.waitForTimeout(2000);
+    // const successMessage = await page.getByText('Your order has been placed successfully!');
+    // await expect(successMessage).toBeVisible();
+
+    // await page.waitForLoadState();
+    // await page.waitForSelector('#success_message.alert-success');
+    // const successMessageText = await page.textContent('#success_message.alert-success');
+    // expect(successMessageText).toBe('Your order has been placed successfully!');
+
+    // const successMessage = await page.locator('#success_message');
+    // const messageText1 = await successMessage.innerText();
+    // expect(messageText1).toBe('Your order has been placed successfully!');
 
     // 19. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
