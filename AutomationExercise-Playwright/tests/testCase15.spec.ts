@@ -7,7 +7,7 @@ import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
-  test('register before checkout', async ({ page }) => {
+  test.only('register before checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -129,13 +129,12 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
     // 16. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
-
-    // const successMessage = await page.locator('#success_message.alert-success');
-    // await expect(successMessage).toContainText('Your order has been placed successfully!');
-    
-    // const successMessage = await page.waitForSelector('#success_message.alert-success');
-    // await expect(successMessage).toContain('Your order has been placed successfully!');
+    const successMessageText = await page.evaluate(() => {
+        const successMessage = document.querySelector('#success_message.alert-success');
+        return successMessage?.textContent?.trim() ?? '';
+      });
+    expect(successMessageText).toBe('Your order has been placed successfully!'); 
+    // --- Fixme
     
     // 17. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
