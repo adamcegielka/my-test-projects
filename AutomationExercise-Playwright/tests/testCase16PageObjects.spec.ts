@@ -61,16 +61,14 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     await page.goBack();      // EXIT FROM GOOGLE ADS
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
-    await creditCardPage.confirmOrder();
+    // await creditCardPage.confirmOrder();
     // 15. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
-
-    // const successMessage = await page.locator('#success_message.alert-success');
-    // await expect(successMessage).toContainText('Your order has been placed successfully!');
-    
-    // const successMessage = await page.waitForSelector('#success_message.alert-success');
-    // await expect(successMessage).toContain('Your order has been placed successfully!');
+    const [_, successMessage] = await Promise.all([
+      page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+      page.getByText('Your order has been placed successfully!')])         
+    expect(successMessage).toBeVisible();
+    // --- Fixme
     await deletionUser.clickDeleteButton();
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
