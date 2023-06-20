@@ -10,7 +10,7 @@ import { CartPage } from '../page-objects/CartPage';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
-  test.only('register while checkout', async ({ page }) => {
+  test('register while checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
