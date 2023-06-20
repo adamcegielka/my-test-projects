@@ -7,7 +7,7 @@ import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
-  test.only('register before checkout', async ({ page }) => {
+  test('register before checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
