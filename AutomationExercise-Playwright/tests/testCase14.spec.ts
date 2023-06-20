@@ -126,11 +126,16 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await creditCardPage.cardExpirationateYear.fill(cardExpirationateYear);
 
     // 17. Click 'Pay and Confirm Order' button
-    await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
+    // await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
 
     // 18. Verify success message 'Your order has been placed successfully!'
-    // --- FIXME 
-
+    // --- Fixme
+    const [_, successMessage] = await Promise.all([
+      page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+      page.getByText('Your order has been placed successfully!')])         
+    expect(successMessage).toBeVisible();
+    // --- Fixme 
+    // ---------
     // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
     // ---------
     // const successMessage = await page.locator('#success_message');
@@ -138,11 +143,6 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     // ---------
     // const successMessage = await page.waitForSelector('#success_message');
     // await expect(successMessage).toContain('Your order has been placed successfully!');
-    // ---------
-    // const [_, successMessage] = await Promise.all([
-    //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
-    // expect(successMessage).toBeVisible();
     // ---------
     // const successMessageText = await page.evaluate(() => {
     //   const successMessage = document.querySelector('#success_message');
@@ -167,6 +167,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     // await successMessageLocator.waitFor();
     // const successMessage = await successMessageLocator.textContent();
     // expect(successMessage).toContain('Your order has been placed successfully!');
+    // ---------
 
     // 19. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
