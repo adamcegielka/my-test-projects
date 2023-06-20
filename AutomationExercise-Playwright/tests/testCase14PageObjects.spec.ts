@@ -10,7 +10,7 @@ import { CartPage } from '../page-objects/CartPage';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
-  test('register while checkout', async ({ page }) => {
+  test.only('register while checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
@@ -48,16 +48,14 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.goBack();      // EXIT FROM GOOGLE ADS
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
-    await creditCardPage.confirmOrder();
+    // await creditCardPage.confirmOrder();
     // 18. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
-
-    // const successMessage = await page.locator('#success_message.alert-success');
-    // await expect(successMessage).toContainText('Your order has been placed successfully!');
-    
-    // const successMessage = await page.waitForSelector('#success_message.alert-success');
-    // await expect(successMessage).toContain('Your order has been placed successfully!');
+    const [_, successMessage] = await Promise.all([
+      page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+      page.getByText('Your order has been placed successfully!')])         
+    expect(successMessage).toBeVisible();
+    // --- Fixme
     await deletionUser.clickDeleteButton();
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
