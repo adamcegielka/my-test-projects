@@ -45,18 +45,14 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await page.goBack();
     await page.goForward();
     await creditCardPage.enterPaymentDetails();
-    await creditCardPage.confirmOrder();
-
+    // await creditCardPage.confirmOrder();
     // 18. Verify success message 'Your order has been placed successfully!'
-    // --- Fixme
-    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
-
-    // const successMessage = await page.locator('#success_message.alert-success');
-    // await expect(successMessage).toContainText('Your order has been placed successfully!');
-    
-    // const successMessage = await page.waitForSelector('#success_message.alert-success');
-    // await expect(successMessage).toContain('Your order has been placed successfully!');
-    
+     // --- Fixme
+     const [_, successMessage] = await Promise.all([
+      page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+      page.getByText('Your order has been placed successfully!')])         
+    expect(successMessage).toBeVisible();
+    // --- Fixme    
     const downloadPromise = page.waitForEvent('download');
     await page.getByRole('link', { name: 'Download Invoice' }).click();
     const download = await downloadPromise;
