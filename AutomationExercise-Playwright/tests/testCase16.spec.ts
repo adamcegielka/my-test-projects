@@ -107,13 +107,12 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
 
     // 15. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
-
-    // const successMessage = await page.locator('#success_message.alert-success');
-    // await expect(successMessage).toContainText('Your order has been placed successfully!');
-    
-    // const successMessage = await page.waitForSelector('#success_message.alert-success');
-    // await expect(successMessage).toContain('Your order has been placed successfully!');
+    const successMessageText = await page.evaluate(() => {
+      const successMessage = document.querySelector('#success_message.alert-success');
+      return successMessage?.textContent?.trim() ?? '';
+    });
+    expect(successMessageText).toBe('Your order has been placed successfully!'); 
+    // --- Fixme
 
     // 16. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
