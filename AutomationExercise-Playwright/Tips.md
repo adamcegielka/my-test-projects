@@ -17,7 +17,14 @@
 :small_orange_diamond: check if Playwright should be updated: `npm outdated @playwright/test`  
 :small_orange_diamond: update Playwright: `npm i @playwright/test`  
 :small_orange_diamond: update browsers: `npx playwright install`  
-:small_orange_diamond: verify Playwright version: `npx @playwright/test --version`
+:small_orange_diamond: verify Playwright version: `npx @playwright/test --version` 
+
+## Updating TypeScript
+
+:small_orange_diamond: check version: `npm show typescript version`  
+:small_orange_diamond: update: `npm install typescript@latest`  
+:small_orange_diamond: show list of version: `npm show typescript versions`  
+:small_orange_diamond: update to 5.0.4 version: `npm install typescript@5.0.4`  
 
 ## Tips for VSCode:
 
