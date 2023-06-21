@@ -1,7 +1,11 @@
 [![Playwright.dev](https://img.shields.io/badge/Documentation-Playwright-45ba4b.svg?logo=playwright)](https://playwright.dev/docs/intro)
-[![Playwright.dev](https://img.shields.io/badge/API%20reference-Playwright-D0422C.svg)](https://playwright.dev/docs/api/class-playwright)
-[![Node.js](https://img.shields.io/badge/download-Node.js-026e00.svg?logo=node.js)](https://nodejs.org/)
 [![Support badge](https://img.shields.io/badge/stackoverflow-Playwright-45ba4b.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/playwright) 
+<br>
+[![Prettier](https://img.shields.io/badge/Documentation-Prettier-f7ba3e.svg?logo=prettier)](https://prettier.io/docs/en/index.html)
+[![Prettier](https://img.shields.io/badge/GitHub-Prettier-f7ba3e.svg?logo=prettier)](https://github.com/prettier/prettier)
+<br>
+[![ESLint](https://img.shields.io/badge/Documentation-ESLint-4b32c3.svg?logo=eslint)](https://eslint.org/docs/latest/)
+[![ESLint](https://img.shields.io/badge/GitHub-ESLint-4b32c3.svg?logo=eslint)](https://github.com/eslint/eslint)
 <br><br>
 
 # Automation Exercise with Playwright 
