@@ -57,6 +57,8 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     // expect(successMessage).toBeVisible();
     // --- Fixme
     await deletionUser.clickDeleteButton();
+    await page.goBack();      // EXIT FROM GOOGLE ADS
+    await page.goForward();   // EXIT FROM GOOGLE ADS
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });
