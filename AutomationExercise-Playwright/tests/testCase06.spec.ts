@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase06Data } from '../test-data/testCase06.data';
 
 test.describe('Test Case 6: Contact Us Form', () => {
-  test('contact us form', async ({ page }) => {
+  test('TC06 contact us form', async ({ page }) => {
     const userId = testCase06Data.userId;
     const userEmail = testCase06Data.userEmail;
     const subject = testCase06Data.subject;
@@ -11,6 +11,14 @@ test.describe('Test Case 6: Contact Us Form', () => {
     const verifyHomePage = testCase06Data.verifyHomePage;
     const verifyGetInTouch = testCase06Data.verifyGetInTouch;
     const verifySuccessMessage = testCase06Data.verifySuccessMessage;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -56,12 +64,6 @@ test.describe('Test Case 6: Contact Us Form', () => {
     // 11. Click 'Home' button and verify that landed to home page successfully
     // await page.getByRole('link', { name: 'Home' }).click();
     await page.click('#form-section > .btn.btn-success');
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_2"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
-
     await expect(page).toHaveURL('/');
     await expect(page).toHaveTitle(verifyHomePage);
 
