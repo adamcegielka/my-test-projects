@@ -17,14 +17,23 @@
 :small_orange_diamond: check if Playwright should be updated: `npm outdated @playwright/test`  
 :small_orange_diamond: update Playwright: `npm i @playwright/test`  
 :small_orange_diamond: update browsers: `npx playwright install`  
-:small_orange_diamond: verify Playwright version: `npx @playwright/test --version` 
+:small_orange_diamond: verify Playwright version: `npx @playwright/test --version`
 
-## Updating ESLint
+## ESLint
 
-:small_orange_diamond: check version: `npm install eslint`  
-:small_orange_diamond: update: `./node_modules/.bin/eslint --init`  
+:small_orange_diamond: check installation: `npm install eslint`  
+:small_orange_diamond: configuration: `./node_modules/.bin/eslint --init`  
 :small_orange_diamond: optionally - change the execution policy for scripts: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`  
-:small_orange_diamond: plug-in installation: `ESLint`  
+:small_orange_diamond: plug-in installation: `ESLint`   
+:small_orange_diamond: analysis of the whole project: `./node_modules/.bin/eslint .`  
+:small_orange_diamond: correction of errors: `./node_modules/.bin/eslint . --fix`   
+
+## Prettier
+
+:small_orange_diamond: installation: `npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier`    
+:small_orange_diamond: plug-in installation: `Prettier`   
+:small_orange_diamond: ESLint plugin for Prettier formatting: [GitHub](https://github.com/prettier/eslint-plugin-prettier)  
+:small_orange_diamond: correction of errors: `./node_modules/.bin/eslint . --fix`  
 
 ## Updating TypeScript
 
