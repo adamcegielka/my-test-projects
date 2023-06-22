@@ -4,6 +4,16 @@ export async function userDeletion(page) {
   const email = testUserDeletionData.email;
   const userPassword = testUserDeletionData.userPassword;
 
+  // Blocking of network resources that generate Ads
+  await page.route('**/*', (route) => {
+    if (route.request().url().startsWith('https://googleads.')) {
+      route.abort();
+    } else {
+      route.continue();
+    }
+  });
+  // --- End code
+
   await page.goto('/');
   await page.getByRole('link', { name: 'Signup / Login' }).click();
   await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').fill(email);
