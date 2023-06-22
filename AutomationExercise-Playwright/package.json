@@ -10,8 +10,8 @@
     "report": "npx playwright show-report",
     "open:ui": "npx playwright test --ui",
     "test:api": "playwright test --config=api.config.ts --project=Chromium",
-    "eslint": "./node_modules/.bin/eslint .",
-    "eslint:fix": "./node_modules/.bin/eslint . --fix"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "keywords": [],
   "author": "Adam Cegiełka",
