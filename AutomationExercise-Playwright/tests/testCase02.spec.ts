@@ -10,7 +10,7 @@ test.describe('Test Case 2: login User with correct email and password', () => {
   });
 
   // Test Case 2: login User with correct email and password
-  test('login user with correct email and password', async ({ page }) => {
+  test('TC02 login user with correct email and password', async ({ page }) => {
     const userId = testCase02Data.userId;
     const userEmail = testCase02Data.userEmail;
     const userPassword = testCase02Data.userPassword;
@@ -18,6 +18,16 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     const verifyHomePage = testCase02Data.verifyHomePage;
     const verifyLoginToAccount = testCase02Data.verifyLoginToAccount;
     const verifyAccountDeleted = testCase02Data.verifyAccountDeleted;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -49,10 +59,6 @@ test.describe('Test Case 2: login User with correct email and password', () => {
 
     // 9. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
-
-    // EXIT FROM GOOGLE ADS
-    await page.goBack();
-    await page.goForward();
 
     // 10. Verify that 'ACCOUNT DELETED!' is visible
     await expect(page.getByText(verifyAccountDeleted)).toBeVisible();

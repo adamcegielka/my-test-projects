@@ -7,7 +7,7 @@ import { RegistrationUser } from '../page-objects/RegistrationUser';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 1: Register User', () => {
-  test('register user', async ({ page }) => {
+  test('TC01 POM register user', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUser = new RegistrationUser(page);
@@ -16,6 +16,16 @@ test.describe('Test Case 1: Register User', () => {
     const userId = testRegistrationData.userId;
     const verifyNewUser = testCase01Data.verifyNewUser;
     const verifyEnterAccountInformation = testCase01Data.verifEenterAccountInformation;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();

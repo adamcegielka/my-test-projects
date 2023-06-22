@@ -5,10 +5,20 @@ import { LoginPage } from '../page-objects/LoginPage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
-  test('login user with incorrect email and password', async ({ page }) => {
+  test('TC03 POM login user with incorrect email and password', async ({ page }) => {
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
     const navbar = new Navbar(page);
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     const verifyLoginToAccount = testCase03Data.verifyLoginToAccount;
     const verifyErrorMessage = testCase03Data.verifyErrorMessage;

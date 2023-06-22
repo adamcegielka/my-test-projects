@@ -16,7 +16,7 @@ test.describe('Test Case 4: Logout User', () => {
   });
 
   // Test Case 4: Logout User
-  test('logout user', async ({ page }) => {
+  test('TC04 logout user', async ({ page }) => {
     const userId = testCase04Data.userId;
     const userEmail = testCase04Data.userEmail;
     const userPassword = testCase04Data.userPassword;
@@ -24,6 +24,16 @@ test.describe('Test Case 4: Logout User', () => {
     const verifyHomePage = testCase04Data.verifyHomePage;
     const verifyLoginToAccount = testCase04Data.verifyLoginToAccount;
     const verifyUrlLogin = testCase04Data.verifyUrlLogin;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();

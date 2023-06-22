@@ -4,7 +4,7 @@ import { HomePage } from '../page-objects/HomePage';
 import { Sidebar } from '../page-objects/components/Sidebar';
 
 test.describe('Test Case 18: View Category Products', () => {
-  test('view category products', async ({ page }) => {
+  test('TC18 POM view category products', async ({ page }) => {
     const homePage = new HomePage(page);
     const sidebar = new Sidebar(page);
 
@@ -12,13 +12,21 @@ test.describe('Test Case 18: View Category Products', () => {
     const verifyCategoryWomen = testCase18Data.verifyCategoryWomen;
     const verifyCategoryMen = testCase18Data.verifyCategoryMen;
 
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
+
     await chromium.launch();
     await homePage.navHomePage();
     await expect(page.getByText(verifyCategories)).toBeVisible();
     await sidebar.categoryWomen();
     await sidebar.categoryWomenTops();
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await expect(
       page.getByRole('heading', { name: verifyCategoryWomen })
     ).toBeVisible();

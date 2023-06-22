@@ -3,13 +3,23 @@ import { testCase03Data } from '../test-data/testCase03.data';
 import { LoginIncorrectPage } from '../pages/loginIncorrect.page';
 
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
-  test('login user with incorrect email and password', async ({ page }) => {
+  test('TC03 login user with incorrect email and password', async ({ page }) => {
     const incorrectUserEmail = testCase03Data.incorrectUserEmail;
     const incorrectUserPassword = testCase03Data.incorrectUserPassword;
 
     const verifyHomePage = testCase03Data.verifyHomePage;
     const verifyLoginToAccount = testCase03Data.verifyLoginToAccount;
     const verifyErrorMessage = testCase03Data.verifyErrorMessage;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();

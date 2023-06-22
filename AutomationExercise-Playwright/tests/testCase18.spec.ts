@@ -2,10 +2,20 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase18Data } from '../test-data/testCase18.data';
 
 test.describe('Test Case 18: View Category Products', () => {
-  test('view category products', async ({ page }) => {
+  test('TC18 view category products', async ({ page }) => {
     const verifyCategories = testCase18Data.verifyCaregories;
     const verifyCategoryWomen = testCase18Data.verifyCategoryWomen;
     const verifyCategoryMen = testCase18Data.verifyCategoryMen;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -25,11 +35,6 @@ test.describe('Test Case 18: View Category Products', () => {
     // await page.getByRole('link', { name: 'Tops' }).click();
     // or:
     await page.click('text=Tops');
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
 
     // 6. Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
     await expect(

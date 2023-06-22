@@ -28,7 +28,7 @@ test.describe('Test Case 2: login User with correct email and password', () => {
   });
 
   // Test Case 2: login User with correct email and password
-  test('login user with correct email and password', async ({ page }) => {
+  test('TC02 POM login user with correct email and password', async ({ page }) => {
     homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
@@ -36,6 +36,16 @@ test.describe('Test Case 2: login User with correct email and password', () => {
 
     const userId = testRegistrationData.userId;
     const verifyLoginToAccount = testCase02Data.verifyLoginToAccount;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -46,10 +56,6 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     await loginPage.login();
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
     await deletionUser.clickDeleteButton();
-    // EXIT FROM GOOGLE ADS
-    await page.goBack();
-    await page.goForward();
-    // ---
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });

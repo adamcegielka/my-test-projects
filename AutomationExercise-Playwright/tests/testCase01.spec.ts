@@ -3,8 +3,8 @@ import { testCase01Data } from '../test-data/testCase01.data';
 import { testRegistrationData } from '../test-data/testRegistration.data';
 import { RegistrationPage } from '../pages/registration.page';
 
-test.describe('Test Case 1: Register User', () => {
-  test('register user', async ({ page }) => {
+test.describe('Test Case 01: Register User', () => {
+  test('TC01 register user', async ({ page }) => {
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
     const userPassword = testRegistrationData.userPassword;
@@ -26,6 +26,16 @@ test.describe('Test Case 1: Register User', () => {
     const verifEenterAccountInformation = testCase01Data.verifEenterAccountInformation;
     const verifAccountCreated = testCase01Data.verifAccountCreated;
     const verifAccountDeleted = testCase01Data.verifAccountDeleted;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();

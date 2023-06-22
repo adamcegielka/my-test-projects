@@ -39,7 +39,7 @@ test.describe('Test Case 4: Logout User', () => {
   });
 
   // Test Case 4: Logout User
-  test('logout user', async ({ page }) => {
+  test('TC04 POM logout user', async ({ page }) => {
     homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
@@ -47,6 +47,16 @@ test.describe('Test Case 4: Logout User', () => {
     const userId = testRegistrationData.userId;
     const verifyLoginToAccount = testCase04Data.verifyLoginToAccount;
     const verifyUrlLogin = testCase04Data.verifyUrlLogin;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();

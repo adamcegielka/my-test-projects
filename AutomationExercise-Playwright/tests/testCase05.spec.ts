@@ -16,13 +16,23 @@ test.describe('Test Case 5: Register User with existing email', () => {
   });
 
   // Test Case 5: Register User with existing email
-  test('register user with existing email', async ({ page }) => {
+  test('TC05 register user with existing email', async ({ page }) => {
     const userIdNew = testCase05Data.userIdNew;
     const userEmail = testCase05Data.userEmail;
 
     const verifyHomePage = testCase05Data.verifyHomePage;
     const verifyNewUserSignup = testCase05Data.verifyNewUserSignup;
     const verifyEmailAlreadyExist = testCase05Data.verifyEmailAlreadyExist;
+
+    // Blocking of network resources that generate Ads
+    await page.route('**/*', (route) => {
+      if (route.request().url().startsWith('https://googleads.')) {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
