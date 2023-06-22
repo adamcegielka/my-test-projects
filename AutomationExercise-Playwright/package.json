@@ -8,10 +8,12 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "report": "npx playwright show-report",
+    "test:delete": "npx playwright test tests-help/userDelete.spec.ts",
     "open:ui": "npx playwright test --ui",
     "test:api": "playwright test --config=api.config.ts --project=Chromium",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "reporter": "npx paywright test --reporter=reporter.ts"
   },
   "keywords": [],
   "author": "Adam Cegiełka",
