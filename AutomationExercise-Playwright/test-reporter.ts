@@ -43,3 +43,4 @@ export default MyReporter;
 // .test-reporter.ts
 // npx playwright test --config=playwright.config.ts
 // npx playwright test --config=playwright.config.ts testCase01.spec.ts
+// npx playwright test --config=playwright.config.ts testCase01PageObjects.spec.ts
