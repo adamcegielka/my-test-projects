@@ -33,7 +33,6 @@
 :small_orange_diamond: installation: `npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier`    
 :small_orange_diamond: plug-in installation: `Prettier`   
 :small_orange_diamond: ESLint plugin for Prettier formatting: [GitHub](https://github.com/prettier/eslint-plugin-prettier)  
-:small_orange_diamond: correction of errors: `./node_modules/.bin/eslint . --fix`  
 
 ## Updating TypeScript
 
