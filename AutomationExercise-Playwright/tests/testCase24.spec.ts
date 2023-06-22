@@ -137,11 +137,10 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 
     // 18. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    // const successMessageText = await page.evaluate(() => {
-    //   const successMessage = document.querySelector('#success_message.alert-success');
-    //   return successMessage?.textContent?.trim() ?? '';
-    // });
-    // expect(successMessageText).toBe('Your order has been placed successfully!'); 
+    // const [_, successMessage] = await Promise.all([
+    //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+    //   page.getByText('Your order has been placed successfully!')])         
+    // expect(successMessage).toBeVisible();
     // --- Fixme
 
     // 19. Click 'Download Invoice' button and verify invoice is downloaded successfully.

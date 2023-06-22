@@ -48,7 +48,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.goBack();      // EXIT FROM GOOGLE ADS
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
-    // await creditCardPage.confirmOrder();
+    await creditCardPage.confirmOrder();
     // 18. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
     // const [_, successMessage] = await Promise.all([

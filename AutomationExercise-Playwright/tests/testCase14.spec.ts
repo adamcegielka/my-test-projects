@@ -126,7 +126,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await creditCardPage.cardExpirationateYear.fill(cardExpirationateYear);
 
     // 17. Click 'Pay and Confirm Order' button
-    // await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
+    await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
 
     // 18. Verify success message 'Your order has been placed successfully!'
     // --- Fixme

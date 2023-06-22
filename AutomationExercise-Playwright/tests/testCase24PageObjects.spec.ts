@@ -45,10 +45,10 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await page.goBack();
     await page.goForward();
     await creditCardPage.enterPaymentDetails();
-    // await creditCardPage.confirmOrder();
+    await creditCardPage.confirmOrder();
     // 18. Verify success message 'Your order has been placed successfully!'
      // --- Fixme
-    //  const [_, successMessage] = await Promise.all([
+    // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
     //   page.getByText('Your order has been placed successfully!')])         
     // expect(successMessage).toBeVisible();

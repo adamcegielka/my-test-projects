@@ -129,11 +129,10 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
     // 16. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
-    // const successMessageText = await page.evaluate(() => {
-    //     const successMessage = document.querySelector('#success_message.alert-success');
-    //     return successMessage?.textContent?.trim() ?? '';
-    //   });
-    // expect(successMessageText).toBe('Your order has been placed successfully!'); 
+    // const [_, successMessage] = await Promise.all([
+    //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
+    //   page.getByText('Your order has been placed successfully!')])         
+    // expect(successMessage).toBeVisible(); 
     // --- Fixme
     
     // 17. Click 'Delete Account' button

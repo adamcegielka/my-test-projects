@@ -46,10 +46,10 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     await page.goBack();      // EXIT FROM GOOGLE ADS
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
-    // await creditCardPage.confirmOrder();
+    await creditCardPage.confirmOrder();
     // 16. Verify success message 'Your order has been placed successfully!'
      // --- Fixme
-    //  const [_, successMessage] = await Promise.all([
+    // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
     //   page.getByText('Your order has been placed successfully!')])         
     // expect(successMessage).toBeVisible();

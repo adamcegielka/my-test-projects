@@ -61,7 +61,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     await page.goBack();      // EXIT FROM GOOGLE ADS
     await page.goForward();   // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
-    // await creditCardPage.confirmOrder();
+    await creditCardPage.confirmOrder();
     // 15. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
     // const [_, successMessage] = await Promise.all([
