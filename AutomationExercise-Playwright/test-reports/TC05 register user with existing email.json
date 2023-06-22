@@ -1,0 +1,6 @@
+{
+  "test": "TC05 register user with existing email",
+  "status": "passed",
+  "executionTime": 37803,
+  "errors": []
+}

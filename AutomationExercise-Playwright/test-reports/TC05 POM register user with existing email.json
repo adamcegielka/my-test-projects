@@ -1,0 +1,6 @@
+{
+  "test": "TC05 POM register user with existing email",
+  "status": "passed",
+  "executionTime": 48276,
+  "errors": []
+}
