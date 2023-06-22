@@ -19,6 +19,13 @@
 :small_orange_diamond: update browsers: `npx playwright install`  
 :small_orange_diamond: verify Playwright version: `npx @playwright/test --version` 
 
+## Updating ESLint
+
+:small_orange_diamond: check version: `npm install eslint`  
+:small_orange_diamond: update: `./node_modules/.bin/eslint --init`  
+:small_orange_diamond: optionally - change the execution policy for scripts: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`  
+:small_orange_diamond: plug-in installation: `ESLint`  
+
 ## Updating TypeScript
 
 :small_orange_diamond: check version: `npm show typescript version`  
