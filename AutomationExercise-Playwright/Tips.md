@@ -22,8 +22,7 @@
 ## ESLint
 
 :small_orange_diamond: check installation: `npm install eslint`  
-:small_orange_diamond: configuration: `./node_modules/.bin/eslint --init`  
-:small_orange_diamond: optionally - change the execution policy for scripts: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`  
+:small_orange_diamond: configuration: `npm init @eslint/config`  
 :small_orange_diamond: plug-in installation: `ESLint`   
 :small_orange_diamond: analysis of the whole project: `./node_modules/.bin/eslint .`  
 :small_orange_diamond: correction of errors: `./node_modules/.bin/eslint . --fix`   
