@@ -13,7 +13,7 @@
     "test:api": "playwright test --config=api.config.ts --project=Chromium",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "reporter": "npx paywright test --reporter=reporter.ts"
+    "reporter": "npx playwright test --config=playwright.config.ts"
   },
   "keywords": [],
   "author": "Adam Cegiełka",
