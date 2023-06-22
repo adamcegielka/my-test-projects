@@ -1,10 +1,9 @@
 import { test, expect, chromium } from '@playwright/test';
 import { testCase08Data } from '../test-data/testCase08.data';
 import { HomePage } from '../page-objects/HomePage';
-import { Navbar } from '../page-objects/components/Navbar'
+import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 8: Verify All Products and product detail page', () => {
-  
   test('verify all products and product detail page', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
@@ -13,13 +12,13 @@ test.describe('Test Case 8: Verify All Products and product detail page', () => 
     const messageProducts = testCase08Data.messageProducts;
     const messageProductList = testCase08Data.messageProductList;
     const messageProductDetails = testCase08Data.messageProductDetails;
-    
+
     await chromium.launch();
     await homePage.navHomePage();
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
     await navbar.clickOnNav('Products');
-    await page.goBack();    // EXIT FROM GOOGLE ADS
+    await page.goBack(); // EXIT FROM GOOGLE ADS
     await navbar.clickOnNav('Products');
     await expect(page.getByText(messageProducts)).toBeVisible();
     await expect(page.getByText(messageProductList)).toBeVisible();

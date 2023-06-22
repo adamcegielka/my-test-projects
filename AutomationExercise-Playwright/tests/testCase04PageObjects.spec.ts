@@ -14,7 +14,7 @@ test.describe('Test Case 4: Logout User', () => {
 
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);    
+    homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
     const registerUser = new RegistrationUser(page);
@@ -27,7 +27,7 @@ test.describe('Test Case 4: Logout User', () => {
 
   // Deletion of a user after a test
   test.afterEach(async ({ page }) => {
-    homePage = new HomePage(page);    
+    homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
     const deletionUser = new DeletionUser(page);

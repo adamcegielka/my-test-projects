@@ -3,7 +3,6 @@ import { testCase26Data } from '../test-data/testCase26.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll Down functionality', () => {
-  
   test('verify scroll up without "Arrow" button and scroll down functionality', async ({ page }) => {
     const homePage = new HomePage(page);
 
@@ -18,12 +17,14 @@ test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll 
     await expect(page.getByText(verifySubscription)).toBeVisible();
     await page.evaluate(() => {
       window.scrollTo(0, 0);
-    });   
+    });
     const isScrolledUp = await page.evaluate(() => {
       return window.scrollY === 0;
     });
     expect(isScrolledUp).toBe(true);
-    await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeInViewport();
+    await expect(
+      page.getByRole('heading', { name: verifyVisibleScreen })
+    ).toBeInViewport();
   });
 });
 

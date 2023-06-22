@@ -4,7 +4,6 @@ import { HomePage } from '../page-objects/HomePage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 12: Add Products in Cart', () => {
-  
   test('add products in cart', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
@@ -23,10 +22,10 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
     await navbar.clickOnNav('Products');
-    await page.goBack();    // EXIT FROM GOOGLE ADS
+    await page.goBack(); // EXIT FROM GOOGLE ADS
     await navbar.clickOnNav('Products');
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
-    await blueTop.click(); 
+    await blueTop.click();
     await page.getByRole('button', { name: 'Continue Shopping' }).click();
     const menTshirt = await page.waitForSelector('[data-product-id="2"]');
     await menTshirt.click();
@@ -34,11 +33,25 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     await expect(page.getByRole('row', { name: productFirst })).toBeVisible();
     await expect(page.getByRole('row', { name: productSecond })).toBeVisible();
     await expect(page.getByText(productFirstVerifyPrice).first()).toBeVisible();
-    await expect(page.getByRole('row', { name: productFirst }).getByRole('button', { name: productFirstQuantity })).toBeVisible();
-    await expect(page.getByText(productFirstVerifyTotalPrice).nth(1)).toBeVisible();
-    await expect(page.getByText(productSecondVerifyPrice).first()).toBeVisible();
-    await expect(page.getByRole('row', { name: productSecond }).getByRole('button', { name: productSecondQuantity })).toBeVisible();
-    await expect(page.getByText(productSecondVerifyTotalPrice).nth(1)).toBeVisible();
+    await expect(
+      page
+        .getByRole('row', { name: productFirst })
+        .getByRole('button', { name: productFirstQuantity })
+    ).toBeVisible();
+    await expect(
+      page.getByText(productFirstVerifyTotalPrice).nth(1)
+    ).toBeVisible();
+    await expect(
+      page.getByText(productSecondVerifyPrice).first()
+    ).toBeVisible();
+    await expect(
+      page
+        .getByRole('row', { name: productSecond })
+        .getByRole('button', { name: productSecondQuantity })
+    ).toBeVisible();
+    await expect(
+      page.getByText(productSecondVerifyTotalPrice).nth(1)
+    ).toBeVisible();
   });
 });
 

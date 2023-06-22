@@ -9,7 +9,6 @@ import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 24: Download Invoice after purchase order', () => {
-  
   test('download invoice after purchase order', async ({ page }) => {
     const homePage = new HomePage(page);
     const cartPage = new CartPage(page);
@@ -17,7 +16,7 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     const navbar = new Navbar(page);
     const creditCardPage = new CreditCardPage(page);
     const deletionUser = new DeletionUser(page);
-    
+
     const userId = testRegistrationData.userId;
     const verifyReviewOrder = testCase24Data.verifyReviewOrder;
 
@@ -39,7 +38,9 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await navbar.clickOnNav('Cart');
     await cartPage.clickbuttonProToCheckout();
     await cartPage.assertAddressDelivery();
-    await expect(page.getByRole('row', { name: verifyReviewOrder })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyReviewOrder })
+    ).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
     await page.goBack();
@@ -47,12 +48,12 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // 18. Verify success message 'Your order has been placed successfully!'
-     // --- Fixme
+    // --- Fixme
     // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
+    //   page.getByText('Your order has been placed successfully!')])
     // expect(successMessage).toBeVisible();
-    // --- Fixme    
+    // --- Fixme
     const downloadPromise = page.waitForEvent('download');
     await page.getByRole('link', { name: 'Download Invoice' }).click();
     const download = await downloadPromise;
@@ -63,6 +64,10 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     }
     await creditCardPage.clickContinue();
     await deletionUser.clickDeleteButton();
+    // EXIT FROM GOOGLE ADS
+    await page.goBack();
+    await page.goForward();
+    // ---
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });

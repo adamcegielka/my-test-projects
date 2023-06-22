@@ -20,9 +20,9 @@ export class LoginPage {
     this.clickButton = page.getByRole('button', { name: 'Login' });
     this.logoutButton = page.getByRole('link', { name: 'Logout' });
     this.userEmailInputIncorrect = page
-    .locator('form')
-    .filter({ hasText: 'Login' })
-    .getByPlaceholder('Email Address');
+      .locator('form')
+      .filter({ hasText: 'Login' })
+      .getByPlaceholder('Email Address');
     this.userPasswordInputIncorrect = page.getByPlaceholder('Password');
   }
 

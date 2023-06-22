@@ -3,7 +3,6 @@ import { testCase17Data } from '../test-data/testCase17.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 17: Remove Products From Cart', () => {
-
   test('remove products from cart', async ({ page }) => {
     const homePage = new HomePage(page);
 

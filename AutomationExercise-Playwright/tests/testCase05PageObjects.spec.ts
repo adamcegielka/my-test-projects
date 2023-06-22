@@ -12,9 +12,9 @@ test.describe('Test Case 5: Register User with existing email', () => {
   let navbar: Navbar;
   let registerUser: RegistrationUser;
 
-   // Creation a new user before the test
+  // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);    
+    homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
     registerUser = new RegistrationUser(page);
@@ -27,7 +27,7 @@ test.describe('Test Case 5: Register User with existing email', () => {
 
   // Deletion of a user after a test
   test.afterEach(async ({ page }) => {
-    homePage = new HomePage(page);    
+    homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
     const deletionUser = new DeletionUser(page);

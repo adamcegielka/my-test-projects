@@ -9,7 +9,6 @@ import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 15: Place Order: Register before Checkout', () => {
-
   test('register before checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
@@ -43,15 +42,15 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
-    await page.goBack();      // EXIT FROM GOOGLE ADS
-    await page.goForward();   // EXIT FROM GOOGLE ADS
+    await page.goBack(); // EXIT FROM GOOGLE ADS
+    await page.goForward(); // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // 16. Verify success message 'Your order has been placed successfully!'
-     // --- Fixme
+    // --- Fixme
     // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
+    //   page.getByText('Your order has been placed successfully!')])
     // expect(successMessage).toBeVisible();
     // --- Fixme
     await deletionUser.clickDeleteButton();

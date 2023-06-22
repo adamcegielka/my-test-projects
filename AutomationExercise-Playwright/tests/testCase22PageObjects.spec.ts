@@ -3,7 +3,6 @@ import { testCase22Data } from '../test-data/testCase22.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 22: Add to cart from Recommended items', () => {
-  
   test('add to cart from recommended items', async ({ page }) => {
     const homePage = new HomePage(page);
 
@@ -13,12 +12,21 @@ test.describe('Test Case 22: Add to cart from Recommended items', () => {
     await chromium.launch();
     await homePage.navHomePage();
     await page.evaluate(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-      });
-    await expect(await page.getByRole('heading', { name: verifyRecommendedItems })).toBeVisible();    
-    await page.locator('div:nth-child(2) > .product-image-wrapper > .single-products > .productinfo > .add-to-cart').first().click();
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    await expect(
+      await page.getByRole('heading', { name: verifyRecommendedItems })
+    ).toBeVisible();
+    await page
+      .locator(
+        'div:nth-child(2) > .product-image-wrapper > .single-products > .productinfo > .add-to-cart'
+      )
+      .first()
+      .click();
     await page.getByRole('link', { name: 'View Cart' }).click();
-    await expect(page.getByRole('row', { name: verifyProductIsDisplayes })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyProductIsDisplayes })
+    ).toBeVisible();
   });
 });
 

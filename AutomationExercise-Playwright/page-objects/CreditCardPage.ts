@@ -19,7 +19,9 @@ export class CreditCardPage {
     this.cardCvv = page.getByPlaceholder('ex. 311');
     this.cardExpirationateMonth = page.getByPlaceholder('MM');
     this.cardExpirationateYear = page.getByPlaceholder('YYYY');
-    this.buttonPayOrder = page.getByRole('button', { name: 'Pay and Confirm Order' });
+    this.buttonPayOrder = page.getByRole('button', {
+      name: 'Pay and Confirm Order',
+    });
     this.verifyMessage = page.locator('.title.text-center');
     this.buttonContinue = page.getByRole('link', { name: 'Continue' });
   }
@@ -47,5 +49,5 @@ export class CreditCardPage {
 
   async messageOrderPlaced() {
     await expect(this.verifyMessage).toContainText('Order Placed!');
-  }  
+  }
 }

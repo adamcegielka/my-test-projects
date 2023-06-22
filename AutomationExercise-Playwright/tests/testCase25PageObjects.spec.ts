@@ -3,7 +3,6 @@ import { testCase25Data } from '../test-data/testCase25.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', () => {
-
   test('verify scroll up using "Arrow" button and scroll down functionality', async ({ page }) => {
     const homePage = new HomePage(page);
 
@@ -17,9 +16,11 @@ test.describe('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Do
     await scrollFooter.scrollIntoViewIfNeeded();
     await expect(page.getByText(verifySubscription)).toBeVisible();
     await page.locator('.grippy-host').click(); // HIDING ADVERTISING
-    await page.locator('#scrollUp').click();   
+    await page.locator('#scrollUp').click();
     await expect(page.locator('.logo.pull-left')).toBeInViewport();
-    await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeInViewport();
+    await expect(
+      page.getByRole('heading', { name: verifyVisibleScreen })
+    ).toBeInViewport();
   });
 });
 

@@ -42,6 +42,8 @@ export class FormPage {
   }
 
   async assertFormSent() {
-    await expect(this.verifySuccessMessage).toContainText('Success! Your details have been submitted successfully.');
+    await expect(this.verifySuccessMessage).toContainText(
+      'Success! Your details have been submitted successfully.'
+    );
   }
 }

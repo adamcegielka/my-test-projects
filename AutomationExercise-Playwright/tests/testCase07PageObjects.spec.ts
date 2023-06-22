@@ -3,7 +3,6 @@ import { testCase07Data } from '../test-data/testCase07.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 7: Verify Test Cases Page', () => {
-  
   test('verify test cases page', async ({ page }) => {
     const homePage = new HomePage(page);
 
@@ -15,7 +14,7 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
     await page.click('.btn.btn-success');
-    await page.goBack();      // EXIT FROM GOOGLE ADS
+    await page.goBack(); // EXIT FROM GOOGLE ADS
     await page.click('.btn.btn-success');
     await expect(page).toHaveURL(verifyTestCasesPage);
     await expect(page).toHaveTitle(verifyTestCasesPageTitle);

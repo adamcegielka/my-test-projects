@@ -45,7 +45,7 @@ export class Navbar {
         await this.contactUs.click();
         break;
       default:
-        throw new Error("This page does not exist.");
+        throw new Error('This page does not exist.');
     }
   }
 }

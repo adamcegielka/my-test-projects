@@ -4,7 +4,6 @@ import { HomePage } from '../page-objects/HomePage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 9: Search Product', () => {
-  
   test('search product', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
@@ -18,7 +17,7 @@ test.describe('Test Case 9: Search Product', () => {
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
     await navbar.clickOnNav('Products');
-    await page.goBack();    // EXIT FROM GOOGLE ADS
+    await page.goBack(); // EXIT FROM GOOGLE ADS
     await navbar.clickOnNav('Products');
     await expect(page.getByText(messageProducts)).toBeVisible();
     await page.type('#search_product', productName);

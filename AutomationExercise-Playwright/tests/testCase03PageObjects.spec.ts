@@ -5,7 +5,6 @@ import { LoginPage } from '../page-objects/LoginPage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
-
   test('login user with incorrect email and password', async ({ page }) => {
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
@@ -13,7 +12,7 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
 
     const verifyLoginToAccount = testCase03Data.verifyLoginToAccount;
     const verifyErrorMessage = testCase03Data.verifyErrorMessage;
-    
+
     await chromium.launch();
     await homePage.navHomePage();
     await homePage.verifyHomePage();
@@ -23,7 +22,7 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
     await loginPage.loginIncorrect();
     await expect(page.getByText(verifyErrorMessage)).toBeVisible();
     await page.close();
-  });  
+  });
 });
 
 /*

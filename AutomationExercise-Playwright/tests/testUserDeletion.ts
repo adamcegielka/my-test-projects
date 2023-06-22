@@ -14,4 +14,4 @@ export async function userDeletion(page) {
   await page.click('.btn.btn-primary');
 
   await page.close();
-};
+}

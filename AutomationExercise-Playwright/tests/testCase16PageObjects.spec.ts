@@ -16,7 +16,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
 
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);    
+    homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
     const registerUser = new RegistrationUser(page);
@@ -40,7 +40,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     const urlCart = testCase16Data.urlCart;
     const verifyOrder = testCase16Data.verifyOrder;
     const verifyShoppingCart = testCase16Data.verifyShoppingCart;
-    
+
     await chromium.launch();
     await homePage.navHomePage();
     await homePage.verifyHomePage();
@@ -54,19 +54,19 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     await expect(page).toHaveURL(urlCart);
     await expect(page.getByText(verifyShoppingCart)).toBeVisible();
     await cartPage.clickbuttonProToCheckout();
-    await cartPage.assertAddressDelivery
+    await cartPage.assertAddressDelivery;
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
-    await page.goBack();      // EXIT FROM GOOGLE ADS
-    await page.goForward();   // EXIT FROM GOOGLE ADS
+    await page.goBack(); // EXIT FROM GOOGLE ADS
+    await page.goForward(); // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // 15. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
     // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
+    //   page.getByText('Your order has been placed successfully!')])
     // expect(successMessage).toBeVisible();
     // --- Fixme
     await deletionUser.clickDeleteButton();

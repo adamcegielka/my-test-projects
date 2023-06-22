@@ -46,4 +46,4 @@ export async function registerUser(page) {
   await registrationPage.createAccountButton.click();  
   await page.getByRole('link', { name: 'Continue' }).click();
   await page.getByRole('link', { name: 'Logout' }).click();
-};
+}

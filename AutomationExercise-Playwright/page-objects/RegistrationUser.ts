@@ -32,7 +32,10 @@ export class RegistrationUser {
     this.page = page;
     this.userID = page.getByPlaceholder('Name');
     this.userIdNew = page.getByPlaceholder('Name');
-    this.userEmail = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address');
+    this.userEmail = page
+      .locator('form')
+      .filter({ hasText: 'Signup' })
+      .getByPlaceholder('Email Address');
     this.signupButton = page.getByRole('button', { name: 'Signup' });
     // details
     this.courtesyPhrase = page.locator('#uniform-id_gender1');
@@ -41,17 +44,23 @@ export class RegistrationUser {
     this.birtMonth = page.locator('#months');
     this.birtYear = page.locator('#years');
     this.checkboxNewsletter = page.getByLabel('Sign up for our newsletter!');
-    this.checkboxOffers = page.getByLabel('Receive special offers from our partners!');
+    this.checkboxOffers = page.getByLabel(
+      'Receive special offers from our partners!'
+    );
     this.firstName = page.getByLabel('First name *');
     this.lastName = page.getByLabel('Last name *');
     this.companyName = page.getByLabel('Company', { exact: true });
-    this.address1 = page.getByLabel('Address * (Street address, P.O. Box, Company name, etc.)');
+    this.address1 = page.getByLabel(
+      'Address * (Street address, P.O. Box, Company name, etc.)'
+    );
     this.country = page.getByRole('combobox', { name: 'Country *' });
     this.state = page.getByLabel('State *');
     this.city = page.getByLabel('City *');
     this.zipCode = page.locator('#zipcode');
     this.mobileNumber = page.getByLabel('Mobile Number *');
-    this.createAccountButton = page.getByRole('button', { name: 'Create Account' });
+    this.createAccountButton = page.getByRole('button', {
+      name: 'Create Account',
+    });
     this.continueButton = page.getByRole('link', { name: 'Continue' });
     this.verifyMessage = page.locator('.title.text-center');
   }
@@ -86,7 +95,7 @@ export class RegistrationUser {
     const firstName = testRegistrationData.firstName;
     const lastName = testRegistrationData.lastName;
     const companyName = testRegistrationData.companyName;
-    const address1 = testRegistrationData.address1; 
+    const address1 = testRegistrationData.address1;
     const country = testRegistrationData.country;
     const state = testRegistrationData.state;
     const city = testRegistrationData.city;
@@ -115,7 +124,7 @@ export class RegistrationUser {
     await this.continueButton.click();
   }
 
-  async registerNewUser() {    
+  async registerNewUser() {
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
     const userPassword = testRegistrationData.userPassword;
@@ -125,7 +134,7 @@ export class RegistrationUser {
     const firstName = testRegistrationData.firstName;
     const lastName = testRegistrationData.lastName;
     const companyName = testRegistrationData.companyName;
-    const address1 = testRegistrationData.address1; 
+    const address1 = testRegistrationData.address1;
     const country = testRegistrationData.country;
     const state = testRegistrationData.state;
     const city = testRegistrationData.city;

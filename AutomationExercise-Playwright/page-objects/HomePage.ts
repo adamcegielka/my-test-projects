@@ -24,6 +24,8 @@ export class HomePage {
   }
 
   async verifyUrlCart() {
-    await expect(this.page).toHaveURL('https://automationexercise.com/view_cart');
+    await expect(this.page).toHaveURL(
+      'https://automationexercise.com/view_cart'
+    );
   }
 }

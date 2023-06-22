@@ -4,11 +4,10 @@ import { HomePage } from '../page-objects/HomePage';
 import { Sidebar } from '../page-objects/components/Sidebar';
 
 test.describe('Test Case 18: View Category Products', () => {
-
   test('view category products', async ({ page }) => {
     const homePage = new HomePage(page);
     const sidebar = new Sidebar(page);
-    
+
     const verifyCategories = testCase18Data.verifyCaregories;
     const verifyCategoryWomen = testCase18Data.verifyCategoryWomen;
     const verifyCategoryMen = testCase18Data.verifyCategoryMen;
@@ -18,12 +17,16 @@ test.describe('Test Case 18: View Category Products', () => {
     await expect(page.getByText(verifyCategories)).toBeVisible();
     await sidebar.categoryWomen();
     await sidebar.categoryWomenTops();
-    await page.goBack();      // EXIT FROM GOOGLE ADS
-    await page.goForward();   // EXIT FROM GOOGLE ADS
-    await expect(page.getByRole('heading', { name: verifyCategoryWomen })).toBeVisible();
+    await page.goBack(); // EXIT FROM GOOGLE ADS
+    await page.goForward(); // EXIT FROM GOOGLE ADS
+    await expect(
+      page.getByRole('heading', { name: verifyCategoryWomen })
+    ).toBeVisible();
     await sidebar.categoryMen();
     await sidebar.categoryMenJeans();
-    await expect(page.getByRole('heading', { name: verifyCategoryMen })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyCategoryMen })
+    ).toBeVisible();
   });
 });
 

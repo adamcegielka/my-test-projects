@@ -6,7 +6,6 @@ import { RegistrationUser } from '../page-objects/RegistrationUser';
 import { LoginPage } from '../page-objects/LoginPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
-
 test.describe('Test Case 20: Search Products and Verify Cart After Login', () => {
   let homePage: HomePage;
   let navbar: Navbar;
@@ -43,7 +42,7 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     homePage = new HomePage(page);
     navbar = new Navbar(page);
     loginPage = new LoginPage(page);
-    
+
     const searchProduct = testCase20Data.searchProduct;
     const verifyProducts = testCase20Data.verifyProducts;
     const verifyProductsAll = testCase20Data.verifyProductsAll;
@@ -54,22 +53,30 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await chromium.launch();
     await homePage.navHomePage();
     await navbar.clickOnNav('Products');
-    await page.goBack();      // EXIT FROM GOOGLE ADS
-    await page.goForward();   // EXIT FROM GOOGLE ADS
-    await expect(page.getByRole('heading', { name: verifyProducts })).toBeVisible();
+    await page.goBack(); // EXIT FROM GOOGLE ADS
+    await page.goForward(); // EXIT FROM GOOGLE ADS
+    await expect(
+      page.getByRole('heading', { name: verifyProducts })
+    ).toBeVisible();
     await expect(page.getByText(verifyProductsAll)).toBeVisible();
     await page.type('#search_product', searchProduct);
     await page.click('#submit_search');
-    await expect(page.getByRole('heading', { name: verifyProductsSearched })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyProductsSearched })
+    ).toBeVisible();
     await expect(page.getByText(verifyProductsSearchedAll)).toBeVisible();
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
     await blueTop.click();
     await page.getByRole('link', { name: 'View Cart' }).click();
-    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyProductsInCart })
+    ).toBeVisible();
     await navbar.clickOnNav('Signup / Login');
     await loginPage.login();
     await navbar.clickOnNav('Cart');
-    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyProductsInCart })
+    ).toBeVisible();
     await loginPage.logout();
   });
 });
