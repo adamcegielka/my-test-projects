@@ -12,6 +12,7 @@
 :small_orange_diamond: start-up on Trace Viewe: `npx playwright show-trace trace.zip`  
 :small_orange_diamond: open up Trace Viewe: `npx playwright test --trace on`  
 :small_orange_diamond: open up UI mode: `npx playwright test --ui`  
+:small_orange_diamond: reporters: [more](https://playwright.dev/docs/test-reporters)  
 :small_orange_diamond: Commands line [Playwright.dev](https://playwright.dev/docs/test-cli)  
 
 ## Updating Playwright
