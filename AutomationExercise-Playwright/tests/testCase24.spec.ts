@@ -6,7 +6,6 @@ import { RegistrationPage } from '../pages/registration.page';
 import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 24: Download Invoice after purchase order', () => {
-  
   test('download invoice after purchase order', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
@@ -30,7 +29,7 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     const cardCvv = testPaymentByCarsData.cardCvv;
     const cardExpirationateMonth = testPaymentByCarsData.cardExpirationateMonth;
     const cardExpirationateYear = testPaymentByCarsData.cardExpirationateYear;
-    // testCase24Data    
+    // testCase24Data
     const verifyHomePage = testCase24Data.verifyHomePage;
     const urlCart = testCase24Data.urlCart;
     const verifyShoppingCart = testCase24Data.verifyShoppingCart;
@@ -70,26 +69,26 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await page.getByRole('link', { name: 'Register / Login' }).click();
 
     // 9. Fill all details in Signup and create account
-     // POM - Page Object Model
-     const registrationPage = new RegistrationPage(page)
-     await registrationPage.userId.fill(userId);
-     await registrationPage.userEmail.fill(userEmail);
-     await registrationPage.signupButton.click();
-     await registrationPage.courtesyPhrase.check();
-     await registrationPage.userPassword.fill(userPassword);
-     await registrationPage.birthDay.selectOption(birthDay);
-     await registrationPage.birthMonth.selectOption(birthMonth);
-     await registrationPage.birthYear.selectOption(birthYear);
-     await registrationPage.firstName.fill(firstName);
-     await registrationPage.lastName.fill(lastName);
-     await registrationPage.companyName.fill(companyName);
-     await registrationPage.address1.fill(address1);
-     await registrationPage.country.selectOption(country);
-     await registrationPage.state.fill(state);
-     await registrationPage.city.fill(city);
-     await registrationPage.zipCode.fill(zipCode);
-     await registrationPage.mobileNumber.fill(mobileNumber);
-     await registrationPage.createAccountButton.click();
+    // POM - Page Object Model
+    const registrationPage = new RegistrationPage(page);
+    await registrationPage.userId.fill(userId);
+    await registrationPage.userEmail.fill(userEmail);
+    await registrationPage.signupButton.click();
+    await registrationPage.courtesyPhrase.check();
+    await registrationPage.userPassword.fill(userPassword);
+    await registrationPage.birthDay.selectOption(birthDay);
+    await registrationPage.birthMonth.selectOption(birthMonth);
+    await registrationPage.birthYear.selectOption(birthYear);
+    await registrationPage.firstName.fill(firstName);
+    await registrationPage.lastName.fill(lastName);
+    await registrationPage.companyName.fill(companyName);
+    await registrationPage.address1.fill(address1);
+    await registrationPage.country.selectOption(country);
+    await registrationPage.state.fill(state);
+    await registrationPage.city.fill(city);
+    await registrationPage.zipCode.fill(zipCode);
+    await registrationPage.mobileNumber.fill(mobileNumber);
+    await registrationPage.createAccountButton.click();
 
     // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
     await expect(page.getByText(verifyAccountCreated)).toBeVisible();
@@ -100,19 +99,33 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 
     // 12.Click 'Cart' button
     await page.getByRole('link', { name: 'Cart' }).click();
-    
+
     // 13. Click 'Proceed To Checkout' button
     await page.getByText('Proceed To Checkout').click();
 
     // 14. Verify Address Details and Review Your Order
-    await expect(page.getByText(verifyDeliveryAddress)).toBeVisible();  
-    await expect(page.locator('#address_delivery').getByText(verifyNameSurname)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(companyName)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(address1)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(verifyCountryCityZip)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(country)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(mobileNumber)).toBeVisible();
-    await expect(page.getByRole('row', { name: verifyReviewOrder })).toBeVisible();
+    await expect(page.getByText(verifyDeliveryAddress)).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(verifyNameSurname)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(companyName)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(address1)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(verifyCountryCityZip)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(country)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(mobileNumber)
+    ).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyReviewOrder })
+    ).toBeVisible();
 
     // 15. Enter description in comment text area and click 'Place Order'
     await page.locator('textarea[name="message"]').fill(messageText);
@@ -139,7 +152,7 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     // --- Fixme
     // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
+    //   page.getByText('Your order has been placed successfully!')])
     // expect(successMessage).toBeVisible();
     // --- Fixme
 

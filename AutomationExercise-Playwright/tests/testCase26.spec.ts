@@ -2,7 +2,6 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase26Data } from '../test-data/testCase26.data';
 
 test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll Down functionality', () => {
-  
   test('verify scroll up without "Arrow" button and scroll down functionality', async ({ page }) => {
     const verifyHomePage = testCase26Data.verifyHomePage;
     const verifySubscription = testCase26Data.verifySubscription;
@@ -26,17 +25,19 @@ test.describe('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll 
     await expect(page.getByText(verifySubscription)).toBeVisible();
 
     // 6. Scroll up page to top
-    // await page.mouse.wheel(0, -100000000)    
+    // await page.mouse.wheel(0, -100000000)
     await page.evaluate(() => {
       window.scrollTo(0, 0);
-    });    
+    });
 
     // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
     const isScrolledUp = await page.evaluate(() => {
       return window.scrollY === 0;
     });
     expect(isScrolledUp).toBe(true);
-    await expect(page.getByRole('heading', { name: verifyVisibleScreen })).toBeInViewport();
+    await expect(
+      page.getByRole('heading', { name: verifyVisibleScreen })
+    ).toBeInViewport();
   });
 });
 

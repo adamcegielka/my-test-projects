@@ -2,7 +2,6 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase11Data } from '../test-data/testCase11.data';
 
 test.describe('Test Case 11: Verify Subscription in Cart page', () => {
-  
   test('verify subscription in cart page', async ({ page }) => {
     const subscription = testCase11Data.subscription;
     const emailSubscription = testCase11Data.emailSubscription;
@@ -20,16 +19,15 @@ test.describe('Test Case 11: Verify Subscription in Cart page', () => {
     await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click 'Cart' button
-      // await page.getByRole('link', { name: 'Cart' }).click();
-      // or:
+    // await page.getByRole('link', { name: 'Cart' }).click();
+    // or:
     await page.click('.fa.fa-shopping-cart');
 
     // 5. Scroll down to footer
     await page.evaluate(() => {
-        const footerElement = document.querySelector('footer');
-        if (footerElement)
-          footerElement.scrollIntoView();
-      });
+      const footerElement = document.querySelector('footer');
+      if (footerElement) footerElement.scrollIntoView();
+    });
 
     // 6. Verify text 'SUBSCRIPTION'
     const verifyText = await page.locator('.single-widget');

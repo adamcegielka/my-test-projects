@@ -14,7 +14,7 @@ test.describe('Test Case 2: login User with correct email and password', () => {
 
   // Creation a new user before the test
   test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);    
+    homePage = new HomePage(page);
     loginPage = new LoginPage(page);
     navbar = new Navbar(page);
     const registerUser = new RegistrationUser(page);
@@ -46,6 +46,10 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     await loginPage.login();
     await expect(page.getByText(`Logged in as ${userId}`)).toBeVisible();
     await deletionUser.clickDeleteButton();
+    // EXIT FROM GOOGLE ADS
+    await page.goBack();
+    await page.goForward();
+    // ---
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });

@@ -44,7 +44,9 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.goForward();
 
     // 4. Verify user is navigated to ALL PRODUCTS page successfully
-    await expect(page.getByRole('heading', { name: verifyProducts })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyProducts })
+    ).toBeVisible();
     await expect(page.getByText(verifyProductsAll)).toBeVisible();
 
     // 5. Enter product name in search input and click search button
@@ -55,7 +57,9 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.click('#submit_search');
 
     // 6. Verify 'SEARCHED PRODUCTS' is visible
-    await expect(page.getByRole('heading', { name: verifyProductsSearched })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyProductsSearched })
+    ).toBeVisible();
 
     // 7. Verify all the products related to search are visible
     await expect(page.getByText(verifyProductsSearchedAll)).toBeVisible();
@@ -66,7 +70,9 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
 
     // 9. Click 'Cart' button and verify that products are visible in cart
     await page.getByRole('link', { name: 'View Cart' }).click();
-    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyProductsInCart })
+    ).toBeVisible();
 
     // 10. Click 'Signup / Login' button and submit login details
     // POM - Page Object Model
@@ -80,7 +86,9 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     await page.getByRole('link', { name: 'Cart' }).click();
 
     // 12. Verify that those products are visible in cart after login as well
-    await expect(page.getByRole('row', { name: verifyProductsInCart })).toBeVisible();
+    await expect(
+      page.getByRole('row', { name: verifyProductsInCart })
+    ).toBeVisible();
 
     // Logout
     await page.getByRole('link', { name: 'Logout' }).click();

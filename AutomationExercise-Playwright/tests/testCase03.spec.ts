@@ -3,7 +3,6 @@ import { testCase03Data } from '../test-data/testCase03.data';
 import { LoginIncorrectPage } from '../pages/loginIncorrect.page';
 
 test.describe('Test Case 3: Login User with incorrect email and password', () => {
-
   test('login user with incorrect email and password', async ({ page }) => {
     const incorrectUserEmail = testCase03Data.incorrectUserEmail;
     const incorrectUserPassword = testCase03Data.incorrectUserPassword;
@@ -12,7 +11,7 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
     const verifyLoginToAccount = testCase03Data.verifyLoginToAccount;
     const verifyErrorMessage = testCase03Data.verifyErrorMessage;
 
-    // 1. Launch browser    
+    // 1. Launch browser
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
@@ -20,7 +19,7 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
 
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveURL('/');
-    await expect(page).toHaveTitle(verifyHomePage); 
+    await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click on 'Signup / Login' button
     await page.getByRole('link', { name: 'Signup / Login' }).click();
@@ -42,5 +41,5 @@ test.describe('Test Case 3: Login User with incorrect email and password', () =>
 
     // CLOSE BROWSER
     await page.close();
-  });  
+  });
 });

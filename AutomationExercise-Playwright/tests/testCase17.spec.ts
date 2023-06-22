@@ -2,7 +2,6 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase17Data } from '../test-data/testCase17.data';
 
 test.describe('Test Case 17: Remove Products From Cart', () => {
-
   test('remove products from cart', async ({ page }) => {
     const verifyHomePage = testCase17Data.verifyHomePage;
     const urlCart = testCase17Data.urlCart;
@@ -19,14 +18,14 @@ test.describe('Test Case 17: Remove Products From Cart', () => {
     await expect(page).toHaveURL('/');
     await expect(page).toHaveTitle(verifyHomePage);
 
-    // 4. Add products to cart    
+    // 4. Add products to cart
     const winterTop = await page.waitForSelector('[data-product-id="5"]');
     await winterTop.click();
 
     // 5. Click 'Cart' button
     await page.getByRole('link', { name: 'View Cart' }).click();
 
-    // 6. Verify that cart page is displayed    
+    // 6. Verify that cart page is displayed
     await expect(page).toHaveURL(urlCart);
     await expect(page.getByText(verifyShoppingCart)).toBeVisible();
 

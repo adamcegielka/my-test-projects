@@ -8,23 +8,22 @@ import { CartPage } from '../page-objects/CartPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 23: Verify address details in checkout page', () => {
-  
   test('verify address details in checkout page', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
     const cartPage = new CartPage(page);
     const deletionUser = new DeletionUser(page);
-    
-    const userId = testRegistrationData.userId;       
+
+    const userId = testRegistrationData.userId;
     const urlCart = testCase23Data.urlCart;
     const verifyShoppingCart = testCase23Data.verifyShoppingCart;
-    
+
     await chromium.launch();
     await homePage.navHomePage();
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
-    await navbar.clickOnNav('Signup / Login')
+    await navbar.clickOnNav('Signup / Login');
     await registrationUset.enterNameEmail();
     await registrationUset.createAccount();
     await registrationUset.messageAccountCreated();
@@ -39,6 +38,10 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     await cartPage.assertAddressDelivery();
     await cartPage.assertAddressBillingy();
     await deletionUser.clickDeleteButton();
+    // EXIT FROM GOOGLE ADS
+    await page.goBack();
+    await page.goForward();
+    // ---
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });

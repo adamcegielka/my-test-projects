@@ -6,7 +6,6 @@ import { RegistrationPage } from '../pages/registration.page';
 import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 15: Place Order: Register before Checkout', () => {
-
   test('register before checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
@@ -56,7 +55,7 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
 
     // 5. Fill all details in Signup and create account
     // POM - Page Object Model
-    const registrationPage = new RegistrationPage(page)
+    const registrationPage = new RegistrationPage(page);
     await registrationPage.userId.fill(userId);
     await registrationPage.userEmail.fill(userEmail);
     await registrationPage.signupButton.click();
@@ -97,13 +96,25 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     // 11. Click Proceed To Checkout
     await page.getByText('Proceed To Checkout').click();
 
-    // 12. Verify Address Details and Review Your Order 
-    await expect(page.locator('#address_delivery').getByText(verifynameSurname)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(companyName)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(address1)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(verifyCountryCityZip)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(country)).toBeVisible();
-    await expect(page.locator('#address_delivery').getByText(mobileNumber)).toBeVisible();    
+    // 12. Verify Address Details and Review Your Order
+    await expect(
+      page.locator('#address_delivery').getByText(verifynameSurname)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(companyName)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(address1)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(verifyCountryCityZip)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(country)
+    ).toBeVisible();
+    await expect(
+      page.locator('#address_delivery').getByText(mobileNumber)
+    ).toBeVisible();
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
 
     // 13. Enter description in comment text area and click 'Place Order'
@@ -115,7 +126,7 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     await page.goBack();
     await page.goForward();
 
-    // 14. Enter payment details: Name on Card, Card Number, CVC, Expiration date   
+    // 14. Enter payment details: Name on Card, Card Number, CVC, Expiration date
     // POM - Page Object Model
     const creditCardPage = new CreditCardPage(page);
     await creditCardPage.cardVendor.fill(cardVendor);
@@ -125,16 +136,16 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     await creditCardPage.cardExpirationateYear.fill(cardExpirationateYear);
 
     // 15. Click 'Pay and Confirm Order' button
-     await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
+    await page.getByRole('button', { name: 'Pay and Confirm Order' }).click();
 
     // 16. Verify success message 'Your order has been placed successfully!'
     // --- Fixme
     // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
-    // expect(successMessage).toBeVisible(); 
+    //   page.getByText('Your order has been placed successfully!')])
+    // expect(successMessage).toBeVisible();
     // --- Fixme
-    
+
     // 17. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
 

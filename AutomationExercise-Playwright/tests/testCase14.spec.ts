@@ -6,7 +6,6 @@ import { RegistrationPage } from '../pages/registration.page';
 import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
-
   test('register while checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
@@ -70,7 +69,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 
     // 9. Fill all details in Signup and create account
     // POM - Page Object Model
-    const registrationPage = new RegistrationPage(page)
+    const registrationPage = new RegistrationPage(page);
     await registrationPage.userId.fill(userId);
     await registrationPage.userEmail.fill(userEmail);
     await registrationPage.signupButton.click();
@@ -104,7 +103,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.getByText('Proceed To Checkout').click();
 
     // 14. Verify Address Details and Review Your Order
-    await expect(page.getByText(verifyAddress)).toBeVisible();    
+    await expect(page.getByText(verifyAddress)).toBeVisible();
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
 
     // 15. Enter description in comment text area and click 'Place Order'
@@ -132,7 +131,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     // --- Fixme
     // const [_, successMessage] = await Promise.all([
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
-    //   page.getByText('Your order has been placed successfully!')])         
+    //   page.getByText('Your order has been placed successfully!')])
     // expect(successMessage).toBeVisible();
     // ---------
     // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
@@ -147,7 +146,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     //   const successMessage = document.querySelector('#success_message');
     //   return successMessage?.textContent?.trim() ?? '';
     // });
-    // expect(successMessageText).toBe('Your order has been placed successfully!');    
+    // expect(successMessageText).toBe('Your order has been placed successfully!');
     // ---------
     // await page.waitForTimeout(2000);
     // const successMessage = await page.getByText('Your order has been placed successfully!');
@@ -166,7 +165,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     // await successMessageLocator.waitFor();
     // const successMessage = await successMessageLocator.textContent();
     // expect(successMessage).toContain('Your order has been placed successfully!');
-    // --- Fixme 
+    // --- Fixme
 
     // 19. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();

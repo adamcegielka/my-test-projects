@@ -2,7 +2,6 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase18Data } from '../test-data/testCase18.data';
 
 test.describe('Test Case 18: View Category Products', () => {
-
   test('view category products', async ({ page }) => {
     const verifyCategories = testCase18Data.verifyCaregories;
     const verifyCategoryWomen = testCase18Data.verifyCategoryWomen;
@@ -18,13 +17,13 @@ test.describe('Test Case 18: View Category Products', () => {
     await expect(page.getByText(verifyCategories)).toBeVisible();
 
     // 4. Click on 'Women' category
-      // await page.getByRole('link', { name: ' Women' }).click();
-      // or:
+    // await page.getByRole('link', { name: ' Women' }).click();
+    // or:
     await page.click('text=Women');
 
     // 5. Click on any category link under 'Women' category, for example: Dress
-      // await page.getByRole('link', { name: 'Tops' }).click();
-      // or:
+    // await page.getByRole('link', { name: 'Tops' }).click();
+    // or:
     await page.click('text=Tops');
 
     // EXIT FROM GOOGLE ADS
@@ -33,13 +32,17 @@ test.describe('Test Case 18: View Category Products', () => {
     await page.goForward();
 
     // 6. Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
-    await expect(page.getByRole('heading', { name: verifyCategoryWomen })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyCategoryWomen })
+    ).toBeVisible();
 
     // 7. On left side bar, click on any sub-category link of 'Men' category
-      await page.getByRole('link', { name: ' Men' }).click();
-      await page.getByRole('link', { name: 'Jeans' }).click();
+    await page.getByRole('link', { name: ' Men' }).click();
+    await page.getByRole('link', { name: 'Jeans' }).click();
 
     // 8. Verify that user is navigated to that category page
-    await expect(page.getByRole('heading', { name: verifyCategoryMen })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyCategoryMen })
+    ).toBeVisible();
   });
 });

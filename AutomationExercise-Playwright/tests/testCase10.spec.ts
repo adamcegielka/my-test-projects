@@ -2,7 +2,6 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase10Data } from '../test-data/testCase10.data';
 
 test.describe('Test Case 10: Verify Subscription in home page', () => {
-  
   test('verify subscription in home page', async ({ page }) => {
     const subscription = testCase10Data.subscription;
     const emailSubscription = testCase10Data.emailSubscription;
@@ -21,21 +20,20 @@ test.describe('Test Case 10: Verify Subscription in home page', () => {
 
     // 4. Scroll down to footer
     await page.evaluate(() => {
-        const footerElement = document.querySelector('footer');
-        if (footerElement)
-          footerElement.scrollIntoView();
-      });
+      const footerElement = document.querySelector('footer');
+      if (footerElement) footerElement.scrollIntoView();
+    });
 
     // 5. Verify text 'SUBSCRIPTION'
     await page.getByText(subscription).click();
-      // or:
+    // or:
     const verifyText = await page.locator('.single-widget');
     await expect(verifyText).toContainText(subscription);
 
     // 6. Enter email address in input and click arrow button
-      // await page.getByPlaceholder('Your email address').fill(emailSubscription);
-      // await page.getByRole('button', { name: '' }).click();
-      // or:
+    // await page.getByPlaceholder('Your email address').fill(emailSubscription);
+    // await page.getByRole('button', { name: '' }).click();
+    // or:
     await page.type('#susbscribe_email', emailSubscription);
     await page.click('#subscribe');
 

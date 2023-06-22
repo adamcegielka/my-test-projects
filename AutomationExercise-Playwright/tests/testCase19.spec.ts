@@ -30,14 +30,18 @@ test.describe('Test Case 19: View & Cart Brand Products', () => {
     await page.getByRole('link', { name: '(6) Polo' }).click();
 
     // 6. Verify that user is navigated to brand page and brand products are displayed
-    await expect(page.getByRole('heading', { name: verifyBrandPoloProducts })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyBrandPoloProducts })
+    ).toBeVisible();
     await expect(page.getByText(verifyBrandPoloProductsAll)).toBeVisible();
 
     // 7. On left side bar, click on any other brand link
     await page.getByRole('link', { name: '(4) Babyhug' }).click();
 
     // 8. Verify that user is navigated to that brand page and can see products
-    await expect(page.getByRole('heading', { name: verifyBrandBabyhugProducts })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: verifyBrandBabyhugProducts })
+    ).toBeVisible();
     await expect(page.getByText(verifyBrandBabyhugProductsAll)).toBeVisible();
   });
 });

@@ -4,7 +4,6 @@ import { testRegistrationData } from '../test-data/testRegistration.data';
 import { RegistrationPage } from '../pages/registration.page';
 
 test.describe('Test Case 1: Register User', () => {
-
   test('register user', async ({ page }) => {
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -15,7 +14,7 @@ test.describe('Test Case 1: Register User', () => {
     const firstName = testRegistrationData.firstName;
     const lastName = testRegistrationData.lastName;
     const companyName = testRegistrationData.companyName;
-    const address1 = testRegistrationData.address1; 
+    const address1 = testRegistrationData.address1;
     const country = testRegistrationData.country;
     const state = testRegistrationData.state;
     const city = testRegistrationData.city;
@@ -28,7 +27,7 @@ test.describe('Test Case 1: Register User', () => {
     const verifAccountCreated = testCase01Data.verifAccountCreated;
     const verifAccountDeleted = testCase01Data.verifAccountDeleted;
 
-    // 1. Launch browser    
+    // 1. Launch browser
     await chromium.launch();
 
     // 2. Navigate to url 'http://automationexercise.com'
@@ -46,7 +45,7 @@ test.describe('Test Case 1: Register User', () => {
 
     // 6. Enter name and email address
     // POM - Page Object Model
-    const registrationPage = new RegistrationPage(page)
+    const registrationPage = new RegistrationPage(page);
 
     await registrationPage.userId.fill(userId);
     await registrationPage.userEmail.fill(userEmail);

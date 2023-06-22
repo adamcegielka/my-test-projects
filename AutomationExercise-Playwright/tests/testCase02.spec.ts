@@ -50,6 +50,10 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     // 9. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
 
+    // EXIT FROM GOOGLE ADS
+    await page.goBack();
+    await page.goForward();
+
     // 10. Verify that 'ACCOUNT DELETED!' is visible
     await expect(page.getByText(verifyAccountDeleted)).toBeVisible();
     await page.getByRole('link', { name: 'Continue' }).click();
