@@ -1,4 +1,4 @@
-# Tips helpful
+# Ad blocking
 
 ## Playwright Adblocker [more](https://www.npmjs.com/package/@cliqz/adblocker-playwright)
 
