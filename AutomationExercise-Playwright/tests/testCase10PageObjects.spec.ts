@@ -3,7 +3,7 @@ import { testCase10Data } from '../test-data/testCase10.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 10: Verify Subscription in home page', () => {
-  test('verify subscription in home page', async ({ page }) => {
+  test('TC10 POM verify subscription in home page', async ({ page }) => {
     const homePage = new HomePage(page);
 
     const subscription = testCase10Data.subscription;

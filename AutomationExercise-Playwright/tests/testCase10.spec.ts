@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase10Data } from '../test-data/testCase10.data';
 
 test.describe('Test Case 10: Verify Subscription in home page', () => {
-  test('verify subscription in home page', async ({ page }) => {
+  test('TC10 verify subscription in home page', async ({ page }) => {
     const subscription = testCase10Data.subscription;
     const emailSubscription = testCase10Data.emailSubscription;
     const messageSubscription = testCase10Data.messageSubscription;
