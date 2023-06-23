@@ -16,7 +16,7 @@ The objective of my testing project is to create automated tests for the [Automa
 
 ## Scope of the test project
 
-The test project involves running automated tests using a ready-made test [Scenario](https://automationexercise.com/test_cases?fbclid=IwAR2ouXOIt6YlG3ew40mb-bogyiXDe8BTQQNfagn0q8EEI6JYdnE6EhHrqjU)  and  [API testing](https://automationexercise.com/api_list) in Automation.
+The test project includes the running of automated tests using ready-made [Test Cases](https://automationexercise.com/test_cases) and [API testing](https://automationexercise.com/api_list) in Automation.
 ### TEST CASES:
 - Test Case 1: Register User
 - Test Case 2: Login User with correct email and password
@@ -66,10 +66,48 @@ The test project involves running automated tests using a ready-made test [Scena
 I use [VSCode](https://code.visualstudio.com/) to create the automated tests and [Playwright](https://playwright.dev/) to run them with language [TypeScript](https://www.typescriptlang.org/).
 
 ## Test results
-I will describe the results of the tests once all the tests have been completed
+- Test results based on the available Test Cases are available in the folder [test-reports](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/test-reports)
+- API test results are not available due to numerous errors during API testing based on the available scenario.
 
 ## Conclusions
-I will describe a summary of the entire project once all the tests have been completed
+Having completed the tests on the basis of the available [Test Cases](https://automationexercise.com/test_cases) and analyzed the results, here are some conclusions about the project as a whole::
+- All tests were successful, as confirmed by [test-reports](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/test-reports).
+- There is one assertion that was not resolved in the tests: [Test Case 14]() / [Test Case 15]() / [Test Case 16]() / [Test Case 24]() Attempts to resolve this assertion are available in [tips-upload-file.md](https://github.com/adamcegielka/my-test-projects/blob/main/AutomationExercise-Playwright/tips/tips-upload-file.md)
+- Test performance was satisfactory and system responses were received in an acceptable time.
+- When testing the app, I had the most problems with a google ad appearing, which caused an error during testing. When I solved this problem using the `page.goBack()` and `page.goForward()` :smiley: method, which worked when running a single test, however, I found that when running all tests the adverts appeared in some tests in other places. 
+After digging deeper, I found a method that I eventually used in my tests to solve the google ads problem:  
+```JavaScript
+await page.route("**/*", route => {
+    route.request().url().startsWith("https://googleads.") ?
+    route.abort() : route.continue();
+    return;
+});
+```
+- I used **POM** in my tests, which was used in a small way in the [tests](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/tests), and then I decided to practice using POM in a larger way which you will find in the [tests page-objects](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/tests%20page-objects) folder.
+- In the project I also used [ESLint](https://eslint.org/docs/latest/) for static code analysis and [Prettier](https://prettier.io/docs/en/index.html) for code formatting.
+
+<br>
+
+However, [API testing](https://automationexercise.com/api_list) based on the available API Testing documentation failed. During testing, I encountered numerous errors that I could not resolve. The reason for this may be the insufficient knowledge I currently have in API testing and application errors.  
+For example, already when testing [API 2: POST To All Products List](https://github.com/adamcegielka/my-test-projects/blob/main/AutomationExercise-Playwright/tests-api/testApi02.spec.ts) I had a problem with `Response Code: 405` because using the  
+```JavaScript
+expect(response.status()).toBe(405);
+```  
+method I was getting an error response:
+```JavaScript
+Error: expect(received).toBe(expected)
+Expected: 405
+Received: 200
+```
+After numerous attempts to find and solve the problem by also testing in [Postman](https://www.postman.com/), I decided to give up further testing of this API. Perhaps I will return to this topic after gaining more knowledge in API testing.
+
+<br>
+
+In conclusion, this project on automated testing at Playwright was my first, and it brought me a lot of valuable experience and knowledge. I successfully ran tests, solved various problems encountered during application testing, and gained skills in using the POM pattern. Although API testing proved more difficult, it is an area where I intend to continue learning. I am proud of the results I have achieved and am ready to continue to grow in the field of automated testing.
+
+<br>
+
+### Thanks a lot to **Krzysiek** from [jaktestowac.pl](https://jaktestowac.pl/) for providing valuable advice.
 
 <br>
 
