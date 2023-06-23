@@ -38,7 +38,7 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
   });
 
   // Test Case 20: Search Products and Verify Cart After Login
-  test('search products and verify cart after login', async ({ page }) => {
+  test('TC20 POM search products and verify cart after login', async ({ page }) => {
     homePage = new HomePage(page);
     navbar = new Navbar(page);
     loginPage = new LoginPage(page);
@@ -50,11 +50,17 @@ test.describe('Test Case 20: Search Products and Verify Cart After Login', () =>
     const verifyProductsSearchedAll = testCase20Data.verifyProductsSearchedAll;
     const verifyProductsInCart = testCase20Data.verifyProductsInCart;
 
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
+
     await chromium.launch();
     await homePage.navHomePage();
     await navbar.clickOnNav('Products');
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await expect(
       page.getByRole('heading', { name: verifyProducts })
     ).toBeVisible();

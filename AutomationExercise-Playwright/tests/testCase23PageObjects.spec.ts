@@ -8,7 +8,7 @@ import { CartPage } from '../page-objects/CartPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 23: Verify address details in checkout page', () => {
-  test('verify address details in checkout page', async ({ page }) => {
+  test('TC23 POM verify address details in checkout page', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
@@ -18,6 +18,14 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     const userId = testRegistrationData.userId;
     const urlCart = testCase23Data.urlCart;
     const verifyShoppingCart = testCase23Data.verifyShoppingCart;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -38,10 +46,6 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     await cartPage.assertAddressDelivery();
     await cartPage.assertAddressBillingy();
     await deletionUser.clickDeleteButton();
-    // EXIT FROM GOOGLE ADS
-    await page.goBack();
-    await page.goForward();
-    // ---
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });

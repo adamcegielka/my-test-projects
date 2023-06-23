@@ -2,12 +2,20 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase19Data } from '../test-data/testCase19.data';
 
 test.describe('Test Case 19: View & Cart Brand Products', () => {
-  test('view & cart brand products', async ({ page }) => {
+  test('TC19 view & cart brand products', async ({ page }) => {
     const verifyBrandsPolo = testCase19Data.verifyBrandsPolo;
     const verifyBrandPoloProducts = testCase19Data.verifyBrandPoloProducts;
     const verifyBrandPoloProductsAll = testCase19Data.verifyBrandPoloProductsAll;
     const verifyBrandBabyhugProducts = testCase19Data.verifyBrandBabyhugProducts;
     const verifyBrandBabyhugProductsAll = testCase19Data.verifyBrandBabyhugProductsAll;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -17,11 +25,6 @@ test.describe('Test Case 19: View & Cart Brand Products', () => {
 
     // 3. Click on 'Products' button
     await page.getByRole('link', { name: 'Products' }).click();
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_6"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
 
     // 4. Verify that Brands are visible on left side bar
     await expect(page.getByText(verifyBrandsPolo)).toBeVisible();

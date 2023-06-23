@@ -6,7 +6,7 @@ import { RegistrationPage } from '../pages/registration.page';
 import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 24: Download Invoice after purchase order', () => {
-  test('download invoice after purchase order', async ({ page }) => {
+  test('TC24 download invoice after purchase order', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -40,6 +40,14 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     const verifyDeliveryAddress = testCase24Data.verifyDeliveryAddress;
     const messageText = testCase24Data.messageText;
     const verifyReviewOrder = testCase24Data.verifyReviewOrder;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -105,36 +113,17 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 
     // 14. Verify Address Details and Review Your Order
     await expect(page.getByText(verifyDeliveryAddress)).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(verifyNameSurname)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(companyName)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(address1)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(verifyCountryCityZip)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(country)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(mobileNumber)
-    ).toBeVisible();
-    await expect(
-      page.getByRole('row', { name: verifyReviewOrder })
-    ).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(verifyNameSurname)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(companyName)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(address1)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(verifyCountryCityZip)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(country)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(mobileNumber)).toBeVisible();
+    await expect(page.getByRole('row', { name: verifyReviewOrder })).toBeVisible();
 
     // 15. Enter description in comment text area and click 'Place Order'
     await page.locator('textarea[name="message"]').fill(messageText);
     await page.getByRole('link', { name: 'Place Order' }).click();
-
-    // EXIT FROM GOOGLE ADS - sometimes
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
 
     // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
     // POM - Page Object Model

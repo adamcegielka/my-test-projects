@@ -5,25 +5,28 @@ import { Navbar } from '../page-objects/components/Navbar';
 import { Sidebar } from '../page-objects/components/Sidebar';
 
 test.describe('Test Case 19: View & Cart Brand Products', () => {
-  test('view & cart brand products', async ({ page }) => {
+  test('TC19 POM view & cart brand products', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const sideber = new Sidebar(page);
 
     const verifyBrandsPolo = testCase19Data.verifyBrandsPolo;
     const verifyBrandPoloProducts = testCase19Data.verifyBrandPoloProducts;
-    const verifyBrandPoloProductsAll =
-      testCase19Data.verifyBrandPoloProductsAll;
-    const verifyBrandBabyhugProducts =
-      testCase19Data.verifyBrandBabyhugProducts;
-    const verifyBrandBabyhugProductsAll =
-      testCase19Data.verifyBrandBabyhugProductsAll;
+    const verifyBrandPoloProductsAll = testCase19Data.verifyBrandPoloProductsAll;
+    const verifyBrandBabyhugProducts = testCase19Data.verifyBrandBabyhugProducts;
+    const verifyBrandBabyhugProductsAll = testCase19Data.verifyBrandBabyhugProductsAll;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
     await navbar.clickOnNav('Products');
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await expect(page.getByText(verifyBrandsPolo)).toBeVisible();
     await sideber.brands('Polo');
     await expect(

@@ -9,7 +9,7 @@ import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 24: Download Invoice after purchase order', () => {
-  test('download invoice after purchase order', async ({ page }) => {
+  test('TC24 POM download invoice after purchase order', async ({ page }) => {
     const homePage = new HomePage(page);
     const cartPage = new CartPage(page);
     const registrationUser = new RegistrationUser(page);
@@ -19,6 +19,14 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 
     const userId = testRegistrationData.userId;
     const verifyReviewOrder = testCase24Data.verifyReviewOrder;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -38,9 +46,7 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     await navbar.clickOnNav('Cart');
     await cartPage.clickbuttonProToCheckout();
     await cartPage.assertAddressDelivery();
-    await expect(
-      page.getByRole('row', { name: verifyReviewOrder })
-    ).toBeVisible();
+    await expect(page.getByRole('row', { name: verifyReviewOrder })).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
     await page.goBack();
@@ -64,10 +70,6 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
     }
     await creditCardPage.clickContinue();
     await deletionUser.clickDeleteButton();
-    // EXIT FROM GOOGLE ADS
-    await page.goBack();
-    await page.goForward();
-    // ---
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });
@@ -85,7 +87,7 @@ test.describe('Test Case 24: Download Invoice after purchase order', () => {
 9. Fill all details in Signup and create account
 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
 11. Verify ' Logged in as username' at top
-12.Click 'Cart' button
+12. Click 'Cart' button
 13. Click 'Proceed To Checkout' button
 14. Verify Address Details and Review Your Order
 15. Enter description in comment text area and click 'Place Order'

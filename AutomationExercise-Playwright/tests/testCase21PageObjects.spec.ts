@@ -5,9 +5,7 @@ import { Navbar } from '../page-objects/components/Navbar';
 import { WriteReviewPage } from '../page-objects/WriteReviewPage';
 
 test.describe('Test Case 21: Add review on product', () => {
-
-  // Test Case 21: Add review on product
-  test('add review on product', async ({ page }) => {
+  test('TC21 POM add review on product', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const writeReviewPage = new WriteReviewPage(page);
@@ -15,11 +13,17 @@ test.describe('Test Case 21: Add review on product', () => {
     const verifyProducts = testCase21Data.verifyProducts;
     const verifyProductsAll = testCase21Data.verifyProductsAll;
 
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
+
     await chromium.launch();
     await homePage.navHomePage();
     await navbar.clickOnNav('Products');
-    await page.goBack();      // EXIT FROM GOOGLE ADS
-    await page.goForward();   // EXIT FROM GOOGLE ADS
     await expect(page.getByRole('heading', { name: verifyProducts })).toBeVisible();
     await expect(page.getByText(verifyProductsAll)).toBeVisible();
     await page.locator('.choose > .nav > li > a').first().click();

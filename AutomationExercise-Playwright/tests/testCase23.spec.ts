@@ -4,7 +4,7 @@ import { testRegistrationData } from '../test-data/testRegistration.data';
 import { RegistrationPage } from '../pages/registration.page';
 
 test.describe('Test Case 23: Verify address details in checkout page', () => {
-  test('verify address details in checkout page', async ({ page }) => {
+  test('TC23 verify address details in checkout page', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -31,6 +31,14 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
     const verifyCountryCityZip = testCase23Data.verifyCountryCityZip;
     const verifyDeliveryAddress = testCase23Data.verifyDeliveryAddress;
     const verifyBillingyAddress = testCase23Data.verifyBillingyAddress;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -90,53 +98,24 @@ test.describe('Test Case 23: Verify address details in checkout page', () => {
 
     // 12. Verify that the delivery address is same address filled at the time registration of account
     await expect(page.getByText(verifyDeliveryAddress)).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(verifyNameSurname)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(companyName)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(address1)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(verifyCountryCityZip)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(country)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_delivery').getByText(mobileNumber)
-    ).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(verifyNameSurname)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(companyName)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(address1)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(verifyCountryCityZip)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(country)).toBeVisible();
+    await expect(page.locator('#address_delivery').getByText(mobileNumber)).toBeVisible();
 
     // 13. Verify that the billing address is same address filled at the time registration of account
     await expect(page.getByText(verifyBillingyAddress)).toBeVisible();
-    await expect(
-      page.locator('#address_invoice').getByText(verifyNameSurname)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_invoice').getByText(companyName)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_invoice').getByText(address1)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_invoice').getByText(verifyCountryCityZip)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_invoice').getByText(country)
-    ).toBeVisible();
-    await expect(
-      page.locator('#address_invoice').getByText(mobileNumber)
-    ).toBeVisible();
+    await expect(page.locator('#address_invoice').getByText(verifyNameSurname)).toBeVisible();
+    await expect(page.locator('#address_invoice').getByText(companyName)).toBeVisible();
+    await expect(page.locator('#address_invoice').getByText(address1)).toBeVisible();
+    await expect(page.locator('#address_invoice').getByText(verifyCountryCityZip)).toBeVisible();
+    await expect(page.locator('#address_invoice').getByText(country)).toBeVisible();
+    await expect(page.locator('#address_invoice').getByText(mobileNumber)).toBeVisible();
 
     // 14. Click 'Delete Account' button
     await page.getByRole('link', { name: 'Delete Account' }).click();
-
-    // EXIT FROM GOOGLE ADS
-    await page.goBack();
-    await page.goForward();
-    // ---
 
     // 15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
     await expect(page.getByText(verifyAccountDeleted)).toBeVisible();

@@ -3,11 +3,19 @@ import { testCase22Data } from '../test-data/testCase22.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 22: Add to cart from Recommended items', () => {
-  test('add to cart from recommended items', async ({ page }) => {
+  test('TC22 POM add to cart from recommended items', async ({ page }) => {
     const homePage = new HomePage(page);
 
     const verifyRecommendedItems = testCase22Data.verifyRecommendedItems;
     const verifyProductIsDisplayes = testCase22Data.verifyProductIsDisplayes;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
