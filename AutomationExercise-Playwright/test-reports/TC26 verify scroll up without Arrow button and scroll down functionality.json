@@ -1,0 +1,6 @@
+{
+  "test": "TC26 verify scroll up without Arrow button and scroll down functionality",
+  "status": "passed",
+  "executionTime": 8686,
+  "errors": []
+}

@@ -1,0 +1,6 @@
+{
+  "test": "TC20 search products and verify cart after login",
+  "status": "passed",
+  "executionTime": 37780,
+  "errors": []
+}
