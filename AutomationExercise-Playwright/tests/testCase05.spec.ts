@@ -25,12 +25,10 @@ test.describe('Test Case 5: Register User with existing email', () => {
     const verifyEmailAlreadyExist = testCase05Data.verifyEmailAlreadyExist;
 
     // Blocking of network resources that generate Ads
-    await page.route('**/*', (route) => {
-      if (route.request().url().startsWith('https://googleads.')) {
-        route.abort();
-      } else {
-        route.continue();
-      }
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
     });
     // --- End code
 

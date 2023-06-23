@@ -20,12 +20,10 @@ test.describe('Test Case 2: login User with correct email and password', () => {
     const verifyAccountDeleted = testCase02Data.verifyAccountDeleted;
 
     // Blocking of network resources that generate Ads
-    await page.route('**/*', (route) => {
-      if (route.request().url().startsWith('https://googleads.')) {
-        route.abort();
-      } else {
-        route.continue();
-      }
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
     });
     // --- End code
 

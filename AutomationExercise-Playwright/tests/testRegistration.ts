@@ -19,12 +19,10 @@ export async function registerUser(page) {
   const mobileNumber = testRegistrationData.mobileNumber;
 
   // Blocking of network resources that generate Ads
-  await page.route('**/*', (route) => {
-    if (route.request().url().startsWith('https://googleads.')) {
-      route.abort();
-    } else {
-      route.continue();
-    }
+  await page.route("**/*", route => {
+    route.request().url().startsWith("https://googleads.") ?
+      route.abort() : route.continue();
+    return;
   });
   // --- End code
 
