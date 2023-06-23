@@ -2,11 +2,19 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase09Data } from '../test-data/testCase09.data';
 
 test.describe('Test Case 9: Search Product', () => {
-  test('search product', async ({ page }) => {
+  test('TC09 search product', async ({ page }) => {
     const messageProducts = testCase09Data.messageProducts;
     const productName = testCase09Data.productName;
     const allProductsSearch = testCase09Data.allProductsSearch;
     const verifyHomePage = testCase09Data.verifyHomePage;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -19,11 +27,6 @@ test.describe('Test Case 9: Search Product', () => {
     await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click on 'Products' button
-    await page.click('.material-icons.card_travel');
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
     await page.click('.material-icons.card_travel');
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully

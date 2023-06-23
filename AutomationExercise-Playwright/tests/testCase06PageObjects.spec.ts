@@ -5,7 +5,7 @@ import { Navbar } from '../page-objects/components/Navbar';
 import { FormPage } from '../page-objects/FormPage';
 
 test.describe('Test Case 6: Contact Us Form', () => {
-  test('contact us form', async ({ page }) => {
+  test('TC06 POM contact us form', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const formPage = new FormPage(page);
@@ -15,6 +15,14 @@ test.describe('Test Case 6: Contact Us Form', () => {
     const subject = testCase06Data.subject;
     const message = testCase06Data.message;
     const verifyGetInTouch = testCase06Data.verifyGetInTouch;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -29,8 +37,6 @@ test.describe('Test Case 6: Contact Us Form', () => {
     await formPage.submitForm();
     await formPage.assertFormSent();
     await page.click('#form-section > .btn.btn-success');
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
     await page.close();

@@ -4,7 +4,7 @@ import { HomePage } from '../page-objects/HomePage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 9: Search Product', () => {
-  test('search product', async ({ page }) => {
+  test('TC09 POM search product', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
 
@@ -12,12 +12,18 @@ test.describe('Test Case 9: Search Product', () => {
     const productName = testCase09Data.productName;
     const allProductsSearch = testCase09Data.allProductsSearch;
 
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
+
     await chromium.launch();
     await homePage.navHomePage();
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
-    await navbar.clickOnNav('Products');
-    await page.goBack(); // EXIT FROM GOOGLE ADS
     await navbar.clickOnNav('Products');
     await expect(page.getByText(messageProducts)).toBeVisible();
     await page.type('#search_product', productName);

@@ -2,12 +2,20 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase08Data } from '../test-data/testCase08.data';
 
 test.describe('Test Case 8: Verify All Products and product detail page', () => {
-  test('verify all products and product detail page', async ({ page }) => {
+  test('TC08 verify all products and product detail page', async ({ page }) => {
     const urlProductDetails = testCase08Data.urlProductDetails;
     const messageProducts = testCase08Data.messageProducts;
     const messageProductList = testCase08Data.messageProductList;
     const messageProductDetails = testCase08Data.messageProductDetails;
     const verifyHomePage = testCase08Data.verifyHomePage;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -22,11 +30,6 @@ test.describe('Test Case 8: Verify All Products and product detail page', () => 
     // 4. Click on 'Products' button
     // await page.getByRole('link', { name: 'Products' }).click();
     // or:
-    await page.click('.material-icons.card_travel');
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
     await page.click('.material-icons.card_travel');
 
     // 5. Verify user is navigated to ALL PRODUCTS page successfully

@@ -8,6 +8,14 @@ test.describe('Test Case 10: Verify Subscription in home page', () => {
     const messageSubscription = testCase10Data.messageSubscription;
     const verifyHomePage = testCase10Data.verifyHomePage;
 
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
+
     // 1. Launch browser
     await chromium.launch();
 

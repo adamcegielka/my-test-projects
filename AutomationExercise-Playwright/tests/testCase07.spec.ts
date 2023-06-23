@@ -2,10 +2,18 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase07Data } from '../test-data/testCase07.data';
 
 test.describe('Test Case 7: Verify Test Cases Page', () => {
-  test('verify test cases page', async ({ page }) => {
+  test('TC07 verify test cases page', async ({ page }) => {
     const verifyHomePage = testCase07Data.verifyHomePage;
     const verifyTestCasesPage = testCase07Data.verifyTestCasesPage;
     const verifyTestCasesPageTitle = testCase07Data.verifyTestCasesPageTitle;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -18,11 +26,6 @@ test.describe('Test Case 7: Verify Test Cases Page', () => {
     await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click on 'Test Cases' button
-    await page.click('.btn.btn-success');
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
     await page.click('.btn.btn-success');
 
     // 5. Verify user is navigated to test cases page successfully
