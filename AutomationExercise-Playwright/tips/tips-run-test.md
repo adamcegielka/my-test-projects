@@ -8,7 +8,7 @@
   "test:sequential": "playwright test --workers 1"
   }
 ```
-package.json:  `npm run test:sequential`
+`npm run test:sequential`
 
 <br>
 
