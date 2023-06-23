@@ -13,7 +13,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
   });
 
   // Test Case 16: Place Order: Login Before Checkout
-  test('login before checkout', async ({ page }) => {
+  test('TC16 login before checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -37,6 +37,14 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     const verifyAccountDeleted = testCase16Data.verifyAccountDeleted;
     const verifyNameSurname = testCase16Data.verifyNameSurname;
     const verifyCountryCityZip = testCase16Data.verifyCountryCityZip;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -99,11 +107,6 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     // 12. Enter description in comment text area and click 'Place Order'
     await page.locator('textarea[name="message"]').fill(messageText);
     await page.getByRole('link', { name: 'Place Order' }).click();
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
 
     // 13. Enter payment details: Name on Card, Card Number, CVC, Expiration date
     // POM - Page Object Model

@@ -6,7 +6,7 @@ import { RegistrationPage } from '../pages/registration.page';
 import { CreditCardPage } from '../pages/paymentByCard.page';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
-  test('register while checkout', async ({ page }) => {
+  test('TC14 register while checkout', async ({ page }) => {
     // testRegistrationData
     const userId = testRegistrationData.userId;
     const userEmail = testRegistrationData.userEmail;
@@ -38,6 +38,14 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     const verifyShoppingCart = testCase14Data.verifyShoppingCart;
     const verifyAccountCreated = testCase14Data.verifyAccountCreated;
     const verifyAccountDeleted = testCase14Data.verifyAccountDeleted;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -110,11 +118,6 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await page.locator('textarea[name="message"]').fill(messageText);
     await page.getByRole('link', { name: 'Place Order' }).click();
 
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
-
     // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
     // POM - Page Object Model
     const creditCardPage = new CreditCardPage(page);
@@ -133,38 +136,6 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     //   page.getByRole('button', { name: 'Pay and Confirm Order' }).click(),
     //   page.getByText('Your order has been placed successfully!')])
     // expect(successMessage).toBeVisible();
-    // ---------
-    // await expect(page.getByText('Your order has been placed successfully!')).toBeVisible();
-    // ---------
-    // const successMessage = await page.locator('#success_message');
-    // await expect(successMessage).toContainText('Your order has been placed successfully!');
-    // ---------
-    // const successMessage = await page.waitForSelector('#success_message');
-    // await expect(successMessage).toContain('Your order has been placed successfully!');
-    // ---------
-    // const successMessageText = await page.evaluate(() => {
-    //   const successMessage = document.querySelector('#success_message');
-    //   return successMessage?.textContent?.trim() ?? '';
-    // });
-    // expect(successMessageText).toBe('Your order has been placed successfully!');
-    // ---------
-    // await page.waitForTimeout(2000);
-    // const successMessage = await page.getByText('Your order has been placed successfully!');
-    // await expect(successMessage).toBeVisible();
-    // ---------
-    // await page.waitForLoadState();
-    // await page.waitForSelector('#success_message.alert-success');
-    // const successMessageText = await page.textContent('#success_message.alert-success');
-    // expect(successMessageText).toBe('Your order has been placed successfully!');
-    // ---------
-    // const successMessage = await page.locator('#success_message');
-    // const messageText1 = await successMessage.innerText();
-    // expect(messageText1).toBe('Your order has been placed successfully!');
-    // ---------
-    // const successMessageLocator = page.locator('#success_message.alert-success');
-    // await successMessageLocator.waitFor();
-    // const successMessage = await successMessageLocator.textContent();
-    // expect(successMessage).toContain('Your order has been placed successfully!');
     // --- Fixme
 
     // 19. Click 'Delete Account' button

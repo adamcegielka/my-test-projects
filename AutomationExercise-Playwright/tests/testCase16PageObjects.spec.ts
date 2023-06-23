@@ -28,7 +28,7 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
   });
 
   // Test Case 16: Place Order: Login Before Checkout
-  test('login before checkout', async ({ page }) => {
+  test('TC16 POM login before checkout', async ({ page }) => {
     homePage = new HomePage(page);
     navbar = new Navbar(page);
     loginPage = new LoginPage(page);
@@ -40,6 +40,14 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     const urlCart = testCase16Data.urlCart;
     const verifyOrder = testCase16Data.verifyOrder;
     const verifyShoppingCart = testCase16Data.verifyShoppingCart;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -58,8 +66,6 @@ test.describe('Test Case 16: Place Order: Login before Checkout', () => {
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // 15. Verify success message 'Your order has been placed successfully!'

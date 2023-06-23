@@ -9,7 +9,7 @@ import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { DeletionUser } from '../page-objects/DeletionUser';
 
 test.describe('Test Case 15: Place Order: Register before Checkout', () => {
-  test('register before checkout', async ({ page }) => {
+  test('TC15 POM register before checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
@@ -21,6 +21,14 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     const urlCart = testCase15Data.urlCart;
     const verifyOrder = testCase15Data.verifyOrder;
     const verifyShoppingCart = testCase15Data.verifyShoppingCart;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -42,8 +50,6 @@ test.describe('Test Case 15: Place Order: Register before Checkout', () => {
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // 16. Verify success message 'Your order has been placed successfully!'

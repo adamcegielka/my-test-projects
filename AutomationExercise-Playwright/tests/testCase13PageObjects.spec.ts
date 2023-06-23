@@ -3,12 +3,20 @@ import { testCase13Data } from '../test-data/testCase13.data';
 import { HomePage } from '../page-objects/HomePage';
 
 test.describe('Test Case 13: Verify Product quantity in Cart', () => {
-  test('verify product quantity in cart', async ({ page }) => {
+  test('TC13 POM verify product quantity in cart', async ({ page }) => {
     const homePage = new HomePage(page);
 
     const verifyDetail = testCase13Data.verifyDetail;
     const verifyProductDisplayed = testCase13Data.verifyProductDisplayed;
     const quantityProduct = testCase13Data.quantityProduct;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -17,8 +25,6 @@ test.describe('Test Case 13: Verify Product quantity in Cart', () => {
     await page
       .locator('div:nth-child(6) > .product-image-wrapper > .choose')
       .click();
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await expect(page.getByText(verifyDetail)).toBeVisible();
     await page.locator('#quantity').fill(quantityProduct);
     await page.click('button[type="button"]');

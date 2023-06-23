@@ -9,7 +9,7 @@ import { CreditCardPage } from '../page-objects/CreditCardPage';
 import { CartPage } from '../page-objects/CartPage';
 
 test.describe('Test Case 14: Place Order: Register while Checkout', () => {
-  test('register while checkout', async ({ page }) => {
+  test('TC14 POM register while checkout', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
     const registrationUset = new RegistrationUser(page);
@@ -20,6 +20,14 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     const userId = testRegistrationData.userId;
     const verifyOrder = testCase14Data.verifyOrder;
     const verifyShoppingCart = testCase14Data.verifyShoppingCart;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();
@@ -44,8 +52,6 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     await expect(page.getByRole('row', { name: verifyOrder })).toBeVisible();
     await cartPage.addComment();
     await cartPage.clickPlaceOrder();
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await creditCardPage.enterPaymentDetails();
     await creditCardPage.confirmOrder();
     // 18. Verify success message 'Your order has been placed successfully!'
@@ -56,8 +62,6 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
     // expect(successMessage).toBeVisible();
     // --- Fixme
     await deletionUser.clickDeleteButton();
-    await page.goBack(); // EXIT FROM GOOGLE ADS
-    await page.goForward(); // EXIT FROM GOOGLE ADS
     await deletionUser.messageAccountDeleted();
     await deletionUser.clickContinueButton();
   });
@@ -75,7 +79,7 @@ test.describe('Test Case 14: Place Order: Register while Checkout', () => {
 9. Fill all details in Signup and create account
 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
 11. Verify ' Logged in as username' at top
-12.Click 'Cart' button
+12. Click 'Cart' button
 13. Click 'Proceed To Checkout' button
 14. Verify Address Details and Review Your Order
 15. Enter description in comment text area and click 'Place Order'

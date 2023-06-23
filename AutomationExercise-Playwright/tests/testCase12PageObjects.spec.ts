@@ -4,7 +4,7 @@ import { HomePage } from '../page-objects/HomePage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 12: Add Products in Cart', () => {
-  test('add products in cart', async ({ page }) => {
+  test('TC12 POM add products in cart', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
 
@@ -17,12 +17,18 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     const productSecondQuantity = testCase12Data.productSecondQuantity;
     const productSecondVerifyTotalPrice = testCase12Data.productSecondVerifyTotalPrice;
 
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
+
     await chromium.launch();
     await homePage.navHomePage();
     await homePage.verifyHomePage();
     await homePage.verifytTitlePage();
-    await navbar.clickOnNav('Products');
-    await page.goBack(); // EXIT FROM GOOGLE ADS
     await navbar.clickOnNav('Products');
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
     await blueTop.click();

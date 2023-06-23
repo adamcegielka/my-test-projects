@@ -4,13 +4,21 @@ import { HomePage } from '../page-objects/HomePage';
 import { Navbar } from '../page-objects/components/Navbar';
 
 test.describe('Test Case 11: Verify Subscription in Cart page', () => {
-  test('verify subscription in cart page', async ({ page }) => {
+  test('TC11 POM verify subscription in cart page', async ({ page }) => {
     const homePage = new HomePage(page);
     const navbar = new Navbar(page);
 
     const subscription = testCase11Data.subscription;
     const emailSubscription = testCase11Data.emailSubscription;
     const messageSubscription = testCase11Data.messageSubscription;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     await chromium.launch();
     await homePage.navHomePage();

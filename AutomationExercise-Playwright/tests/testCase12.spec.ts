@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase12Data } from '../test-data/testCase12.data';
 
 test.describe('Test Case 12: Add Products in Cart', () => {
-  test('add products in cart', async ({ page }) => {
+  test('TC12 add products in cart', async ({ page }) => {
     const productFirst = testCase12Data.productFirst;
     const productSecond = testCase12Data.productSecond;
     const productFirstVerifyPrice = testCase12Data.productFirstVerifyPrice;
@@ -12,6 +12,14 @@ test.describe('Test Case 12: Add Products in Cart', () => {
     const productSecondQuantity = testCase12Data.productSecondQuantity;
     const productSecondVerifyTotalPrice = testCase12Data.productSecondVerifyTotalPrice;
     const verifyHomePage = testCase12Data.verifyHomePage;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -25,11 +33,6 @@ test.describe('Test Case 12: Add Products in Cart', () => {
 
     // 4. Click 'Products' button
     await page.click('.material-icons.card_travel');
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
 
     // 5. Hover over first product and click 'Add to cart'
     const blueTop = await page.waitForSelector('[data-product-id="1"]');
@@ -51,25 +54,11 @@ test.describe('Test Case 12: Add Products in Cart', () => {
 
     // 10. Verify their prices, quantity and total price
     await expect(page.getByText(productFirstVerifyPrice).first()).toBeVisible();
-    await expect(
-      page
-        .getByRole('row', { name: productFirst })
-        .getByRole('button', { name: productFirstQuantity })
-    ).toBeVisible();
-    await expect(
-      page.getByText(productFirstVerifyTotalPrice).nth(1)
-    ).toBeVisible();
+    await expect(page.getByRole('row', { name: productFirst }).getByRole('button', { name: productFirstQuantity })).toBeVisible();
+    await expect(page.getByText(productFirstVerifyTotalPrice).nth(1)).toBeVisible();
 
-    await expect(
-      page.getByText(productSecondVerifyPrice).first()
-    ).toBeVisible();
-    await expect(
-      page
-        .getByRole('row', { name: productSecond })
-        .getByRole('button', { name: productSecondQuantity })
-    ).toBeVisible();
-    await expect(
-      page.getByText(productSecondVerifyTotalPrice).nth(1)
-    ).toBeVisible();
+    await expect(page.getByText(productSecondVerifyPrice).first()).toBeVisible();
+    await expect(page.getByRole('row', { name: productSecond }).getByRole('button', { name: productSecondQuantity })).toBeVisible();
+    await expect(page.getByText(productSecondVerifyTotalPrice).nth(1)).toBeVisible();
   });
 });

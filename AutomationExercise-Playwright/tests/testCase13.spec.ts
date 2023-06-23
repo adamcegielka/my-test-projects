@@ -2,11 +2,19 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase13Data } from '../test-data/testCase13.data';
 
 test.describe('Test Case 13: Verify Product quantity in Cart', () => {
-  test('verify product quantity in cart', async ({ page }) => {
+  test('TC13 verify product quantity in cart', async ({ page }) => {
     const verifyHomePage = testCase13Data.verifyHomePage;
     const verifyDetail = testCase13Data.verifyDetail;
     const verifyProductDisplayed = testCase13Data.verifyProductDisplayed;
     const quantityProduct = testCase13Data.quantityProduct;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
@@ -19,14 +27,7 @@ test.describe('Test Case 13: Verify Product quantity in Cart', () => {
     await expect(page).toHaveTitle(verifyHomePage);
 
     // 4. Click 'View Product' for any product on home page
-    await page
-      .locator('div:nth-child(6) > .product-image-wrapper > .choose')
-      .click();
-
-    // EXIT FROM GOOGLE ADS
-    // await page.frameLocator('iframe[name="aswift_5"]').frameLocator('iframe[name="ad_iframe"]').getByRole('button', { name: 'Close ad' }).click();
-    await page.goBack();
-    await page.goForward();
+    await page.locator('div:nth-child(6) > .product-image-wrapper > .choose').click();
 
     // 5. Verify product detail is opened
     await expect(page.getByText(verifyDetail)).toBeVisible();
@@ -43,11 +44,7 @@ test.describe('Test Case 13: Verify Product quantity in Cart', () => {
     await page.getByRole('link', { name: 'View Cart' }).click();
 
     // 9. Verify that product is displayed in cart page with exact quantity
-    await expect(
-      page.getByRole('row', { name: verifyProductDisplayed })
-    ).toBeVisible();
-    await expect(
-      page.getByRole('button', { name: quantityProduct })
-    ).toBeVisible();
+    await expect(page.getByRole('row', { name: verifyProductDisplayed })).toBeVisible();
+    await expect(page.getByRole('button', { name: quantityProduct })).toBeVisible();
   });
 });

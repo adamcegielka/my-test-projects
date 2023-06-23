@@ -2,11 +2,19 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase17Data } from '../test-data/testCase17.data';
 
 test.describe('Test Case 17: Remove Products From Cart', () => {
-  test('remove products from cart', async ({ page }) => {
+  test('TC17 remove products from cart', async ({ page }) => {
     const verifyHomePage = testCase17Data.verifyHomePage;
     const urlCart = testCase17Data.urlCart;
     const verifyShoppingCart = testCase17Data.verifyShoppingCart;
     const verifyProductRemoved = testCase17Data.verifyProductRemoved;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();

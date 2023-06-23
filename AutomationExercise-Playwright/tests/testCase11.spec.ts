@@ -2,11 +2,19 @@ import { test, expect, chromium } from '@playwright/test';
 import { testCase11Data } from '../test-data/testCase11.data';
 
 test.describe('Test Case 11: Verify Subscription in Cart page', () => {
-  test('verify subscription in cart page', async ({ page }) => {
+  test('TC11 verify subscription in cart page', async ({ page }) => {
     const subscription = testCase11Data.subscription;
     const emailSubscription = testCase11Data.emailSubscription;
     const messageSubscription = testCase11Data.messageSubscription;
     const verifyHomePage = testCase11Data.verifyHomePage;
+
+    // Blocking of network resources that generate Ads
+    await page.route("**/*", route => {
+      route.request().url().startsWith("https://googleads.") ?
+        route.abort() : route.continue();
+      return;
+    });
+    // --- End code
 
     // 1. Launch browser
     await chromium.launch();
