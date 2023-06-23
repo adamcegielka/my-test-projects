@@ -29,3 +29,14 @@ test.describe('My tests', () => {
     // Test code 3
   });
 });
+```
+
+<br>
+
+- Save test results to a file:
+```json
+  "scripts": {
+    "test:sequential:results": "playwright test --workers 1 --reporter=json --output=results.json"
+  }
+```
+`npm run test:sequential:results`
