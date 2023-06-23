@@ -14,7 +14,7 @@
 
 - test.serial method to perform tests sequentially:
 ```javascript
-  const { test } = require('@playwright/test');
+const { test } = require('@playwright/test');
 
 test.describe('My tests', () => {
   test.serial('Test 1', async ({ page }) => {
