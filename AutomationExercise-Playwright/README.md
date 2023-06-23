@@ -70,7 +70,7 @@ I use [VSCode](https://code.visualstudio.com/) to create the automated tests and
 - API test results are not available due to numerous errors during API testing based on the available scenario.
 
 ## Conclusions
-Having completed the tests on the basis of the available [Test Cases](https://automationexercise.com/test_cases) and analyzed the results, here are some conclusions about the project as a whole::
+Having completed the tests on the basis of the available [Test Cases](https://automationexercise.com/test_cases) and analyzed the results, here are some conclusions about the project as a whole:
 - All tests were successful, as confirmed by [test-reports](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/test-reports).
 - There is one assertion that was not resolved in the tests: [Test Case 14]() / [Test Case 15]() / [Test Case 16]() / [Test Case 24]() Attempts to resolve this assertion are available in [tips-upload-file.md](https://github.com/adamcegielka/my-test-projects/blob/main/AutomationExercise-Playwright/tips/tips-upload-file.md)
 - Test performance was satisfactory and system responses were received in an acceptable time.
