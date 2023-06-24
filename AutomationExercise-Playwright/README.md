@@ -8,7 +8,7 @@
 [![ESLint](https://img.shields.io/badge/GitHub-ESLint-4b32c3.svg?logo=eslint)](https://github.com/eslint/eslint)
 <br><br>
 
-# Automation Exercise with Playwright 
+# :performing_arts: Automation Exercise with Playwright 
 
 ## The objective of the test project
 
@@ -65,14 +65,14 @@ The test project includes the running of automated tests using ready-made [Test 
 
 I use [VSCode](https://code.visualstudio.com/) to create the automated tests and [Playwright](https://playwright.dev/) to run them with language [TypeScript](https://www.typescriptlang.org/).
 
-## Lessons learned
-- in the first stage of the project I used the [tests](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/tests) folder for tests
-- in the next stage I refactored the tests using POM and created the [pages](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/pages) folder
-- the next idea was to refactor bigger the code using POM more, so I created the folder [test pages-objects](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/tests%20page-objects), in which there are duplicate tests and for these tests I created the folder [page-objects](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/page-objects), I made it so that the orginals of the first tests are preserved 
-- the advantage of this project structure was to keep the tests in one project, so that I could return to them in case of emergency
-- the disadvantage is the unnecessary chaos in the project structure
-- in future projects, I will focus more on the structure of the project so as not to introduce unnecessary chaos and to keep the project more readable.
-- as well as pay more attention to creating more readable commits in git
+## :pushpin: Lessons learned
+> - in the first stage of the project I used the [tests](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/tests) folder for tests
+> - in the next stage I refactored the tests using POM and created the [pages](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/pages) folder
+> - the next idea was to refactor bigger the code using POM more, so I created the folder [test pages-objects](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/tests%20page-objects), in which there are duplicate tests and for these tests I created the folder [page-objects](https://github.com/adamcegielka/my-test-projects/tree/main/AutomationExercise-Playwright/page-objects), I made it so that the orginals of the first tests are preserved 
+> - the advantage of this project structure was to keep the tests in one project, so that I could return to them in case of emergency
+> - the disadvantage is the unnecessary chaos in the project structure
+> - in future projects, I will focus more on the structure of the project so as not to introduce unnecessary chaos and to keep the project more readable.
+> - as well as pay more attention to creating more readable commits in git
 
 <br>
 
